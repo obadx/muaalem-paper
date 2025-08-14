@@ -1,80 +1,78 @@
-# Quran Phonetic Script
+# Quran Phonetic Script  
 
-We think that the most valubale and import contribution of our work is the Quran Phonetic Script as the fromlization of the Assessing Prounciation for the Holy Quran as an ASR probelm represented by Quran Phonetic Script helps to slove the task.
+We consider the Quran Phonetic Script to be the most valuable and important contribution of our work. By formalizing the assessment of Holy Quran pronunciation as an ASR problem represented through this script, we provide a comprehensive solution to the task.
 
-## Motivation for Developing Quran Phonetic script
+## Motivation for Developing Quran Phonetic Script  
 
-If you want to decet the length of the Madd rule in Holy Quran the Modern standard Arabic (MSA)[] can not measre this rule to detect erros. Some researcher for example [omran2023automatic] focuses on a specific rule (QalQla Rule). So we argue that we have created a phonetic script that can detect all Tajweed prounced erros exexpt for Ishmam (إشمام) as it is a sign by the mouth wich has no vocice.
+Modern Standard Arabic (MSA) orthography cannot adequately represent Tajweed rules for error detection. For example, MSA cannot measure the precise length of Madd rules. Previous research (e.g., [omran2023automatic]) focused on single rules like Qalqalah. Our phonetic script addresses this limitation by capturing all Tajweed pronunciation errors except Ishmam (إشمام), which involves a visual mouth movement without audible output.
 
-## background
+## Background  
 
-We relyed on the Acinet Muslim scholars to define Quran erros not The (International Photonic Association) IPA for the following reasons:
+We based our script on classical Muslim scholarship rather than the International Phonetic Alphabet (IPA) for these reasons:
 
-* Muslim schoars starting from 6th century to 14th century have regrously defined all types of erros that may encounter Holy Quran Learner far before raising of modern photenics at the west in the 17th century
+1. **Historical Precedence**: Muslim scholars from the 6th to 14th centuries rigorously defined Quranic errors centuries before modern phonetics emerged in the West.
+2. **Scientific Foundation**: Scholars like Al-Khalil ibn Ahmad (6th century AH) systematically described articulations and attributes with remarkable accuracy comparable to modern phonetics [article-khalil].
+3. **Pedagogical Relevance**: Learners' errors align with classical definitions according to expert Quran teachers.
 
-* Muslim schoarls have the favour of defining photonics far before IPA in a very scientific and organized manar for example Scholar Al-Khalil in the 6th centurey centuries before modern phtonics has nearly achieved same results defining arctulations and its attributes accorading to [article-khalil] 
-* In practises learners mistakes while recition the Holy Quarn does not go away to theri difinitions according to expert teachers.
+### Defining Mistakes in Quran Recitation  
 
+Following [sweed2021], Quran recitation errors fall into three categories:  
+1. **Articulation Errors**: Incorrect pronunciation of phonemes  
+2. **Attribute Errors**: Mistakes in letter characteristics (Sifat al-Huruf)  
+3. **Tajweed Rule Errors**: Incorrect application of rules like Ghunnah, Madd, etc.  
 
-### Defining Mistakes in the Holy Quran
+Our script comprehensively addresses all three aspects through two output levels:  
+* **Phonemes Level**: Represents letters, vowels, and Tajweed rules  
+* **Sifat Level**: Represents articulation attributes for each phoneme  
 
-According to [sweed2021] Mistakes while reciting the Holy Quran are the following:
+### Phoneme Set (43 Symbols)  
 
-* Mistakes in the articulations of the phonemes
-* Mistakes in the attributes for the articulations (Sifat)(صفات الحروف)
-* Tajweed rules include Ghonna and Madd, ..etc.
+| Phoneme Name          | Symbol | Description                          |
+|-----------------------|--------|--------------------------------------|
+| hamza                | ء      | Glottal stop                         |
+| baa                  | ب      | /b/                                  |
+| taa                  | ت      | /t/                                  |
+| thaa                 | ث      | /θ/                                  |
+| jeem                 | ج      | /d͡ʒ/                                 |
+| haa_mohmala          | ح      | Voiceless pharyngeal fricative       |
+| khaa                 | خ      | /x/                                  |
+| daal                 | د      | /d/                                  |
+| thaal                | ذ      | /ð/                                  |
+| raa                  | ر      | /r/                                  |
+| zay                  | ز      | /z/                                  |
+| seen                 | س      | /s/                                  |
+| sheen                | ش      | /ʃ/                                  |
+| saad                 | ص      | Emphatic /s/                         |
+| daad                 | ض      | Pharyngealized /d/                   |
+| taa_mofakhama        | ط      | Emphatic /t/                         |
+| zaa_mofakhama        | ظ      | Emphatic /ð/                         |
+| ayn                  | ع      | /ʕ/                                  |
+| ghyn                 | غ      | /ɣ/                                  |
+| faa                  | ف      | /f/                                  |
+| qaf                  | ق      | /q/                                  |
+| kaf                  | ك      | /k/                                  |
+| lam                  | ل      | /l/                                  |
+| meem                 | م      | /m/                                  |
+| noon                 | ن      | /n/                                  |
+| haa                  | ه      | /h/                                  |
+| waw                  | و      | /w/                                  |
+| yaa                  | ي      | /j/                                  |
+| alif                 | ا      | /aː/                                 |
+| yaa_madd             | ۦ       | Madd extension symbol for /j/        |
+| waw_madd             | ۥ       | Madd extension symbol for /w/        |
+| fatha                | َ       | /a/                                  |
+| dama                 | ُ       | /u/                                  |
+| kasra                | ِ       | /i/                                  |
+| fatha_momala         | ۪       | Imala-modified /a/                   |
+| alif_momala          | ـ       | Imala-modified alif                  |
+| hamza_mosahala       | ٲ       | Hamzat al-wasl with tasheel          |
+| qlqla                | ڇ       | Qalqalah marker                      |
+| noon_mokhfah         | ں       | Ikhfa marker for noon                |
+| meem_mokhfah         | ۾       | Ikhfa marker for meem                |
+| sakt                 | ۜ       | Slight pause marker                  |
+| dama_mokhtalasa      | ؙ       | Rawm marker                          |
 
-So for our script to be complete we have to include the 3 ascpects. But articulations can be represented by the phoneme itself and we can represent tajweed rules as phonemes also as we will show so our script outputs two things:
-
-* **Phonemes Level**: that represnets letters, tajweed rules and short and long vowels (الحركات ولامدود)
-* **Sifa Level**: that represents the attribute for articulation of every phonemes defined in the phoneme set
-
-
-| Phoneme Name           | Symbol |
-|------------------------|--------|
-| hamza                 | ء     | 
-| baa                   | ب     |
-| taa                   | ت     |
-| thaa                  | ث     |
-| jeem                  | ج     |
-| haa_mohmala           | ح     |
-| khaa                  | خ     |
-| daal                  | د     |
-| thaal                 | ذ     |
-| raa                   | ر     |
-| zay                   | ز     | 
-| seen                  | س     |
-| sheen                 | ش     |
-| saad                  | ص     |
-| daad                  | ض     |
-| taa_mofakhama         | ط     |
-| zaa_mofakhama         | ظ     |
-| ayn                   | ع     |
-| ghyn                  | غ     |
-| faa                   | ف     |
-| qaf                   | ق     |
-| kaf                   | ك     |
-| lam                   | ل     |
-| meem                  | م     |
-| noon                  | ن     |
-| haa                   | ه     |
-| waw                   | و     |
-| yaa                   | ي     |
-| alif                  | ا     |
-| yaa_madd              | ۦ     |
-| waw_madd              | ۥ     |
-| fatha                 | َ     |
-| dama                  | ُ     |
-| kasra                 | ِ     |
-| fatha_momala          | ۪     |
-| alif_momala           | ـ     |
-| hamza_mosahala        | ٲ     |
-| qlqla                 | ڇ     |
-| noon_mokhfah          | ں     |
-| meem_mokhfah          | ۾     |
-| sakt                  | ۜ     |
-| dama_mokhtalasa       | ؙ     |
-
+### Sifat Set (10 Attributes)  
 
 | Sifat (English)        | Sifat (Arabic)       | Available Attributes (English)          | Available Attributes (Arabic)       |
 |------------------------|----------------------|----------------------------------------|-------------------------------------|
@@ -89,28 +87,25 @@ So for our script to be complete we have to include the 3 ascpects. But articula
 | istitala             | الاستطالة          | mostateel, not_mostateel             | مستطيل, غير مستطيل                 |
 | ghonna               | الغنة              | maghnoon, not_maghnoon               | مغنون, غير مغنون                   |
 
+### Key Design Principles  
 
-Important Notes About phoneme Level:
-* we represent normal madd as two conscative `madd_alif` for golden recitation same as `madd_waw` and `madd_yaa`
-* for madd aleen (مد اللين) we represent it with yaa and waw yaa and waw but with multiple of them according to the madd length
-* We represents stressed Gonna for noon (النون لمشددة) as tree consecative `noon` same as stressed meem but with three `meem`s
-* We represent golded Ikhfaa for noon and tanween as three conscative `noon_mokhfah`
-* We reprsetn rule of Idgham for noon or tanween with yaa (ي) or waw (و) as two of both example ( مَن يَعْمَلْ) can be representd as (مَنيييَعمَل)
-* We represent golded Ikhfaa for meem  as three conscative `meem_mokhfaah` or 3 `meem` according to moshaf attributes `meem_mokhfah`
-* We represet saken with nothing after it
-* We represent sakt (sligh pause) as `skat` sign
-* We represent alif moshaha as `alif_moshala` 
-* We represent fatha momala in word (مجراها) as `fatha_momala`
-* We represent alif momala in word (مجراها) as two  `alif_momala`
-* We represent `rawm` for letter `noon` in word (تأمنا) by `dama_mokhtalasa`
-* We add a letter for `qalqal` so model can diffrenital with letter that has haraka (`fatha`, `damm`, `kasra` and with saken letter)
+1. **Madd Representation**:  
+   - Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: اااا)  
+   - Madd al-Leen represented with multiple waw/yaa symbols  
 
+2. **Emphatic Articulation**:  
+   - Stressed Ghunnah (e.g., النون المشددة) as three consecutive noon symbols (ننن)  
+   - Ikhfa represented as three consecutive noon_mokhfah (ںںں) or meem_mokhfah (۾۾۾)  
 
-As we see we have modeled all tajweed rules for `Hafs` exept for `rawm` (الوقف بالروم) and Ishmam (إشمام) as it is is voices like normal phonemes but donated by a sign of damma form the mouth
+3. **Idgham Handling**:  
+   - Assimilation represented by doubling (e.g., مَن يَعْمَلْ → مَنيييَعمَل)  
 
+4. **Special Cases**:  
+   - Sakin: No following symbol  
+   - Imala: fatha_momala and alif_momala  
+   - Rawm: dama_mokhtalasa marker  
 
-### Examples:
-
+### Examples  
 | Uthmani Script | Phonetic Script      |
 |----------------|----------------------|
 | أَ             | ءَ                   |
@@ -120,6 +115,7 @@ As we see we have modeled all tajweed rules for `Hafs` exept for `rawm` (الو�
 | وٓ             | ۥۥۥۥۥۥ               |
 | نِّ            | ننننِ                |
 | ى              | ۦۦ                   |
+
 
 | Phoneme       | Hams/Jahr | Shidda/Rakhawa | Tafkheem/Taqeeq | Itbaq      | Safeer      | Qalqla          | Tikraar        | Tafashie        | Istitala        | Ghonna        |
 |---------------|-----------|----------------|-----------------|------------|-------------|-----------------|----------------|-----------------|-----------------|---------------|
@@ -132,74 +128,59 @@ As we see we have modeled all tajweed rules for `Hafs` exept for `rawm` (الو�
 | ننننِ         | jahr      | between        | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | maghnoon      |
 | ۦۦ            | jahr      | rikhw          | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
 
+## Development Methodology  
 
+### Two-Stage Conversion Pipeline  
 
-### Steps From Development
+1. **Imlaey to Uthmani Conversion**  
+   We selected Uthmani script as our foundation because:  
+   - Contains specialized Tajweed diacritics (Madd, Tasheel, etc.)  
+   - Preserves pause rules critical for recitation (e.g., stopping on رحمت)  
 
-the steps of development consits of mainly two steps: converting Imlaey script to Uthmani script and the second script is to convert the Uthmani script to the phonetic script
-
-#### Convert Imlaey Script to Uthmani Script
-
-We relied on the Uthmani script for prducing the phonetics scripts for the following reasons: 
-* Muslim Scholars has put special signs to dontate most of Tajweed rules like Madd, Tasheel, ..etc
-* The recitations rules on puase are built upon the Uthmani script not the Imlaey Script like stoping on word (رحمت)
-
-In order to do that we created an annotation UI to manually annotate miss aligned words in both scripts for example
+In order to do that, we created an annotation UI to manually annotate misaligned words in both scripts. For example,
 
 | Imlaey Script | Uthmani Script |
 | -- | -- |
 | يَا ابْنَ أُمَّ| يَبْنَؤُمَّ|
 
-After that we created an algorithm to that rely on the annotation to convert Imlaey to Uthmani
+after that, we developed an algorithm that relies on the annotations to convert Imlaey to Uthmani. 
+
+2. **Uthmani to Phonetic Script Conversion**  
+
+Implemented through 26 sequential operations:  
 
 
-#### Convert Uthmnia script to Phonetic Script
+| Operation Name           | Arabic Name              | Corrected Description                                                                 |
+|--------------------------|--------------------------|----------------------------------------------------------------------------------------|
+| DisassembleHrofMoqatta | تفكيك حروف مقطعة      | Separates Quranic initials (e.g., الم، الر) into individual letters.                   |
+| SpecialCases           | حالات خاصة             | Handles special words like (يبسط) that have different pronunciation forms defined in `MoshafAttributes` |
+| BeginWithHamzatWasl    | البدء بهمزة الوصل     | Processes words starting with connecting hamza (ٱ) and converts it to hamza (ء) with appropriate harakah for nouns and verbs |
+| BeginWithSaken         | البدء بساكن            | Manages words beginning with a consonant (sakin) like (لْيَقْطَعْ), as Arabic doesn't start utterances with consonants |
+| ConvertAlifMaksora     | تحويل الألف المقصورة  | Converts (ى) in Uthmani script to either yaa (ي) or alif (ا) based on context          |
+| NormalizeHmazat        | توحيد الهمزات         | Standardizes hamza forms (أ إ ؤ ئ) to (ء)                                             |
+| IthbatYaaYohie         | إثبات ياء يحيى        | Handles words like (يُحْىِۦ) where two yaa letters occur - resolves conflicts when pausing on words with consecutive consonants (التقاء الساكنين) by adding another yaa at end. |
+| RemoveKasheeda         | إزالة الكشيدة         | Deletes elongation marks (ـــ) from text                                              |
+| RemoveHmzatWaslMiddle  | إزالة همزة الوصل الوسطية | Removes connecting hamza (ٱ) in non-initial positions                                  |
+| RemoveSkoonMostadeer   | حذف الحرف الذي فوقع سكون مستدير | Eliminates letters with circular sukoon diacritics like alif in (جَمَعُوا۟)          |
+| SkoonMostateel         | سكون مستطيل            | Removes alif with elongated sukoon mid-word and adds it at the end during pauses (وقف) |
+| MaddAlewad             | مد العوض               | Removes alif after tanween fatha mid-word and adds alif while removing tanween at pause positions (وقف) |
+| WawAlsalah             | واو الصلاة            | Replaces letter waw (و) with small alif above combined with alif                       |
+| EnlargeSmallLetters    | تكبير الحروف الصغيرة  | Resizes miniature Arabic letters to standard proportions                              |
+| CleanEnd               | تنظيف النهاية         | Removes redundant diacritics and spaces at word endings                               |
+| NormalizeTaa           | توحيد التاء            | Converts ة (taa marbuta) to ت or ه based on context, and converts final ة to haa (ه) |
+| AddAlifIsmAllah        | إضافة ألف اسم الله    | Inserts compensatory alif in derivatives of "الله"                                    |
+| PrepareGhonnaIdghamIqlab | تهيئة الغنة والإدغام والإقلاب | Preprocesses text for nasalization, assimilation, and conversion rules             |
+| IltiqaaAlsaknan        | التقاء الساكنين       | Resolves consecutive consonants by inserting vowels                                 |
+| DeleteShaddaAtBeginning| حذف الشدة في البداية  | Removes shadda (ّ) from word-initial letters                                        |
+| Ghonna                 | غنة                   | Applies nasalization during pronunciation of sakin noon and tanween                  |
+| Tasheel                | تسهيل                 | Adds a letter representing alif with tasheel easing                                  |
+| Imala                  | إمالة                 | Converts fatha with imala to `fatha_momala` phoneme and alif with imala to `alif_momala` phoneme |
+| Madd                   | مد                    | Adds madd symbols for all madd types, inserting `madd_alif` (ا), `madd_waw` (ۥ), and `madd_yaa` (ۦ) |
+| Qalqla                 | قلقة                  | Adds echoing effect to ق, ط, ب, ج, د letters with sukoon                           |
+| RemoveRasHaaAndShadda  | إزالة رأس الحاء علامة السكون | Deletes sukoon diacritic marks                                                   |
+### Sifat Assignment Principles  
 
-As we said before we have two levels `phonemes` level and `sifat` level
-
-##### Phoneme level
-
-We created and Algorithm composed of 26 sequentional operations. Every operation is composed of a single or mulitple reqular expreesion. Given the MoshafAttribute and the uthmani script we can produce the phonetic script
-
-
-Here's the markdown table with operations, their Arabic names, and descriptions:
-
-| Operation Name                 | Arabic Name                   | Description                                                                 |
-|--------------------------------|-------------------------------|-----------------------------------------------------------------------------|
-| DisassembleHrofMoqatta       | تفكيك حروف مقطعة            | Separates Quranic initials (e.g., الم، الر) into individual letters.        |
-| SpecialCases()                 | حالات خاصة                   | Hafs has special words like (يبسط) that has diffrent prounciation forms for every moshaf defined in `MoshafAttributes`                |
-| BeginWithHamzatWasl()          | البدء بهمزة الوصل           | Processes words starting with connecting hamza (ٱ) and convert it hamza (ء) with its appropriate haraka for nouns and verbs.                         |
-| BeginWithSaken()               | البدء بساكن                  | Manages words beginning with a consonant (saken) from like (لْيَقْطَعْ) as Arabs does not start a talking with consonent.                 |
-| ConvertAlifMaksora()           | تحويل الألف المقصورة        | (ى) in Uthmani script can represent yaa (ي) or alif (ا) .                          |
-| NormalizeHmazat()              | توحيد الهمزات               | Standardizes hamza forms (أ إ ؤ ئ) to (ء).           |
-| IthbatYaaYohie()               | إثبات ياء يحيى              | word (يُحْىِۦ) has two yaa (ي) letters at end first is (ي)  and the other is written at small yaa (ۦ) some of these work are writting with a sinlge yaa due to meeting two consenet (التقاء الساكنان) so we add it in cause of pusing on it                           |
-| RemoveKasheeda()               | إزالة الكشيدة               | Deletes elongation marks (ـــ) from text.                                   |
-| RemoveHmzatWaslMiddle()        | إزالة همزة الوصل الوسطية    | Removes connecting hamza (ٱ) in non-initial positions.                       |
-| RemoveSkoonMostadeer()         | حذف الحرف الذي فوقع سكون مستدير       | Eliminates  letter that has skoon mokstadeel like letter alif in word (جَمَعُوا۟).                          |
-| SkoonMostateel()               | سكون مستطيل                  | remove alif with skoon mostateel in-between and add it at the end (وقف).                               |
-| MaddAlewad()                   | مد العوض                     | remove alif after tanween with fath and in-between and add alif while removing tnawwen at end (وقف)           |
-| WawAlsalah()                   | واو الصلاة                  | Replace letter waw (و) with small alif above eith alif                           |
-| EnlargeSmallLetters()          | تكبير الحروف الصغيرة        | Resizes miniature Arabic letters to standard proportions.                   |
-| CleanEnd()                     | تنظيف النهاية               | Removes redundant diacritics/spaces at word endings.                        |
-| NormalizeTaa()                 | توحيد التاء                  | Converts ة (taa marbuta) to ت or ه based on context and (ة) at end to haa (ه).                         |
-| AddAlifIsmAllah()              | إضافة ألف اسم الله          | Inserts compensatory ا in "الله" derivatives.                               |
-| PrepareGhonnaIdghamIqlab()     | تهيئة الغنة والإدغام والإقلاب | Preprocesses text for nasalization, merging, and conversion rules.          |
-| IltiqaaAlsaknan()              | التقاء الساكنين             | Resolves consecutive consonants by inserting vowels.                        |
-| DeleteShaddaAtBeginning()      | حذف الشدة في البداية        | Removes shadda (ّ) from word-initial letters.                               |
-| Ghonna()                       | غنة                         | Applies nasalization during noon ساكنة/تنوين pronunciation.                 |
-| Tasheel()                      | تسهيل                       | Add a letter representing alif with tasheel (تسهيل).                                 |
-| Imala()                        | إمالة                       | convert fatha with imalal to `fahta_momala` phoneme and alif with imalal to `alif_momoal` phoneme.              |
-| Madd()                         | مد                          | Adding madd sings for all madd tyes ans inserting madd letter `madd_alif` (ا) `madd_waw` (ۥ) and `madd_yaa` (ۦ).                              |
-| Qalqla()                       | قلقة                        | Adds echoing effect to ق ط ب ج د letters with sukoon.                       |
-| RemoveRasHaaAndShadda()        | إزالة رأس الحاء علامة السكون      | Delete skoon sign.              |
-
-
-
-#### Sifat Level
-The work of sifat is a bit more simpler than phonemes. 
-we have chosed these attributes to describe letters:
-
-Here's the list converted to a dotted format with Arabic names and descriptions:
+We selected these 10 attributes as they comprehensively describe articulation:
 
 - **Hams/Jahr** (الهمس/الجهر)  
   - *Hams*: Whispered letters requiring breath flow ( ف ح ث ه ش خ ص س ك ت)  
@@ -243,15 +224,17 @@ Here's the list converted to a dotted format with Arabic names and descriptions:
   - *Not Maghnoon* The other letters
 
 
-We did not include: 
-* **Inheraf** (إنحراف) as it explains why letter (ر) and (ل) are between `shidda` and `rakhawa`
-* **Leen** (اللين) as it explains why (و) or (ي) are elonged if they prefixed wth fatha and we formulate this during madd
+While excluding:  
+- **Inheraf** (إنحراف): Explained through our shidda/rakhawa spectrum  
+- **Leen** (اللين): Handled through our Madd representation  
 
-Accourding to [sweed2021] attrubtes for articulation (صفات الحرقو) for quranic letters has two forms presetance attrbutes and variable attributes
+According to [sweed2021], articulation attributes are either permanent or contextual:  
 
-All attributations of articulations (صفات الحروف) are devided into defined group of letter prsestanlty for all occupation of letters exepct for:
+1. **Permanent Attributes**: Fixed for each letter (e.g., tafkheem for ق)  
+2. **Contextual Attributes**:  
+   - Raa (ر): Varies between mofakham/moraqaq  
+   - Lam in Allah: moraqaq when preceded by kasrah  
+   - Madd alif: Inherits tafkheem/taqeeq from preceding phoneme  
+   - Ikhfa Ghunnah: Inherits tafkheem/taqeeq from following phoneme  
 
-* Letter raaa (raa): in some casses can be mofakham (مفخم) or morqaqa (مرقق)
-* Lam of word Allah (الله) can be  morqaqa (مرقق) if preceeded by kasra and  mofakham (مفخم)other wise
-* Madd alif (ا) folllows the precceded phoneme in mofakham (تفخيم) or morqaqa (ترقيق)
-* Ghonna for Ikhfaa folllowd the  phoneme after it in mofakham (تفخيم) or morqaqa (ترقيق)
+This systematic approach enables precise representation of all Tajweed rules for Hafs except Ishmam, providing a comprehensive foundation for pronunciation assessment.

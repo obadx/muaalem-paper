@@ -1,6 +1,5 @@
-# Limitations and Feature Wrok
+# Limitations and Future Work  
 
+Our primary limitation is that our dataset consists of golden recitations with no errors, limiting our ability to evaluate performance on real-world data. Although we tested on a few actual samples and successfully detected *madd*, *ghunnah*, and *qalqalah* errors, we need to develop a comprehensive dataset containing error-containing recitations transcribed with our Quran Phonetic Script.  
 
-Our first clear note that our data consits of golden recitations with no erros so we have no ability to jduge our work in real word data. Alought we tested it on few actuall samples and worked to dtect madd, ghonna and qalqla erros. we need to deveop full comprhensive dataset consits of recitations with errors transcripted with our Quran Phonetic script.
-
-From the first point comes the secnod some attributtion of articulations are for single letters like `Istitala` for letter (ض) and `Tikrara` for letter (ر) so we except that our model want bet able to capute letter () without `Istitala` or letter (ر) without `Tikrar` and the same applies for tajweed rules that happends less ferquet in the Holy Quran like `Imala`, `Rawm`,  and `Tasheel`
+A secondary limitation arises from attribute-specific articulation patterns: Certain attributes apply exclusively to individual letters, such as `Istitala` for (ض) and `Tikrar` for (ر). Consequently, we expect our model will be unable to capture instances of (ض) without `Istitala` or (ر) without `Tikrar`. This limitation similarly applies to Tajweed rules that occur less frequently in the Holy Quran, such as `Imala`, `Rawm`, and `Tasheel`.  

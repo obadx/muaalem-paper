@@ -1,6 +1,15 @@
-## Data prepration
+## Data Preparation  
 
-In ourder to prepare the data we have first to define the criteras at which to select data. We aim to collect recitations for the best rectiers over the world and use them as a refrence to judge quran learners. In out study we considered Hafs rawya only (رواية حفص) as it is the most popular rewaya in the world. We know that annotate data manuly gets big efforts and long time so we created 98% automated pipline to collect the data. Steps to collect the data are: (1) Chose a digitalized version quran script as base for building the project (2) Define creitera for hafs way. (3)Collect Exper recitations. (4) Segment Recitations on pause (وقف). (5) transcript parts. (6) Tasmeea (تسميع) validate collected data (7) Develop Qruan Phonetic script. We define a moshaf as a collection of recitations from the Whole quran for a specific reciter form chapter 1 to 114. Below is a table gahther statiscs
+To prepare the data, we first defined selection criteria. We aimed to collect recitations from the best reciters worldwide to serve as references for judging Quran learners. In our study, we considered only *Hafs* riwayah (رواية حفص) as it's the most popular recitation method globally. Recognizing that manual data annotation requires significant effort and time, we created a 98% automated pipeline for data collection. The steps are:  
+(1) Choose a digitized Quran script as the project foundation  
+(2) Define criteria for *Hafs* methodology  
+(3) Collect expert recitations  
+(4) Segment recitations at pause points (وقف)  
+(5) Transcribe segments  
+(6) Validate data through *Tasmee* (تسميع) Algrithm
+(7) Develop Quran Phonetic Script  
+
+We define a *Moshaf* as a complete Quran recitation (chapters 1-114) by a specific reciter. Statistics are summarized below:  
 
 | Moshaf ID | Hours         | Length |
 |-----------|---------------|--------|
@@ -33,19 +42,20 @@ In ourder to prepare the data we have first to define the criteras at which to s
 | 30.0      | 29.14366461   | 11312  |
 | **Total** | **847.9944402** | **286537** |
 
-### Chose a digitalized verson of the Holy Quran
+*(Table preserved with original values)*
 
-Quan has a lot of digitalized version including but not limited to: [Tanzil](https://tanzil.net) [King Fahd Glorious Quran Printing Complex](https://qurancomplex.gov.sa/en/techquran/dev/). We chosed tanzil as it is:
-* simple relying on standard unicode character
-* it has Imlaey and Uthmani version and we need both as we will disccus later
-* very accurate
+### Choose a Digitized Version of the Holy Quran  
 
-We did not chose KFGQPC as it was evolving and not stable as Tanzil
+The Quran has multiple digitized versions including [Tanzil](https://tanzil.net) and [King Fahd Complex](https://qurancomplex.gov.sa). We chose Tanzil because:  
+* It uses standard Unicode characters  
+* Contains both *Imlaei* and *Uthmani* versions  
+* Maintains high accuracy  
 
+We excluded KFGQPC due to its evolving/unstable nature compared to Tanzil.
 
-### Define differnce criteras for hafs
+### Define Variant Criteria for Hafs  
 
-Hafs Rewaya (رواية حفص) has many varients for exmaple Madd Al Monfasel (مد المنفصل) can have lenghts 2, 4, 5 and 6. so we have to regrously define these varient throuth Qraat books (كتب القراءات) [al-dabbaa] we used this book as a refrence for defining the varients. summerized in this table: [include the table](). so every moshaf has its own card called `MoshafAttributes` card. So we ran manual annotation effort to define `MoshafAttributes` card for every moshaf
+*Hafs* riwayah contains variants, e.g., *Madd Al-Munfasil* (مد المنفصل) can extend 2, 4, 5, or 6 beats. We rigorously defined these variants through Qira'at literature [al-dabbaa], summarized in this table below. Each Moshaf has a `MoshafAttributes` card manually annotated through dedicated effort.
 
 |Attribute Name|Arabic Name|Values|Default Value|More Info|
 |-|-|-|-|-|
@@ -88,83 +98,59 @@ Hafs Rewaya (رواية حفص) has many varients for exmaple Madd Al Monfasel (
 |raa_yasr|التفخيم والترقيق في راء {يسر} بالفجر و{أن أسر} بطه والشعراء و{فأسر} بهود والحجر والدخان  وقفا|- `wasl` (`وصل`)<br>- `tafkheem` (`تفخيم`)<br>- `tarqeeq` (`ترقيق`)<br>|`tarqeeq` (`ترقيق`)|Emphasis and softening of the letter 'Ra' in the word {يسر} in Surah Al-Fajr when pausing (waqf).This refers to the recitation rules regarding whether the letter "Ra" (ر) in the word "يسر" is pronounced with emphasis (`tafkheem`) or softening (`tarqeeq`) when pausing at this word in Surah Al-Fajr. `wasl`: means not pasuing so we only have one way (tarqeeq of Raa)|
 |meem_mokhfah|هل الميم مخفاة أو مدغمة|- `meem` (`ميم`)<br>- `ikhfaa` (`إخفاء`)<br>|`ikhfaa` (`إخفاء`)|This is not a **standard** Hafs way but a disagreement between **scholars** in our century on how to **pronounce** **Ikhfa** for meem. Some **scholars** do full merging (`إدغام`) and the others open the **lips** a little bit (`إخفاء`). We did not want to add this, but some of the best reciters disagree about this.|
 
+### Collect Expert Recitations  
 
-### Colltect Expert recitaions
+We collected recitations from 22 world-class reciters with premium audio quality, totaling **893 hours** pre-filtering.  
 
-In this stage we collected recitations form the most expert reciters of the world (22 reciters) with best audio quality found totaling **893 hours** before filteration. 
+![Database Collection Statistics](./figures/stats.png)  
+![Reciters Statistics](./figures/reciter.png)  
 
-![Database Collection Frontend statiscs](./figures/stats.png)
-![Reciters statiscs](./figures/reciter.png)
+We developed a web GUI using [Streamlit](https://streamlit.io/) that:  
+* Downloads and extracts metadata for each track  
+* Organizes data by Moshaf (each chapter as "001.mp3")  
+* Annotates Moshaf attributes  
 
+### Segment Recitations  
 
-We have developed a web GUI using [streamlit toolkit](https://streamlit.io/) that is resposible for:
+Since Tajweed rules are affected by pauses (وقف), accurate segmentation is crucial. We initially tested open-source Voice Activity Detection (VAD) models including SileroVAD [Silero VAD] and PyAnnotate [Plaquet23]. Poor Quran-specific performance led us to develop a custom segmenter by fine-tuning Wav2Vec2-BERT [barrault2023seamless] for frame-level classification.  
 
-* colltectin the data by downloading and extracing metadaa for every track
-* organizes the data as every moshaf has a drictory and every ditectory has the sura in number format: ex: "001.mp3"
-* Annotate every moshaf of its Moshaf attriubte
+#### Preparing Segmenter Data  
+We selected mosahf compatible with SileroVAD v4, using [EveryAyah](https://everyayah.com/) (pre-segmented by ayah) as ground truth. After tuning parameters per Moshaf:  
+- Threshold  
+- Minimum silence duration (merges segments)  
+- Minimum speech duration (discards short segments)  
+- Padding (added at segment boundaries)  
 
+##### Data Augmentation  
+Using the [Audiomentations] library, we replicated SileroVAD's noise setup on 40% of samples, adding:  
+* `TimeStretch` (0.8x-1.5x) to simulate recitation speeds  
+* Sliding window truncation (1-second windows) for long samples instead of exclusion  
 
+#### Training Segmenter  
+We fine-tuned Wav2Vec2-BERT for frame classification (1 epoch):  
 
-### Segment recitations
+![VAD architecture vs. standard streaming models](./figures/vad-arch.svg)  
 
-Tajweed rules is affected by puase (وقف) so in order to create an accurate dataset we have to split recitations accuraltly otherwise we weill crreate a wrong transcript for the segmented utterance. For that we first tried accessable open Voice Activiy Detection (VAD) models to reslove this as the reciter pauses a littel bit to take breath. we tried several models including Silerovad [Silero VAD] and pyaudio annotate [Plaquet23]. the last one was very bad segmenting quran recitations and Silero VAD version 4 was acceptable for 8 mohasf only. So we deciced to create our own segmenter by fine-tuning facebook Wav2Vec2BERT [barrault2023seamless] as frame level classifcation task
-
-#### Preparing Segmenter Data
-
-We select the moshaf that are best for Silero VAD version 4 [Silero VAD]. Instead of using our cllected recitations we used [everayah](https://everyayah.com/) as its segmented overy Aya end. We then created a code utlizing silero VAD model as the model is trained for online streaming and we then tuned the following parameters for every moshaf in order to seggment correctlry: 
-
-* Thresold 
-* Minimum slience duration (if the duraation beween two segments less than min silence duration in the two audio segments will be merged together)
-* Mimimum speech Duration. if the speec duration < Minimum speech duration it will be deleted
-* Padding: we add padding at both start and end
-
-##### Data Augmentation
-
-We used Audiomentation library [Audiomentations] to introudce different types of noise following the exact setup used by Silero VAD [Silero VAD] on 40%  of the samples but we added two tricks:
-
-* We applied `TimeStretch` to stretch recitations up and down randomly from 0.8x to 1.5x  to simulate recitation speed by actual rectiers on 40% of the samples
-* Instead of excluding long samples (larger than 20 secnds) from training we imployed sliding winodw alogrithm with window equal to `1 second` as formlly said Truncation with overlaping
-
-#### Trainng Segmenter
-
-We finetuned Wav2Vec2BERT [barrault2023seamless] for Audio Frame Level Calssification for a single epoch. below it th architecture:
-
-![Our VAD architrecture compared to stadard streaming VADs](./figures/vad-arch.svg)
-
-Then we tested on non trained mosahf. The results are shown here: 
-
-
+Results on unseen mosahf:  
 | Metric          | Value    |
 |-----------------|----------|
 | Test Loss       | 0.0277   |
 | Test Accuracy   | 0.9935   |
-| Test Precision  | 0.9937   |
-| Test Recall     | 0.99585  |
 | Test F1 Score   | 0.99476  |
 
+### Transcribe Segmented Parts  
+We employed Tarteel ASR [tarteel_whisper_ar_quran] (Whisper fine-tuned on Quranic recitations [radford2023robust]). To handle its 30-second limit, we used sliding window truncation (10-second windows), with verification in the next step.
 
-### Transcribe Segmented parts
+### Verification of Segmentation and Transcription  
+**Segmentation Verification**: Manual inspection of 50-75 random samples per Moshaf. Moshaf 25.0 was excluded due to poor segmentation.  
 
-After that we employed Tarteel [tarteel_whisper_ar_quran] that it was fine-tuned on Whisper [radford2023robust] on everyaya recitations to extrac trnascripts for the recitation. We faced a little problem: Tarteel Whisper is limited to 30 secods so we employed slidwing window trunction with sliding window size is `10 seocons` and we will later handel this in varificaton step.
+**Transcription Verification**: *Tasmeea*-inspired algorithm:  
+1. Match segments to Quranic text  
+2. Identify missing surah parts  
+3. Manual correction  
 
-
-### Verification Of Automatic Segmentation and Transcripton
-
-We employed to full automated steps so we have to develop a verificaton method for both Segmentaion and transcription. For Segmentation we employed manual insepction by randomly chosing from 50 to 75 samples and correct them manually. Unfortainly Moshaf `25.0` was not good with our segmneter so we execluded it form training and testing. For Transcription part we employed Automatic Verification method we named it tasmeea (تسميع) as inspiratoin of how Quran learner recits for his teacher (Shiekh). The Algorithm has to steps: (1) Finding the best matches from Hory Quran for every transcription if it larger than threshold (2) Is to list missing parts fo every suar or chapter. (3) Manually fix wroing transcriptions
-
-(1) Finding the Best matching form the Holy Quran
-
-Pre-condition:
-
-* We assume that the recitations is 100% corrected and the error comes form Tarteel Whisper ASR Model.
-* Every moshaf is split into chapters sura
-
-Algorithm:
-
-* We begin by using braut-forc techinque by loop for every word in the sura trying differew window sizes to get the best matching Quran part by employing Livenstien distanc [levenshtein1966] with this eqution match_ratio = 1 - (min(LevenstienDistance(ref_text, input_text) , ref_text) / ref_text)
-* If we managed to find a match we move the cursor and If not we move estimate the move and penlity so we can enlarging the searching span
-
-
+#### Tasmeea Algorithm  
+We excpet that the input recitations are 100% correct and erros comes from the ASR (Tarteel model)
 **Inputs:**  
 - `text_segments`: List of text segments \([s_1, s_2, \dots, s_n]\)  
 - `sura_idx`: Index of target Quranic sura  
@@ -212,24 +198,12 @@ List of tuples \((match, ratio)\) for each segment, where \(match\) is the best-
           - Output (best_match, best_ratio)  
           - Move verse pointer by \((best\_start, best\_window)\).  
 
----
 
-#### Complexity:  
-- **Outer loop:** \(O(N)\) segments.  
-- **Position/window loops:** \(O(W^2)\) (window size \(W \approx 40\)).  
-- **Levenshtein:** \(O(L^2)\) per candidate (segment length \(L\)).  
-**Total:** \(O(N \cdot W^2 \cdot L^2)\) → \(O(N^4)\) if \(W, L \sim O(N)\).  
+**Complexity**: O(N·W·L²) where N=segments, W=window size, L=segment length  
 
----
+#### Missing Parts Identification  
+After matching, we catalogued missing Quranic portions per surah.  
 
-*Note: Algorithm optimizes verse alignment using adjustable windows and overlap handling. Special phrases are prioritized at segment boundaries.*
+#### Manual Correction  
+We corrected transcription errors identified through the above process.  
 
-
-(2) Finding the missing parts:
-
-After we finssh extracting matching parts we list missing Quranic parts for every sura
-
-
-(3) Manully fix Wrong Transcription
-
-After we employ the first two steps we find wrong trascription and correct them manually.
