@@ -74,6 +74,7 @@ Our script comprehensively addresses all three aspects through two output levels
 | meem_mokhfah          | ۾       | ميم مخفاة                            |
 | sakt                  | ۜ       | سكت                                  |
 | dama_mokhtalasa       | ؙ       | ضمة مختلسة (عند الروم في تأمنا)
+[table_phonemes_level_def]. The table shows our defening for the phonemes level for the Quran Phonetic Script by (43) phonemes.
 
 ### Sifat (Attributes) (10)
 
@@ -96,19 +97,5 @@ Our script comprehensively addresses all three aspects through two output levels
 ### Development Methodology  
 
 1. **Imlaey to Uthmani Conversion**  
-   We selected Uthmani script as our foundation because:  
-   - Contains specialized Tajweed diacritics (Madd, Tasheel, etc.)  
-   - Preserves pause rules critical for recitation (e.g., stopping on رحمت)  
-
-In order to do that, we created an annotation UI to manually annotate misaligned words in both scripts. For example,
-
-| Imlaey Script | Uthmani Script |
-| -- | -- |
-| يَا ابْنَ أُمَّ| يَبْنَؤُمَّ|
-
-after that, we developed an algorithm that relies on the annotations to convert Imlaey to Uthmani. 
-
 2. **Uthmani to Phonetic Script Conversion**  
-
-Implemented through 26 sequential operations:  
 
