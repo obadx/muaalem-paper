@@ -394,7 +394,15 @@ We implemented our phonetic representation by applying 26 operation. Every opera
 | RemoveRasHaaAndShadda  | إزالة رأس الحاء علامة السكون | Deletes sukoon diacritic marks                                                   |
 ### Sifat Level
 
-We selected these 10 attributes as they comprehensively describe articulation:
+Sifa (صفة) or in English as: attribute of articulation. We relied on Ibn Aljzazry to define sifat. Ibn Aljazary mentioned 17 sifa [AlJazariyyahSwaid]. We exculded 4 sifat:
+
+* Ismat (إصمات): is a phonlogical not photenic.
+* Ithlaq (إذلاق): is phonological not phontenic.
+* Leen (اللين): is already exists in Madd Alleen (مد اللين).
+* Inheraf (الإنحارف): is explaing why letter lam (ل) and raa (ر) are between shidda (شدة) and rakhawa (رخاوة)
+
+We included Alghonna sifa (صفة الغنة), so we are representing 14 sifa organized in 10 levels as follows in table [table_sifa_level_def].
+
 
 - **Hams/Jahr** (الهمس/الجهر)  
   - *Hams*: Whispered letters requiring breath flow ( ف ح ث ه ش خ ص س ك ت)  
@@ -436,19 +444,3 @@ We selected these 10 attributes as they comprehensively describe articulation:
 - **Ghonna** (الغنة)  
   - *Maghnoon* Nasalization in ن and م
   - *Not Maghnoon* The other letters
-
-
-While excluding:  
-- **Inheraf** (إنحراف): Explained through our shidda/rakhawa spectrum  
-- **Leen** (اللين): Handled through our Madd representation  
-
-According to [sweed2021], articulation attributes are either permanent or contextual:  
-
-1. **Permanent Attributes**: Fixed for each letter (e.g., tafkheem for ق)  
-2. **Contextual Attributes**:  
-   - Raa (ر): Varies between mofakham/moraqaq  
-   - Lam in Allah: moraqaq when preceded by kasrah  
-   - Madd alif: Inherits tafkheem/taqeeq from preceding phoneme  
-   - Ikhfa Ghunnah: Inherits tafkheem/taqeeq from following phoneme  
-
-This systematic approach enables precise representation of all Tajweed rules for Hafs except Ishmam, providing a comprehensive foundation for pronunciation assessment.

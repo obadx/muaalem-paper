@@ -89,6 +89,7 @@ Our script comprehensively addresses all three aspects through two output levels
 | tafashie             | التفشي             | motafashie, not_motafashie           | متفشي, غير متفشي                   |
 | istitala             | الاستطالة          | mostateel, not_mostateel             | مستطيل, غير مستطيل                 |
 | ghonna               | الغنة              | maghnoon, not_maghnoon               | مغنون, غير مغنون                   |
+[table_sifa_level_def]. The table showes sefining 14 sifa (صفة) as 10 levels.
 
 
 
