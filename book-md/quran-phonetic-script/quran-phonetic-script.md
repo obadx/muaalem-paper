@@ -5,7 +5,7 @@ The Quran phonetic script is a set of letters and attributes (صفات) that des
 * `phonemes` level: that is designed to capture prounciation letters like baa (ب).
 * `sifat` level consisting of 10 levels to catch attribute of articulation (صفة) for every phonemes group. We build this scrit on `Hafs` (رواية حفص) and we gattherd all diffrent ways on reciting for `Hafs` like Moadd Almonfasel length can be (2, 3, 4, 5) an other ways you can check them here [section_hafs_ways]
 
-### Phonemes Levvel
+### Phonemes Level
 
 The phoneme level has somke specific features which is concluded as:
 
@@ -51,7 +51,7 @@ The phoneme level has somke specific features which is concluded as:
 
 #### Detailed Phoneme constructoin
 
-We only care about prounced phonemes of letters. If a latter is droped or not proonuced we will drop it for example we driped Wasl Hamza (خمزة الوصل) if it were in betwee: (بِسْمِ اللَّهِ)
+We only care about prounced phonemes of letters. If a latter is droped or not proonuced we will drop it for example we droped Wasl Hamza (خمزة الوصل) if it were in betwee: (بِسْمِ اللَّهِ).
 
 
 ##### Disconnceted Letters
@@ -275,6 +275,9 @@ We mean here by **transient damma* a damma that is not oiginally damma but it we
 [table_ex_hamzat_wasl]
 This table showd diffrent forms of beginning with hamzat wasl (ٱ). The fist and second rows deomstrate begining with hamza followed by fatha becuase of (ال) for tareef. the third row show begining with hamza followed by kasra because fof proper nound. The 4th, 5th, and 6th raws showd begining a verb with hamza followd by kasra becuase the third character has fatha, kasra, or transient damma. The last raw showe begining with hamza followed by damma because the third letter is damma.
 
+
+**Important Note**: we rely on determinig the type for word either name, verb or noun on Dukes's work [dukes2010morphological] where he dfined words types including Nouns, verbs and propositons. If this work does not exist we will spend at least a year annoting the Holy Quran words whcin outlines the importance of open-source research.
+
 ##### Meeting two hzzma the last is consonent (اقتاء همزتان والثانية منهما ساكنة)
 
 After converting hamzat wasl to hamza. Some cases happen where two hamza meets and the seond is akin or consnont. The last one is converted to madd matching the harak of the firt hamza [sweed2021]. Table [table_ex_meeting_two_hamza]
@@ -289,41 +292,77 @@ The table shows the conversion for a verrb tha has two connected hamza at the be
 
 #### Meeting two consents (التقاء الساكنان)
 
-In Arabic Lanuage and for the Holy Quran two consent letter (الحرفان الساكنان) do not meet execpt for pause (وقف) for example pausing on word (ٱلْأَرْضِ) no problem as the last two letter are sakin.
+In Arabic Language and the Holy Quran: two consent letter (الحرفان الساكنان) do not meet execpt for pause (وقف) like pausing on word (ٱلْأَرْضِ) no problem as the last two letter are sakin. To avoid this three ways can be made:
+
+* Eliminate the first letter
+* Elongation of the 
+* Make the second letter diarctized with (fatha, damma or kasra)
+
+The Muslim scholars have make our task simpler by nearly annotating this rule entilry in the Uthmani script excpet for:
+* The first letter is (alif, waw, or yaa): for this we elminate the fisrt letter
+* The first letter is tanween: for this we convert tanween to noon (ن) followed by kasra
+
+Table [table_ex_two_saken] showes how we apply this rule to our phonetizer.
+
+| Uthmani Script | Phonetic Script |
+| -- | -- |
+| وَقَالَا ٱلْحَمْدُ | وَقَاالَ لحَمدڇ |
+| نُوحٌ ٱبْنَهُۥ| نُۥۥحُنِ بڇنَه|
+[table_ex_two_saken]
+The talbe showes how we reslove meeting of two consents. Firt row showes meeting alif (ا) for word (قالا) with lam (ل) of word (ٱلْحَمْدُ ). In the resulting phonetic script the alif was deleted. But note that normal madd in (قالال) is represented by two alif and qalqal in letter daal (د) is reprented by (ڇ). The second eample showed meeting tanween of (نُوحٌ) with sakin baa (ب) of word (ٱبْنَهُۥ) reselting in converting tanween to noon with kasra. And do not forget that we donate normal madd waw with two (ۥ) and qalqal for baa (ب) with (ڇ).
 
 
+#### Shadda (التشديد)
+
+Shadda (ّ) donates that the letter is duplicated, so we replace shadda by repeating the letter twice as show in [table_ex_tasheel]
 
 
 #### Puasing (الوقف)
 
+At pause (وقف) many rules are applied:
+
+* Haraka i.e (fatha, damma, kasra) is elminated meaning making the last letter sakin (ساكن).
+* Small Silah Madd is elminated.
+* Taa marboota (ة) is converted to haa (ه)
 
 
 
+#### Qqlqal (القلقة)
+
+Qalala (قلقة) is defined in tajweed as: "a small sound is followed by on one the letter (ق - ط - ب - ج - د) if one of them is sakin (ساكن) either in between words (وصلا) or on pause (وقفا)"[AlHamad2008]. We dontate this small sound as (ڇ) like in table [table_ex_two_saken].
 
 
-----------------------------------------------------------------------------------------
+#### Imala (الإمالة)
 
-## Development Methodology  
+Imala (إمالة) is defined in Tajweed as "prouncing fatha between fatha and kasra and alif between alif and yaa"[sweed2021]. We dontate fatha with imala as `fatha_momala` '۪' and alif with imala by two `alif_momala` (ـ) similar to Normal Madd. Table [table_ex_imala]
 
-### Two-Stage Conversion Pipeline  
-
-1. **Imlaey to Uthmani Conversion**  
-   We selected Uthmani script as our foundation because:  
-   - Contains specialized Tajweed diacritics (Madd, Tasheel, etc.)  
-   - Preserves pause rules critical for recitation (e.g., stopping on رحمت)  
-
-In order to do that, we created an annotation UI to manually annotate misaligned words in both scripts. For example,
-
-| Imlaey Script | Uthmani Script |
+| Uthmani Script | Phonetic Script |
 | -- | -- |
-| يَا ابْنَ أُمَّ| يَبْنَؤُمَّ|
+| مَجْر۪ىٰهَا | مَجڇر۪ــهَاا |
+[table_ex_imala]
+The table showes how we repreent fatha with imala as '۪' and alif with imala as (ـ) and letter jeem (ج) has qalqla donated by (ڇ).
 
-after that, we developed an algorithm that relies on the annotations to convert Imlaey to Uthmani. 
+#### Tasheel (التسهيل)
 
-2. **Uthmani to Phonetic Script Conversion**  
+Tasheel is defined in tajweed as "prouncing hamza (ء) between hzma and the next madd letter similar to haraka (حرمة) i.e:  fatha, dama, kasra "[sweed2021]. We dontated this hamza by `hama_mosaha` (ٲ). Table: [table_ex_tasheel]
 
-Implemented through 26 sequential operations:  
 
+| Uthmani Script | Phonetic Script |
+| -- | -- |
+| ءَا۬عْجَمِىٌّ | ءَٲعجَمِيي |
+[table_ex_tasheel]
+The table showes hamza with tasheel dontated (). along with diassimple of letter yaa (ي) with shadda (ّ) to two yaa.
+
+
+
+#### Sakt (السكت)
+
+Sakt is defined in tajweed by "cutting voice without releasing of breathe for short period learned from expert reciters"[AlHamad2008]. Sakat happens in a specified posisions see: [section_hafs_ways]. we dontate sakt by `sakt` 'ۜ'.
+
+
+#### Implementation
+
+We implemented our phonetic representation by applying 26 operation. Every operation is a single or multiple of reqular expersion as shown in: [section_phonemes_operations]
 
 | Operation Name           | Arabic Name              | Corrected Description                                                                 |
 |--------------------------|--------------------------|----------------------------------------------------------------------------------------|
@@ -353,7 +392,7 @@ Implemented through 26 sequential operations:
 | Madd                   | مد                    | Adds madd symbols for all madd types, inserting `madd_alif` (ا), `madd_waw` (ۥ), and `madd_yaa` (ۦ) |
 | Qalqla                 | قلقة                  | Adds echoing effect to ق, ط, ب, ج, د letters with sukoon                           |
 | RemoveRasHaaAndShadda  | إزالة رأس الحاء علامة السكون | Deletes sukoon diacritic marks                                                   |
-### Sifat Assignment Principles  
+### Sifat Level
 
 We selected these 10 attributes as they comprehensively describe articulation:
 
