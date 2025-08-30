@@ -2,37 +2,37 @@
 
 ### Data Verification
 
-We create a streaming UI to check various ascpects of the data by manually inspection of 50-75 random samples per Moshaf. The ascpect includes:
+To ensure the highest quality of our dataset, we developed a custom verification interface using [Streamlit](https://streamlit.io/). We manually inspect 50-75 randomly selected samples per Moshaf, focusing on the following aspects:
 
-* Segmentation Quality: How to segmentatoin is good whether we want to:
-    - increase / decrease adding
-    - merge segmnets
-    - split undtected segments
-* Inspect Qalqla (القلقة) duration as in some cases qalqala comming after sligth porsion of sielcne, so we have to make sure that the whole segment is fully connected wiht no missings.
-* Inspect Hams (همس) duration for the exact senario for qalqla as hams is the release for few air that may be missed by the segmenter.
+*   **Segmentation Quality:** Assessing the accuracy of pause detection to determine if adjustments were needed, including:
+    *   Increasing or decreasing padding durations
+    *   Merging adjacent segments
+    *   Splitting undetected segments
+*   **Qalqala (القلقلة) Duration Inspection:** Verifying that segments containing Qalqala (قلقة) are fully captured without being truncated by brief silences, ensuring the acoustic feature remains intact.
+*   **Hams (همس) Duration Inspection:** Similarly checking segments for Hams (a whispered or airy phonation) to ensure the subtle release of air was not missed by the segmenter.
 
-![Data Varification UI](../figures/data_verfication_ui.png)
+![User interface for data verification](../figures/data_verfication_ui.png)
+*Figure 10: The Streamlit-based UI for manually verifying segmentation quality and phonetic feature integrity.*
 
-![Editing and Element in Data Verfication UI](../figures/data_annotation_ui_editing.png)
+![Interface for editing segments during the verification process](../figures/data_annotation_ui_editing.png)
+*Figure 11: The editing view within the verification UI, allowing for manual correction of segment boundaries.*
 
-After finissing annotation we apply operations on the Whole dataset.
+After completing the annotation process for a Moshaf, the defined correction operations were programmatically applied to the entire dataset to ensure consistency.
 
+**Note:** Moshaf 25.0 was excluded from the final dataset due to irreconcilably poor segmentation quality.
 
-**Note**: Moshaf 25.0 was excluded due to poor segmentation.
+### Transcription Verification: A *Tasmee'*-Inspired Algorithm
 
+To validate the accuracy of the automated speech recognition (ASR) output, we developed a verification algorithm inspired by *Tasmee'* (تسميع)—the traditional practice where a student recites for a teacher to correct mistakes. This statistical algorithm operates under the core assumption that the input recitations are 100% correct, and any errors originate from the ASR model (Tarteel model).
 
-### Transcription Verification**: *Tasmeea*-inspired algorithm
+The algorithm proceeds through the following steps:
+1.  **Automatic Matching:** Segments are automatically matched to the canonical Quranic text.
+2.  **Discrepancy Identification:** The system identifies missing verses, words, or unexpected additions in the transcription.
+3.  **Manual Correction:** flagged discrepancies are presented for manual review and correction within our annotation UI, completing the *Tasmee'* feedback loop.
 
-
-We used a statiscal model so we have to make sure that the transcripton model has done its job correctlry, so we have developed Tasmeea (تسميع) Algorithm inspired by how the Holy Quran's Learners recits for the Teacher. The Algorithm steps as follows:
-
-1. Match segments to Quranic text  
-2. Identify missing surah parts  
-3. Manual correction Using our annotation UI
-
-We excpet that the input recitations are 100% correct and erros comes from the ASR (Tarteel model)
 
 **Algorithm 1: Tasmeea Algorithm**
+
 
 **Input:**  
 - `text_segments = [s₁, s₂, ..., sₙ]`: List of text segments  

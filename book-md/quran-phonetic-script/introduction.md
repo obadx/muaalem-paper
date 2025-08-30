@@ -96,6 +96,6 @@ Our script comprehensively addresses all three aspects through two output levels
 
 ### Development Methodology  
 
-1. **Imlaey to Uthmani Conversion**  
-2. **Uthmani to Phonetic Script Conversion**  
+1. **Imlaey to Uthmani Conversion**: where convert Imlaey Script to Uthmani Script as we rely on Uthmani script to construct Quran Phoneme Script.
+2. **Uthmani to Phonetic Script Conversion**: where we convert Uthmani Script to Quran Phonetic Script. 
 

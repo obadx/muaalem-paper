@@ -1,6 +1,9 @@
-## Define Variant Criteria for Hafs  
+## Defining Variant Criteria for Hafs
 
-*Hafs* riwayah contains variants, e.g., *Madd Al-Munfasil* (مد المنفصل) can extend 2, 4, 5, or 6 beats. We rigorously defined these variants through Qira'at literature [al-dabbaa], summarized in this table below. Each Moshaf has a `MoshafAttributes` card manually annotated through dedicated effort.
+The *riwayah* of *Hafs* contains several phonetic and prosodic variants. For instance, the application of *Madd Al-Munfasil* (مد المنفصل) can vary in duration, extending for 2, 4, 5, or 6 vowel beats depending on the specific recitational rule. These variants were rigorously defined through an analysis of classical Qira'at literature [al-dabbaa]. The criteria for each variant are summarized in the table below.
+
+To capture this variability, each Moshaf in our dataset is accompanied by a `MoshafAttributes` card that documents its specific recitational features. These cards were manually annotated through a dedicated and meticulous effort, ensuring an accurate representation of each reciter's adherence to the defined rules.
+
 
 |Attribute Name|Arabic Name|Values|Default Value|More Info|
 |-|-|-|-|-|
