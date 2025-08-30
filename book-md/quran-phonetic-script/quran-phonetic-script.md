@@ -25,29 +25,48 @@ The phoneme level has somke specific features which is concluded as:
    - Imala: fatha_momala and alif_momala  
    - Rawm: dama_mokhtalasa marker  
 
-### Examples  
-| Uthmani Script | Phonetic Script      |
-|----------------|----------------------|
-| أَ             | ءَ                   |
-| تُ             | تُ                   |
-| حَـٰٓ          | حَاااااا             |
-| جُّ            | ججُ                  |
-| وٓ             | ۥۥۥۥۥۥ               |
-| نِّ            | ننننِ                |
-| ى              | ۦۦ                   |
+# Converted Markdown Table
 
+Here's the LaTeX table converted to Markdown format with the caption placed below the table:
 
-| Phoneme       | Hams/Jahr | Shidda/Rakhawa | Tafkheem/Taqeeq | Itbaq      | Safeer      | Qalqla          | Tikraar        | Tafashie        | Istitala        | Ghonna        |
-|---------------|-----------|----------------|-----------------|------------|-------------|-----------------|----------------|-----------------|-----------------|---------------|
-| ءَ            | jahr      | shadeed        | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| تُ            | hams      | shadeed        | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| حَ            | hams      | rikhw          | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| اااااا        | jahr      | rikhw          | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| ججُ           | jahr      | shadeed        | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| ۥۥۥۥۥۥ         | jahr      | rikhw          | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
-| ننننِ         | jahr      | between        | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | maghnoon      |
-| ۦۦ            | jahr      | rikhw          | moraqaq         | monfateh   | no_safeer   | not_moqalqal    | not_mokarar    | not_motafashie  | not_mostateel   | not_maghnoon  |
+| Uthmani | Phonetic | H/J | S/R | T/T | Itb | Saf | Qal | Tik | Taf | Ist | Gho |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| أَ | ءَ | jahr | shd | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| تُ | تُ | hams | shd | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| حَـ | حَ | hams | rkh | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| ـٰٓ | اااااا | hams | rkh | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| جُّ | ججُ | jahr | shd | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| وٓ | ۥۥۥۥۥۥ | jahr | rkh | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
+| نِّ | ننننِ | jahr | btw | mrq | mnf | no | nql | nkr | ntf | nst | mg |
+| ى | ۦۦ | jahr | rkh | mrq | mnf | no | nql | nkr | ntf | nst | nmg |
 
+Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes: Phonetization of word (أَتُحَٰٓجُّوٓنِّى)
+**Attribute Abbreviations:**
+- H/J: Hams/Jahr
+- S/R: Shidda/Rakhawa
+- T/T: Tafkheem/Taqeeq
+- Itb: Itbaq
+- Saf: Safeer
+- Qal: Qalqla
+- Tik: Tikraar
+- Taf: Tafashie
+- Ist: Istitala
+- Gho: Ghonna
+**Value Abbreviations:**
+- shd: shadeed
+- rkh: rikhw
+- btw: between
+- mrq: moraqaq
+- mof: mofakham
+- mnf: monfateh
+- mtb: motbaq
+- no: no_safeer
+- nql: not_moqalqal
+- nkr: not_mokarar
+- ntf: not_motafashie
+- nst: not_mostateel
+- nmg: not_maghnoon
+- mg: maghnoon
 
 #### Detailed Phoneme constructoin
 
@@ -444,3 +463,44 @@ We included Alghonna sifa (صفة الغنة), so we are representing 14 sifa or
 - **Ghonna** (الغنة)  
   - *Maghnoon* Nasalization in ن and م
   - *Not Maghnoon* The other letters
+
+
+
+Our methodology of trancripting sifat is we first chunk phonemes by grouping similar groups of phonemes and then extract sif for every phoneme group. like in example [table_example_with_sifat]. After that we extract sifa for every gropu.
+
+Th extraction of sifa is straigh forwad expect for Tafkheem and Tarqeeq.
+
+#### Tafkheem and Tarqeeq (التفخيم والترقيق)
+
+Tafkheem (التفخيم) "is thickening that affects phoneme makeing it fill the whole mouse"[sweed2021]
+
+In Tajweed we have 6 levels of tafkheem and Tarqeeq. sorted from most mofakham (strgest) to moraqaq (weakest)
+
+1. mofakham followed by fatha then madd alif.
+2. Mofkaham followed by fatha not madd alif.
+3. Mofaam folowed by damma.
+4. Mofakham is sakin (ساكان).
+5. Mofakham followed by kasra.
+6. Moraqaq.
+
+we forumulated them by only three labels:
+
+1. `mofakham` to cover casses form 1 to 4.
+2. `moraqaq` to cover case 6
+3. `low_mofakham` to cover case 5 for letter (غ - خ - ق) which are letters an monfateh (منفتح) not motbaq (مطبق). These letter are gettin weakend by kasra unlike motbaq letters lik (ص - ض- ط - ظ)
+
+
+Some phonemes are cases whare they are moraqaq and otther are mofakham:
+
+* `madd_alif` (ا): which follows it preceding phonemes in Tarqeeq and Tafkheem.
+* `noon_mokhfah` (ں): followes the phonemes following it Tafkheem and Tarqeeq.
+* `raa` (ر) is morqaq in the following cases:
+    - `raa` (ر) followed by kasra.
+    - `raa` is preeceed by yaa (ياء)
+    - `raa` (ر) is sakin (ساكن) and preeced by a mostafel (مستفل) phonemes that has kasra and `raa` is not follwed by mostaalie (مستعلي) phoneme.
+    - `raa` (ر) cames after hamzat wasl (ٱ)
+
+**Note**: Mostaalie (حروف الاستعلاء) letters are (خ - ص - ض - غ - ط - ق - ظ) and Mostafel (مستفل) letters are the rest
+
+
+
