@@ -1,5 +1,15 @@
 # Introduction
 
+The Holy Qurn in the word of ALLAH. The book that he choses for the Humanity until day of judgment. Althought this book is fully Arabic, pepople for other nations can learn to recite it eventhough they do not know Arabic. For this ALLAH says: ﴿ وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴾ "And We have certainly made the Qur'an easy for remembrance, so is there any who will remember?". Sevral efforts have been made to untilze Aritficial Intellagance (AI) to help Holy Quran Learners to recite it [abdou2014computer], [al2018computer], [ahmed2017arabic]. But the lake of data and poor represnetation of Quran and Tajweed (التجويد)rules  have made the taks seems hard to accomplish.
+
+So launch this project: It is not only a master thesis but it is a complete project to serve three types of people:
+
+* Muslims: Make the Holry Quran to Musilms in the eara of AI.
+* Developers: by developing an Software Devlopment Kit (SKD) deployable on all devices including desktops, cloud and edge devices
+* Researcher: by contributing this research as completly open source including: data, codes and models.
+
+This thesis marks as the first step which is builing a foundational model which we have achieved thank to ALLAH.
+
 Assessing pronunciation is not a simple task [kheir2023automatic], as it does not only rely on pronouncing phonemes correctly but also involves other factors like intonation, prosody, and stress. Does learning these mean one is done? No—other factors include fluency and completeness [kheir2023automatic]. However, the Holy Quran presents unique characteristics: it is among the easiest spoken texts to learn despite containing special phonemes absent in other languages.  
 
 The pronunciation of the Holy Quran is governed by rigorously strict rules formally defined by ancient Muslim scholars since the 6th century. Despite their beauty and precision, these rules have not been comprehensively digitized (to our knowledge) for Quranic pronunciation assessment.  
