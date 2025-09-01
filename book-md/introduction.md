@@ -1,7 +1,7 @@
 # Introduction
 
 The Holy Quran is the word of Allah, the book He chose for humanity until the Day of Judgment. Although this book is entirely in Arabic, people from other nations can learn to recite it even if they do not know the Arabic language. Regarding this, Allah says:  
-> ﴾ وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴿  
+> ﴿ وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴾  
 “And We have certainly made the Qur’an easy for remembrance, so is there any who will remember?” (Surah Al-Qamar, 54:17)  
 
 Several efforts have been made to utilize Artificial Intelligence (AI) to help Holy Quran learners recite it properly [abdou2014computer], [al2018computer], [ahmed2017arabic]. However, the lack of data and poor representation of Quranic recitation and Tajweed rules have made the task difficult to accomplish.

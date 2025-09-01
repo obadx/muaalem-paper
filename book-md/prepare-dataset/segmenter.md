@@ -1,10 +1,10 @@
-## Segmentation of Recitations
+# Segmentation of Recitations
 
 Accurate segmentation is a critical preprocessing step, as Tajweed rules are directly influenced by pause points (وقف). To address this, we initially evaluated open-source Voice Activity Detection (VAD) models, including SileroVAD [Silero VAD] and PyAnnotate [Plaquet23]. However, their performance on Quranic recitations was unsatisfactory due to the unique acoustic and prosodic characteristics of Tilawah.
 
 Consequently, we developed a custom segmentation model by fine-tuning the Wav2Vec2-BERT architecture [barrault2023seamless] for frame-level classification, specifically optimized for Quranic audio.
 
-### Preparation of Segmenter Training Data
+## Preparation of Segmenter Training Data
 
 To create a training dataset, we selected *Masahif* from the [EveryAyah](https://everyayah.com/) database that were compatible with SileroVAD v4. This source provided pre-segmented recitations at the verse (ayah) level, which served as our ground truth.
 
@@ -29,13 +29,13 @@ The resulting dataset, comprising eight complete *Masahif*, is summarized in Tab
 [table_segmenter_data]
 *Table : Dataset used for training the custom segmenter, consisting of eight complete Masahif with tuned parameters.*
 
-#### Data Augmentation
+### Data Augmentation
 
 To improve model robustness and generalize across various recording conditions, we employed data augmentation using the [Audiomentations] library. The augmentation strategy replicated SileroVAD's noise profile and was applied to 40% of the samples. With additional:
 * `TimeStretch` (0.8x-1.5x) to simulate recitation speeds  
 * Sliding window truncation (1-second windows) for long samples instead of exclusion  
 
-### Segmenter Training
+## Segmenter Training
 
 The Wav2Vec2BERT model was fine-tuned for frame-level classification over a single epoch. The architecture of our VAD model compared to standard streaming models is illustrated in the figure below.
 
@@ -53,7 +53,7 @@ The model's performance on unseen *Masahif* demonstrated high accuracy, as shown
 [table_vad_results]
 *Evaluation results of the segmentation model on a held-out test set of Masahif, showing superior performance. The quality of the segmenter was validated by processing our entire dataset, where it maintained this high level of performance. The only exceptions were edge cases involving extremely fast recitation (*Hadr*), which is an expected limitation.*
 
-### Python API
+## Python API
 
 To make this tool accessible to the research community, we packaged the trained segmenter and published it as the open-source Python library **[recitations-segmenter](https://github.com/obadx/recitations-segmenter)**.
 

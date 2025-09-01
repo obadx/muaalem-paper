@@ -1,4 +1,4 @@
-## Quran Phonetic Script
+# Quran Phonetic Script
 
 The Quran Phonetic Script is a set of letters and attributes (صفات) that describes what the Holy Quran's reciters **actually** said. It was designed to capture all recitation rules, including all Tajweed rules (except Ishmam `إشمام` and pausing with rawm `روم` or `إشمام`) and Sifat. This script is composed of 11 levels:
 
@@ -7,7 +7,7 @@ The Quran Phonetic Script is a set of letters and attributes (صفات) that des
 
 We built this script based on `Hafs` (رواية حفص) and incorporated all the different ways of reciting for `Hafs`. For example, the length of Madd Almunfasil can be (2, 3, 4, or 5 beats). Other variations can be found here [section_hafs_ways].
 
-### Phonemes Level
+## Phonemes Level
 
 The phoneme level has specific features, which are summarized as:
 
@@ -67,15 +67,14 @@ Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes: Phoneti
 - nmg: not_maghnoon
 - mg: maghnoon
 
-#### Detailed Phoneme Construction
 
 We only care about pronounced phonemes of letters. If a letter is dropped or not pronounced, we will omit it. For example, we drop the Wasl Hamza (همزة الوصل) when it appears in a context like: (بِسْمِ اللَّهِ).
 
-##### Disconnected Letters
+### Disconnected Letters
 
 Disconnected letters (الحروف المقطعة) are letters that are pronounced as individual alphabets one by one. For example: (الٓمٓ) is pronounced (أَلِفْ لَآم مِّيٓمْ). There are 14 forms of these disconnected letters, so we must separate them according to their actual pronunciation.
 
-##### Madd (المد)
+### Madd (المد)
 
 There are three types of elongation (مد):
 *   **Madd Alif** (مد ألف): Fatha followed by alif (ا)
@@ -89,7 +88,7 @@ These Madd types have different lengths relative to the natural Madd (المد �
 *   **Madd Yaa** is denoted by multiple small_yaa symbols, designated as `yaa_madd` (ۦ)
 
 
-###### Normal Madd (المد الطبيعي)
+#### Normal Madd (المد الطبيعي)
 
 Normal Madd is the type of elongation pronounced at its standard length without excessive prolongation. We denote it by doubling the respective `madd` phonemes. The example below [table_ex_normal_madd] shows all three types of Madd in a single word.
 
@@ -101,7 +100,7 @@ Normal Madd is the type of elongation pronounced at its standard length without 
 The table demonstrates the three types of normal Madd: Madd Alif (اا), Madd Yaa (ۦۦ), and Madd Waw (ۥۥ), each represented with two symbols to indicate a two-beat elongation.
 
 
-##### Madd Small Silah (مد الصلة الصغرى)
+#### Madd Small Silah (مد الصلة الصغرى)
 
 Along with Normal Madd, Small Silah Madd (مد الصلة الصغرى) follows the same representation rules. For example [table_ex_small_silah]:
 
@@ -113,7 +112,7 @@ Along with Normal Madd, Small Silah Madd (مد الصلة الصغرى) follows 
 The table shows Small Silah Madd along with noon mushaddad denoted as 3 repeated `noon` (ن) with a special qalqala sign: (ڇ) for letter jeem (ج).
 
 
-##### Madd Al-'Iwad (مد العوض)
+#### Madd Al-'Iwad (مد العوض)
 
 In addition, Madd Al-'Iwad (مد العوض) is represented as shown in [table_ex_alewad]:
 
@@ -125,7 +124,7 @@ In addition, Madd Al-'Iwad (مد العوض) is represented as shown in [table_e
 The table shows Madd Al-'Iwad (مد العوض) using the same notation as normal Madd (المد الطبيعي) for Madd alif. This type of Madd occurs when a tanween fatha on a final letter is replaced by an alif madd during pause.
 
 
-##### Madd Al-Munfasil (مد المنفصل)
+#### Madd Al-Munfasil (مد المنفصل)
 
 For Hafs recitation, Madd Al-Munfasil can be elongated for 2, 3, 4, or 5 harakat, where a haraka here is represented as half of a normal Madd when followed by a hamza (ء) not in the same word, as shown in the example [table_ex_monfasel]:
 
@@ -137,7 +136,7 @@ For Hafs recitation, Madd Al-Munfasil can be elongated for 2, 3, 4, or 5 harakat
 The example shows elongation for Madd Al-Munfasil with 4 alif madd phonemes, along with a repeated yaa representing yaa mushaddada (ياء مشددة) with both a sakin yaa and a yaa with haraka (damma).
 
 
-##### Madd As-Silah Al-Kubra (مد الصلة الكبرى)
+#### Madd As-Silah Al-Kubra (مد الصلة الكبرى)
 
 The same rule is applied to Madd As-Silah Al-Kubra (مد الصلة الكبرى). As shown in the example below: [table_ex_big_silah]
 
@@ -148,7 +147,7 @@ The same rule is applied to Madd As-Silah Al-Kubra (مد الصلة الكبرى
 [table_ex_big_silah]
 The example shows elongation for Madd As-Silah Al-Kubra with 4 madd waw phonemes (ۥۥۥۥ).
 
-##### Madd Al-Muttasil (المد المتصل)
+#### Madd Al-Muttasil (المد المتصل)
 
 For Hafs recitation, Madd Al-Muttasil (مد المتصل) can be elongated for 2, 3, 4, 5, or (6 at pause only) harakat, where a haraka is represented as half of a normal Madd when followed by a hamza (ء) in the same word, as shown in [table_ex_mottasel]:
 
@@ -160,7 +159,7 @@ For Hafs recitation, Madd Al-Muttasil (مد المتصل) can be elongated for 2
 The example shows elongation for Madd Al-Muttasil (مد المتصل) with 4 madd alif phonemes, along with Madd Al-'Iwad (مد العوض) at the pause point.
 
 
-##### Madd Al-Lazim (المد اللازم)
+#### Madd Al-Lazim (المد اللازم)
 
 Madd Al-Lazim (المد اللازم) is the type of Madd where a Madd letter is followed by a Sakin letter (حرف ساكن) in the same word and is elongated for 6 harakat (6 حركات), where a haraka is represented as half of a normal Madd.
 
@@ -173,12 +172,12 @@ The table shows an example of Madd Al-Lazim (المد اللازم) with Madd al
 
 
 
-##### Madd Al-'Arid Li-S-Sukun (مد العارض للسكون)
+#### Madd Al-'Arid Li-S-Sukun (مد العارض للسكون)
 
 Madd Al-'Arid Li-S-Sukun is the madd that occurs when pausing after a normal madd with a sakin letter. This madd is elongated for 2, 4, or 6 harakat, where the haraka is represented as half of the normal madd length, as shown in [table_ex_lazem]:
 
 
-##### Madd Al-Leen (مد اللين)
+#### Madd Al-Leen (مد اللين)
 
 Madd Al-Leen (مد اللين) occurs when pausing after a yaa (ي) or waw (و) that is preceded by a fatha and followed by a sakin letter. This madd is elongated for 2, 4, or 6 harakat, where a haraka is represented as half of the normal madd length [table_ex_leen]. We do not create special phonemes for this rule as we did with other madd types because Leen represents an elongation of existing waw (و) or yaa (ي) phonemes rather than introducing new phonemes.
 
@@ -193,11 +192,11 @@ The example shows two forms of madd: the first is normal madd followed by Madd A
 
 
 
-#### Ghunnah
+### Ghunnah
 
 We consider tanween here as a haraka (fatha, damma, or kasra) followed by a sakin noon (نون ساكنة), so we do not need to define separate rules for noon (ن) and tanween.
 
-##### Noon Mushaddadah (النون المشددة)
+#### Noon Mushaddadah (النون المشددة)
 
 We first attempted to measure the relative timing of a sakin noon alone (النون الساكنة المظهرة) and compare it to an elongated noon (noon with shaddah - نون مشددة). We found that the elongated noon is approximately 3 to 4 times longer than the sakin noon, so we defined the elongated noon as equivalent to 3 sakin noon repetitions. Example in table: [table_ex_noon_moshadada]
 
@@ -209,7 +208,7 @@ We first attempted to measure the relative timing of a sakin noon alone (الن�
 The table shows how Ghunnah disassembly of noon with shaddah (نون مشددة) is represented as 3 repetitive noon (ن) symbols.
 
 
-##### Meem Mushaddadah (الميم المشددة)
+#### Meem Mushaddadah (الميم المشددة)
 
 As we have done with Noon Mushaddadah, we applied the same principle to Meem Mushaddadah (elongated meem). We found the same result: Meem Mushaddadah is approximately 3 to 4 times longer than a regular sakin meem (ميم ساكنة مظهرة). We denote Meem Mushaddadah as 3 repeated meem symbols, as shown in the examples: [table_ex_meem_moshadda]
 
@@ -221,7 +220,7 @@ As we have done with Noon Mushaddadah, we applied the same principle to Meem Mus
 [table_ex_meem_moshadda]
 The table shows how Ghunnah disassembly of meem with shaddah (ميم مشددة) is represented as 3 repeated meem (م) symbols.
 
-##### Ikhfaa for Noon (إخفاء النون الساكنة)
+#### Ikhfaa for Noon (إخفاء النون الساكنة)
 
 Ikhfaa for sakin noon (إخفاء النون الساكنة) occurs when a sakin noon (نون ساكنة) or tanween is followed by any of the Ikhfaa letters: (ص، ذ، ث، ك، ج، ش، ق، س، د، ط، ز، ت، ض، ظ، ف). We denote this by replacing the noon with three `noon_mokhfaa` symbols (ں), as shown in the example [table_ex_noon_mokhfaa]:
 
@@ -233,7 +232,7 @@ Ikhfaa for sakin noon (إخفاء النون الساكنة) occurs when a sakin
 The table shows the representation of noon mokhfaa (نون مخفاة) as three dotless noon symbols (ں).
 
 
-##### Idgham for Noon with Yaa and Waw (إدغام النون الساكنة مع الياء والواو)
+#### Idgham for Noon with Yaa and Waw (إدغام النون الساكنة مع الياء والواو)
 
 The Idgham rule is defined as pronouncing two consecutive letters as the second letter with shadda (stress) according to Ibn Al-Jazari [ibnaljazri_alnashr]. Therefore, we simply delete the noon (ن) and replace it with a yaa (ي) or waw (و).
 
@@ -249,7 +248,7 @@ As with Noon Mushaddadah and Meem Mushaddadah, we represent the resulting stress
 This table demonstrates different representations of yaa. The first row shows Idgham of yaa with sakin noon (النون الساكنة) represented by replacing the noon with two yaa symbols. The second row shows yaa with shadda at pause represented with two yaa symbols. The third row shows Madd Al-Leen with 4 harakat represented by 3 yaa symbols.
 
 
-##### Ikhfaa for Meem (إخفاء الميم الساكنة)
+#### Ikhfaa for Meem (إخفاء الميم الساكنة)
 
 Ikhfaa for sakin meem (إخفاء الميم الساكنة) occurs when a sakin meem (ميم ساكنة) is followed by a baa (ب). Additionally, when a sakin noon or tanween is followed by baa, it is defined in Tajweed literature as Iqlab (إقلاب). We represent both cases with three `meem_mokhfah` symbols (۾). Table [table_ex_ikhfaa_meem] shows how this rule is applied:
 
@@ -261,14 +260,14 @@ Ikhfaa for sakin meem (إخفاء الميم الساكنة) occurs when a sakin
 [table_ex_ikhfaa_meem]
 The first row represents the Iqlab rule (الإقلاب), which is denoted by replacing the noon with 3 `meem_mokhfah` symbols (۾). The second row shows the rule of Ikhfaa for sakin meem with baa (إخفاء الميم الساكنة), represented by 3 `meem_mokhfah` symbols (۾).
 
-#### Idgham (الإدغام)
+### Idgham (الإدغام)
 
 There are two types of merging (Idgham) in Arabic:
 
 *   **Full Merging (إدغام كامل)**: When two letters follow each other and are pronounced as only the second letter, but stressed. Example: (قَد تَّبَيَّنَ) is pronounced as (قَتتَبَييَن) where the letter daal is completely not pronounced.
 *   **Partial Merging (إدغام ناقص)**: When two letters follow each other and the articulation point (makhraj) of the first letter is lost but its attributes (sifat) remain. Example: (بَسَطْتَ) is pronounced the same (بَسَطَت).
 
-#### Sakin Letter (الحرف الساكن)
+### Sakin Letter (الحرف الساكن)
 
 A sakin letter is represented in the Uthmani script in three forms:
 
@@ -278,12 +277,12 @@ A sakin letter is represented in the Uthmani script in three forms:
 
 We denote a sakin letter by the absence of any following vowel diacritic.
 
-#### Pausing (وَقْف)
+### Pausing (وَقْف)
 
 At a pause (وَقْف), we make the final letter sakin (سَاكِن) by removing any vowel diacritic. See examples in: [table_ex_idghaam_yaa_with_noon] and other relevant tables.
 
 
-#### Hamzat Al-Wasl (همزة الوصل)
+### Hamzat Al-Wasl (همزة الوصل)
 
 Hamzat Al-Wasl (همزة الوصل) (ٱ) is defined in Tajweed as a hamza added to avoid beginning with a sakin letter [sweed2021]. It is elided during continuous recitation and is only pronounced at the beginning.
 
@@ -313,7 +312,7 @@ This table shows different forms of Hamzat Al-Wasl (ٱ). The first and second ro
 **Important Note**: We rely on Dukes's work [dukes2010morphological] for determining word types (nouns, verbs, and particles). Without this foundational research, annotating the Holy Quran's words would require at least a year of dedicated effort, highlighting the critical importance of open-source linguistic resources.
 
 
-##### Meeting Two Hamzas (Second One is Sakin) (اقتاء همزتان والثانية منهما ساكنة)
+#### Meeting Two Hamzas (Second One is Sakin) (اقتاء همزتان والثانية منهما ساكنة)
 
 After converting Hamzat Wasl to a pronounced hamza, certain cases occur where two hamzas meet and the second one is sakin (consonant). In such cases, the second hamza is converted to a madd letter matching the vowel (haraka) of the first hamza [sweed2021]. Table [table_ex_meeting_two_hamza] illustrates this process:
 
@@ -327,7 +326,7 @@ The table shows the conversion process for verbs that begin with two connected h
 
 
 
-#### Meeting Two Sakin Letters (التقاء الساكنين)
+### Meeting Two Sakin Letters (التقاء الساكنين)
 
 In Arabic language and the Holy Quran, two sakin letters (الحرفان الساكنان) cannot meet consecutively except at pause (وقف), such as pausing on the word (ٱلْأَرْضِ) where the final two letters are sakin. To resolve this meeting, three approaches may be employed:
 
@@ -351,11 +350,11 @@ The table demonstrates how we resolve the meeting of two sakin letters. The firs
 
 
 
-#### Shadda (التشديد)
+### Shadda (التشديد)
 
 Shadda (ّ) indicates that a letter is doubled or geminated. We represent this by repeating the letter twice, as shown in [table_ex_tasheel].
 
-#### Pausing (الوقف)
+### Pausing (الوقف)
 
 Several rules apply at pause (وقف):
 
@@ -363,12 +362,12 @@ Several rules apply at pause (وقف):
 *   Small Silah Madd is elided.
 *   Taa marboota (ة) is converted to haa (ه).
 
-#### Qalqala (القلقة)
+### Qalqala (القلقة)
 
 Qalala (قلقة) is defined in tajweed as: "a small sound is followed by on one the letter (ق - ط - ب - ج - د) if one of them is sakin (ساكن) either in between words (وصلا) or at pause (وقفا)"[AlHamad2008]. We dontate this small sound as (ڇ) like in table [table_ex_two_saken].
 
 
-#### Imala (الإمالة)
+### Imala (الإمالة)
 
 Imala (إمالة) is defined in Tajweed as "pronouncing a fatha somewhere between a fatha and a kasra, and an alif somewhere between an alif and a yaa" [sweed2021]. We denote a fatha with imala as `fatha_momala` (۪) and an alif with imala with two `alif_momala` symbols (ــ), similar to the representation of Normal Madd. Table [table_ex_imala] provides an example:
 
@@ -380,7 +379,7 @@ Imala (إمالة) is defined in Tajweed as "pronouncing a fatha somewhere betwe
 The table shows how we represent fatha with imala as (۪) and alif with imala as (ــ). The letter jeem (ج) also exhibits qalqala, denoted by (ڇ).
 
 
-#### Tasheel (التسهيل)
+### Tasheel (التسهيل)
 
 Tasheel is defined in Tajweed as "pronouncing a hamza (ء) with a quality intermediate between a full hamza and the following madd letter, similar to an intermediate vowel (حركة) between fatha, damma, and kasra" [sweed2021]. We denote this facilitated hamza with the symbol `hamza_mosahala` (ٲ). Table [table_ex_tasheel] provides an example:
 
@@ -392,12 +391,12 @@ Tasheel is defined in Tajweed as "pronouncing a hamza (ء) with a quality interm
 The table shows a hamza with Tasheel denoted by (ٲ), along with the disassembly of the letter yaa (ي) with shaddah (ّ) into two yaa symbols.
 
 
-#### Sakt (السكت)
+### Sakt (السكت)
 
 Sakt is defined in tajweed by "cutting voice without releasing of breathe for short period learned from expert reciters"[AlHamad2008]. Sakat happens in a specified posisions see: [section_hafs_ways]. we dontate sakt by `sakt` 'ۜ'.
 
 
-#### Implementation
+### Implementation
 
 We implemented our phonetic representation by applying 26 operations. Each operation consists of one or more regular expressions, as detailed in: [section_phonemes_operations].
 
@@ -429,7 +428,7 @@ We implemented our phonetic representation by applying 26 operations. Each opera
 | Madd                   | مد                    | Adds madd symbols for all madd types, inserting `madd_alif` (ا), `madd_waw` (ۥ), and `madd_yaa` (ۦ) |
 | Qalqla                 | قلقة                  | Adds echoing effect to ق, ط, ب, ج, د letters with sukoon                           |
 | RemoveRasHaaAndShadda  | إزالة رأس الحاء علامة السكون | Deletes sukoon diacritic marks                                                   |
-### Sifat Level
+## Sifat Level
 
 Sifat (صفة), or in English, attributes of articulation, form a foundational component of our phonetic representation. We based our classification on the classical scholarship of Ibn Al-Jazari. While Ibn Al-Jazari enumerated 17 sifat [AlJazariyyahSwaid], we have excluded 4 of them for the following reasons:
 
