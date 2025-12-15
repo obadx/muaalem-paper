@@ -16,7 +16,24 @@
 # vim swap
 *.swp
 
-# ngrok url
-hpc-scripts/ngrok_url.txt
 
-frontend/temp/
+# latext intermediate steps
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.lol
+*.gls
+*.glo
+*.ist
+*.glg
+*.xdy
+*.nav
+*.snm
+*.vrb
+*.synctex.gz
+
