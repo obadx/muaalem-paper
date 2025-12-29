@@ -1,0 +1,143 @@
+\section{Quran Phonetic Script}
+We consider the Quran Phonetic Script to be the most valuable and important contribution of our work. By formalizing the assessment of Holy Quran pronunciation as an ASR problem represented through this script, we provide a comprehensive solution to the task.
+
+\subsection{Motivation for Developing Quran Phonetic Script}
+Modern Standard Arabic (MSA) orthography cannot adequately represent Tajweed rules for error detection. For example, MSA cannot measure the precise length of Madd rules. Previous research (e.g., \cite{omran2023automatic}) focused on single rules like Qalqalah. Our phonetic script addresses this limitation by capturing all Tajweed pronunciation errors except Ishmam (\arb{إشمام}), which involves a visual mouth movement without audible output.
+
+\subsection{Background}
+We based our script on classical Muslim scholarship rather than the International Phonetic Alphabet (IPA) for these reasons:
+
+\begin{enumerate}
+    \item \textbf{Historical Precedence}: Muslim scholars from the 6th to 14th centuries rigorously defined Quranic errors centuries before modern phonetics emerged in the West.
+    \item \textbf{Scientific Foundation}: Scholars like Al-Khalil ibn Ahmad (6th century AH) systematically described articulations and attributes with remarkable accuracy comparable to modern phonetics \cite{article-khalil}.
+    \item \textbf{Pedagogical Relevance}: Learners' errors align with classical definitions according to expert Quran teachers.
+\end{enumerate}
+
+\subsection{Defining Mistakes in Quran Recitation}
+Following \cite{sweed2021}, Quran recitation errors fall into three categories:
+\begin{itemize}
+    \item \textbf{Articulation Errors}: Incorrect pronunciation of phonemes
+    \item \textbf{Attribute Errors}: Mistakes in letter characteristics (Sifat al-Huruf)
+    \item \textbf{Tajweed Rule Errors}: Incorrect application of rules like Ghunnah, Madd, etc.
+\end{itemize}
+
+Our script comprehensively addresses all three aspects through two output levels:
+\begin{itemize}
+    \item \textbf{Phonemes Level}: Represents letters, vowels, and Tajweed rules
+    \item \textbf{Sifat Level}: Represents articulation attributes for each phoneme
+\end{itemize}
+
+Refer to tables: \ref{tab:phoneme_set} \ref{tab:sifat_set} for Phonemes and Sifat levels.
+
+\subsection*{Key Design Principles}
+\begin{enumerate}
+    \item \textbf{Madd Representation}:
+    \begin{itemize}
+        \item Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: \arb{اااا})
+        \item Madd al-Leen represented with multiple waw/yaa symbols
+    \end{itemize}
+    
+    \item \textbf{Emphatic Articulation}:
+    \begin{itemize}
+        \item Stressed Ghunnah (e.g., \arb{النون المشددة}) as three consecutive noon symbols (\arb{ننن})
+        \item Ikhfa represented as three consecutive noon\_mokhfah (\arb{ںںں}) or meem\_mokhfah (\arb{۾۾۾})
+    \end{itemize}
+    
+    \item \textbf{Idgham Handling}:
+    \begin{itemize}
+        \item Assimilation represented by doubling (e.g., \arb{مَن يَعْمَلْ} $\rightarrow$ \arb{مَيييَعمَل})
+    \end{itemize}
+    
+    \item \textbf{Special Cases}:
+    \begin{itemize}
+        \item Sakin: No following symbol
+        \item Imala: fatha\_momala and alif\_momala
+        \item Rawm: dama\_mokhtalasa marker
+    \end{itemize}
+\end{enumerate}
+
+Example: In table~\ref{tab:examples_with_sifat} shows how our phonetizer works.
+
+
+
+
+
+\begin{table*}[h]
+\centering
+\caption{Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes}
+\label{tab:examples_with_sifat}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{1.5cm} *{10}{>{\centering\arraybackslash}m{0.7cm}@{}}}
+\toprule
+\textbf{Uthmani} & \textbf{Phonetic} & 
+\textbf{H/J} & 
+\textbf{S/R} & 
+\textbf{T/T} & 
+\textbf{Itb} & 
+\textbf{Saf} & 
+\textbf{Qal} & 
+\textbf{Tik} & 
+\textbf{Taf} & 
+\textbf{Ist} & 
+\textbf{Gho} \\
+\cmidrule(lr){1-1} \cmidrule(lr){2-2} \cmidrule(lr){3-12}
+\arb{أَ} & \arb{ءَ} & jahr & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{تُ} & \arb{تُ} & hams & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{حَـ} & \arb{حَ} & hams & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{ـٰٓ} & \arb{اااااا} & hams & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{جُّ} & \arb{ججُ} & jahr & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{وٓ} & \arb{ۥۥۥۥۥۥ} & jahr & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\arb{نِّ} & \arb{ننننِ} & jahr & btw & mrq & mnf & no & nql & nkr & ntf & nst & mg \\
+\arb{ى} & \arb{ۦۦ} & jahr & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+\bottomrule
+\end{tabular}
+
+\vspace{2mm}
+\begin{center}  % Centering wrapper added here
+\scriptsize
+Phonetization of word (\hafs{أَتُحَٰٓجُّوٓنِّى}) \\
+\textbf{Attribute Abbreviations:} \\
+H/J: Hams/Jahr \quad S/R: Shidda/Rakhawa \quad T/T: Tafkheem/Taqeeq \quad Itb: Itbaq \\
+Saf: Safeer \quad Qal: Qalqla \quad Tik: Tikraar \quad Taf: Tafashie \quad Ist: Istitala \quad Gho: Ghonna \\
+
+\textbf{Value Abbreviations:} \\
+shd: shadeed \quad rkh: rikhw \quad btw: between \quad mrq: moraqaq \\
+mof: mofakham \quad mnf: monfateh \quad mtb: motbaq \quad no: no\_safeer \\
+nql: not\_moqalqal \quad nkr: not\_mokarar \quad ntf: not\_motafashie \\
+nst: not\_mostateel \quad nmg: not\_maghnoon \quad mg: maghnoon
+\end{center}  % End of centering wrapper
+\end{table*}
+
+
+\subsection{Development Methodology}
+Our phonetization has two steps:
+\begin{enumerate}
+    \item \textbf{Imlaey to Uthmani Conversion} \\
+    We selected Uthmani script as our foundation because:  
+    \begin{itemize}
+        \item Contains specialized Tajweed diacritics (Madd, Tasheel, etc.)
+        \item Preserves pause rules critical for recitation (e.g., stopping on \arb{رحمت})
+    \end{itemize}
+    
+    In order to do that, we created an annotation UI to manually annotate misaligned words in both scripts. For example \ref{tab:imlaey_to_uthmani_ex}, after that, we developed an algorithm that relies on the annotations to convert Imlaey to Uthmani.
+    \item \textbf{Uthmani to Phonetic Script Conversion} \\
+We implemented the process through 26 sequential operations. Each operation contains one or more regular expressions, as shown in the Appendix~\ref{subsec:conversion_ops}.
+
+    \item \textbf{Extracting Sifat}: Next, we extract the 10 attributes (Sifat) defined in Table~\ref{tab:sifat_set}, excluding \textbf{Inhiraf} (\arb{إنحراف}), as it describes the shidda/rakhawa spectrum, and \textbf{Leen} (\arb{اللين}), as it was already handled through our Madd representation.
+\end{enumerate}
+
+\begin{table}[h]
+\caption{Example of misalignment between Uthmani and Imlaey Scripts}
+\label{tab:imlaey_to_uthmani_ex}
+\centering
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{Imlaey Script} & \textbf{Uthmani Script} \\
+    \hline
+    \arb{يَا ابْنَ أُمَّ} & \arb{يَبْنَؤُمَّ} \\
+    \hline
+\end{tabular}
+\end{table}
+
+

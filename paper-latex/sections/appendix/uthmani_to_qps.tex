@@ -1,0 +1,58 @@
+\subsection{Uthmani to Phonetic Conversion Operations}
+\label{subsec:conversion_ops}
+The 26 sequential phonetization operations:
+
+\begin{enumerate}
+    \item \textbf{DisassembleHrofMoqatta} (\arb{تفكيك حروف مقطعة}): Separates Quranic initials (e.g., \arb{الم، الر}) into individual letters.
+    
+    \item \textbf{SpecialCases} (\arb{حالات خاصة}): Handles special words like \arb{يبسط} that have different pronunciation forms defined in \texttt{MoshafAttributes}.
+    
+    \item \textbf{BeginWithHamzatWasl} (\arb{البدء بهمزة الوصل}): Processes words starting with connecting hamza (\arb{ٱ}) and converts it to hamza (\arb{ء}) with appropriate harakah for nouns and verbs.
+    
+    \item \textbf{BeginWithSaken} (\arb{البدء بساكن}): Manages words beginning with a consonant (sakin) like \arb{لْيَقْطَعْ}, as Arabic doesn't start utterances with consonants.
+    
+    \item \textbf{ConvertAlifMaksora} (\arb{تحويل الألف المقصورة}): Converts \arb{ى} in Uthmani script to either yaa (\arb{ي}) or alif (\arb{ا}) based on context.
+    
+    \item \textbf{NormalizeHmazat} (\arb{توحيد الهمزات}): Standardizes hamza forms (\arb{أ إ ؤ ئ}) to \arb{ء}.
+    
+    \item \textbf{IthbatYaaYohie} (\arb{إثبات ياء يحيى}): Handles words like \arb{يُحْىِۦ} where two yaa letters occur - resolves conflicts when pausing on words with consecutive consonants (\arb{التقاء الساكنين}) by adding another yaa at end.
+    
+    \item \textbf{RemoveKasheeda} (\arb{إزالة الكشيدة}): Deletes elongation marks (\arb{ـــ}) from text.
+    
+    \item \textbf{RemoveHmzatWaslMiddle} (\arb{إزالة همزة الوصل الوسطية}): Removes connecting hamza (\arb{ٱ}) in non-initial positions.
+    
+    \item \textbf{RemoveSkoonMostadeer} (\arb{حذف الحرف الذي فوقع سكون مستدير}): Eliminates letters with circular sukoon diacritics like alif in \arb{جَمَعُوا۟}.
+    
+    \item \textbf{SkoonMostateel} (\arb{سكون مستطيل}): Removes alif with elongated sukoon mid-word and adds it at the end during pauses (\arb{وقف}).
+    
+    \item \textbf{MaddAlewad} (\arb{مد العوض}): Removes alif after tanween fatha mid-word and adds alif while removing tanween at pause positions (\arb{وقف}).
+    
+    \item \textbf{WawAlsalah} (\arb{واو الصلاة}): Replaces letter waw (\arb{و}) with small alif above combined with alif.
+    
+    \item \textbf{EnlargeSmallLetters} (\arb{تكبير الحروف الصغيرة}): Resizes miniature Arabic letters to standard proportions.
+    
+    \item \textbf{CleanEnd} (\arb{تنظيف النهاية}): Removes redundant diacritics and spaces at word endings.
+    
+    \item \textbf{NormalizeTaa} (\arb{توحيد التاء}): Converts \arb{ة} (taa marbuta) to \arb{ت} or \arb{ه} based on context, and converts final \arb{ة} to haa (\arb{ه}).
+    
+    \item \textbf{AddAlifIsmAllah} (\arb{إضافة ألف اسم الله}): Inserts compensatory alif in derivatives of "\arb{الله}".
+    
+    \item \textbf{PrepareGhonnaIdghamIqlab} (\arb{تهيئة الغنة والإدغام والإقلاب}): Preprocesses text for nasalization, assimilation, and conversion rules.
+    
+    \item \textbf{IltiqaaAlsaknan} (\arb{التقاء الساكنين}): Resolves consecutive consonants by inserting vowels.
+    
+    \item \textbf{DeleteShaddaAtBeginning} (\arb{حذف الشدة في البداية}): Removes shadda (\arb{ّ}) from word-initial letters.
+    
+    \item \textbf{Ghonna} (\arb{غنة}): Applies nasalization during pronunciation of sakin noon and tanween.
+    
+    \item \textbf{Tasheel} (\arb{تسهيل}): Adds a letter representing alif with tasheel easing.
+    
+    \item \textbf{Imala} (\arb{إمالة}): Converts fatha with imala to \texttt{fatha\_momala} phoneme and alif with imala to \texttt{alif\_momala} phoneme.
+    
+    \item \textbf{Madd} (\arb{مد}): Adds madd symbols for all madd types, inserting \texttt{madd\_alif} (\arb{ا}), \texttt{madd\_waw} (\arb{ۥ}), and \texttt{madd\_yaa} (\arb{ۦ}).
+    
+    \item \textbf{Qalqla} (\arb{قلقة}): Adds echoing effect to \arb{ق, ط, ب, ج, د} letters with sukoon.
+    
+    \item \textbf{RemoveRasHaaAndShadda} (\arb{إزالة رأس الحاء علامة السكون}): Deletes sukoon diacritic marks.
+\end{enumerate}
+

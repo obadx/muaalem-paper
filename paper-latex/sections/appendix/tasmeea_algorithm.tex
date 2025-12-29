@@ -1,0 +1,50 @@
+\subsection{Tasmeea Verfication Algorithm}
+
+\begin{algorithm}[H]
+\caption{Tasmeea Algorithm}
+\label{alg:tasmeea}
+\begin{algorithmic}[1]
+\REQUIRE $text\_segments = [s_1, s_2, \dots, s_n]$, $sura\_idx$, 
+          $overlap\_words = 6$, $window\_words = 30$, 
+          $acceptance\_ratio = 0.5$, flags for special phrases
+\ENSURE List of tuples $(match, ratio)$ per segment
+
+\STATE $aya \leftarrow 1$ \COMMENT{Start at first verse}
+\STATE $penalty \leftarrow 0$
+\FOR{each segment $s_i$ in $text\_segments$}
+    \STATE $norm\_text \leftarrow$ normalize($s_i$) \COMMENT{Remove spaces/diacritics}
+    \STATE $min\_win \leftarrow window\_words - 10$, $max\_win \leftarrow window\_words + 10$
+    \STATE $start\_range \leftarrow [-(overlap + penalty), (overlap + \max(window\_words, max\_win) + penalty]$
+    
+    \IF{first segment \AND $include\_istiaatha$}
+        \STATE Check istiaatha special case
+    \ELSIF{last segment \AND $include\_sadaka$}
+        \STATE Check sadaka special case
+    \ENDIF
+    
+    \STATE $best\_ratio \leftarrow 0$, $best\_match \leftarrow \text{null}$
+    \FOR{each start position $p$ in $start\_range$}
+        \FOR{each window size $w \in [min\_win, max\_win]$}
+            \STATE $c \leftarrow$ extract candidate at ($aya$, $p$, $w$)
+            \STATE $dist \leftarrow \text{edit\_distance}(norm\_text, c)$
+            \STATE $ratio \leftarrow 1 - \min(dist, |norm\_text|) / |norm\_text|$
+            \IF{$ratio > best\_ratio$ \OR ($ratio = best\_ratio$ \AND $|p| < |best\_start|$)}
+                \STATE update $best\_ratio$, $best\_match$, $best\_start$, $best\_window$
+            \ENDIF
+        \ENDFOR
+    \ENDFOR
+    
+    \IF{$best\_ratio < acceptance\_ratio$}
+        \STATE output (null, $best\_ratio$)
+        \STATE $penalty \leftarrow max\_win$
+        \STATE $aya \leftarrow aya + 1$ \COMMENT{Default advance}
+    \ELSE
+        \STATE output ($best\_match$, $best\_ratio$)
+        \STATE $aya \leftarrow aya + best\_start + best\_window$
+        \STATE $penalty \leftarrow 0$
+    \ENDIF
+\ENDFOR
+\STATE \textbf{Complexity:} $O(N \cdot W \cdot L^2)$ \COMMENT{$N$=segments, $W$=window size, $L$=segment length}
+\end{algorithmic}
+\end{algorithm}
+

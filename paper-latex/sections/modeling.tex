@@ -1,0 +1,23 @@
+\section{Modeling The Quran Phonetic Script}
+Our Quran Phonetic script has two outputs: \texttt{phonemes} and \texttt{sifat} (which has 10 attributes). We modeled this as follows: Imagine you are given an input speech utterance and want to output transcripts in Arabic, English, French, and German simultaneously. We implemented this as a speech encoder with a linear layer for each language. Replacing languages with our 11 levels (\texttt{phonemes} and the 10 sifat), we obtain 11 parallel transcription levels. We chose CTC loss \cite{graves2006ctc} without language model integration because we aim to capture what the user actually said, not what they intended to say. We name our architecture \textbf{Multi-level CTC}.  
+
+We compute the loss by averaging all CTC losses for the 11 levels, assigning a weight of 0.4 to the \texttt{phonemes} level as it has the largest vocabulary size (43) compared to other levels.  
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/multi-level-ctc.png}
+\caption{Multi-level CTC loss Architecture composed of 11 Heads for every level and CTC loss for every level with weighted average loss}
+\label{fig:multilevel-ctc}
+\end{figure}
+
+We fine-tuned Facebook's Wav2Vec2-Bert \cite{barrault2023seamless} for a single epoch with a constant learning rate of \texttt{5e-5} with 64 batch size. We applied augmentations identical to Silero VAD \cite{SileroVAD} using the \texttt{audiomentations} library \cite{Audiomentations}, with additional augmentations: \texttt{TimeStretch} and \texttt{GainTransition}. We filtered out samples longer than \texttt{30 seconds} not due to model limitations, but for efficient GPU utilization - sacrificing only 3k samples out of 250k training samples.  
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{./figures/audio-lens.png}
+\caption{Recitations lengths in seconds for the whole dataset}
+\label{fig:audio-lengths}
+\end{figure}
+
+The training was done using an H200 GPU with 141 GB of GPU memory for 7 hours.
+
