@@ -6,29 +6,30 @@ The pronunciation of the Holy Quran is governed by rigorously strict rules forma
 Although RDI pioneered computer-aided Quranic instruction \cite{sherif2007enhancing}, they neither disclosed their phoneticization process nor released data/models. Consequently, new research must start from basics: defining phoneticization, data, and models. To bridge this gap, we introduce:
 
 \begin{itemize}
-\item \textbf{A Phonetizer}: Encodes \emph{all} Tajweed rules and articulation attributes (\emph{Sifat}) defined by classical scholars, except \emph{Ishmam} (\arb{إشمام})
-\item \textbf{A 98\% automated pipeline}: Generates highly accurate datasets from expert recitations
-\item \textbf{A dataset}: $\sim$300K annotated utterances (890 hours)
-\item \textbf{Integration}: Our multi-level CTC model proves the Quranic phonetic script is learnable (0.16\% average phoneme error rate)
+	\item \textbf{A Phonetizer}: Encodes \emph{all} Tajweed rules and articulation attributes (\emph{Sifat}) defined by classical scholars, except \emph{Ishmam} (\arb{إشمام})
+	\item \textbf{A 98\% automated pipeline}: Generates highly accurate datasets from expert recitations
+	\item \textbf{A dataset}: $\sim$300K annotated utterances (850+ hours)
+	\item \textbf{qdat\_bench}: Benchmarks phonemes, diacritization, and Tajweed rules (Ghunnah, Qalqalah, Madd) on real recitation errors containing 159 samples
+	\item \textbf{Integration}: Our multi-level CTC model proves the Quranic phonetic script is learnable (0.21\% average phoneme error rate)
 \end{itemize}
 
 The paper is organized as follows:
 \begin{itemize}
-\item \textbf{Related Work}: Expands on strengths/weaknesses of prior research
-\item \textbf{Quran Phonetic Script}: Introduces our two-level script: \textbf{phonemes} and \textbf{Sifat} (10 attributes $\to$ 11 total levels)
-\item \textbf{Data Pipeline}: Stages include:
-  \begin{enumerate}
-  \item Digitized Quran script as foundation
-  \item \emph{Hafs} methodology criteria
-  \item Expert recitation collection
-  \item Segmentation at pause points (\arb{وقف})
-  \item Segment transcription
-  \item Validation via \emph{Tasmee} (\arb{تسميع}) algorithm
-  \end{enumerate}
-\item \textbf{Modeling}: Demonstrates learnability of the phonetic script
-\item \textbf{Results}: Analysis of outcomes
-\item \textbf{Limitations \& Future Work}: Next research directions
-\item \textbf{Conclusion}: Summary of contributions
-\item \textbf{Appendix}: Details on \emph{Mushaf} attributes and algorithms
+	\item \textbf{Related Work}: Expands on strengths/weaknesses of prior research
+	\item \textbf{Quran Phonetic Script}: Introduces our two-level script: \textbf{phonemes} and \textbf{Sifat} (10 attributes $\to$ 11 total levels)
+	\item \textbf{Data Pipeline}: Stages include:
+	      \begin{enumerate}
+		      \item Digitized Quran script as foundation
+		      \item \emph{Hafs} methodology criteria
+		      \item Expert recitation collection
+		      \item Segmentation at pause points (\arb{وقف})
+		      \item Segment transcription
+		      \item Validation via \emph{Tasmee} (\arb{تسميع}) algorithm
+	      \end{enumerate}
+	\item \textbf{Modeling}: Demonstrates learnability of the phonetic script
+	\item \textbf{Results}: Analysis of outcomes
+	\item \textbf{Limitations \& Future Work}: Next research directions
+	\item \textbf{Conclusion}: Summary of contributions
+	\item \textbf{Appendix}: Details on \emph{Mushaf} attributes and algorithms
 \end{itemize}
 

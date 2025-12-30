@@ -16,6 +16,8 @@
 # vim swap
 *.swp
 
+*.bak*
+
 
 # latext intermediate steps
 *.aux
