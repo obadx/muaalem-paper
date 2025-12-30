@@ -19,6 +19,7 @@
 \usepackage{stfloats} % Add to preamble
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{tikz}
 
 % 3. Configure fonts BEFORE polyglossia
 \usepackage{fontspec}
@@ -85,9 +86,9 @@
 \begin{document}
 
 \title{Automatic Pronunciation Error Detection and Correction of the Holy Quran’s Learners Using Deep Learning\\
-% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-% should not be used}
-% \thanks{Identify applicable funding agency here. If none, delete this.}
+	% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+	% should not be used}
+	% \thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{Abdullah Abdelfttah}
@@ -112,11 +113,11 @@ hazem.abbas@eng.asu.edu.eg}
 \maketitle
 
 \begin{abstract}
-\input{abstract}
+	\input{abstract}
 \end{abstract}
 
 \begin{IEEEkeywords}
-Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end Models
+	Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end Models
 \end{IEEEkeywords}
 
 \input{sections/introduction}
@@ -149,6 +150,7 @@ Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end
 \input{sections/appendix/uthmani_to_qps}
 \input{sections/appendix/tasmeea_algorithm}
 \input{sections/appendix/moshaf_attributes}
+\input{sections/appendix/qdat_bench}
 
 
 \end{document}
