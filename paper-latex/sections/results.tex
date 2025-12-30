@@ -1,9 +1,9 @@
 \section{Results}
-We trained on all Mushaf provided above, reserving Mushaf 26.1 and 19.0 for testing. The evaluation results are presented in Table~\ref{tab:results}. We notice that the Average Phoneme Error Rate is \textbf{0.21\%}, which proves our idea that the Quran Phonetics Script can be learned.
+We trained on all available Mushaf datasets, reserving three Mushaf (19.0, 29.0, 30.0) for comprehensive testing. These test datasets feature expert male reciters with extensive training in Tajweed rules, recorded under controlled acoustic conditions to ensure high signal quality. The expert nature of these recordings provides an ideal evaluation environment for assessing the model's fundamental phonetic transcription capabilities across different representation levels. Notably, the phonemes level presents the greatest challenge with a 44-character vocabulary (including padding), resulting in the highest Phoneme Error Rate of 0.543\%, while still demonstrating excellent overall performance that validates our multi-level CTC approach.
 
 \begin{table}[htbp]
 	\centering
-	\caption{Test Results on moshaf 26.1 and 19.0}
+	\caption{Test Results on Expert Quranic Recitations. Evaluation conducted on three Mushaf datasets (19.0, 29.0, 30.0) featuring expert male reciters with extensive Tajweed training, recorded under controlled acoustic conditions. The phonemes level demonstrates the highest error rate (0.543\%) because it uses the largest vocabulary of 44 characters including padding, making it the most challenging classification task among all representation levels. This expert-level assessment establishes baseline phonetic transcription capabilities, validating that our Quranic Phonetic Script framework can be learned effectively when processing correctly executed recitations without learner errors.}
 	\vspace{3pt}
 	\label{tab:results}
 	\begin{tabular}{lc}
@@ -27,26 +27,44 @@ We trained on all Mushaf provided above, reserving Mushaf 26.1 and 19.0 for test
 	\end{tabular}
 \end{table}
 
-To evaluate our model's performance on real recitation errors, we tested on the qdat\_bench benchmark. The results, shown in Table~\ref{tab:qdat_bench}, demonstrate that despite being trained exclusively on expert male reciters, our model achieves remarkable performance on female recitations (120 samples) and overall error detection.
+To evaluate our model's performance on real recitation errors, we tested on the qdat\_bench benchmark, which builds upon \cite{osman2021qdat} after comprehensive reannotation and addition of all Tajweed rules including phonemes and 10 sifat levels. This enhanced benchmark provides F1 and MSE metrics for Tajweed rules, enabling researchers to compare different representations of Tajweed rules. The results, shown in Table~\ref{tab:qdat_bench}, demonstrate that despite being trained exclusively on expert male reciters, our model achieves remarkable performance on female recitations (120 samples) and overall error detection.
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Results}
+	\caption{QDat Bench Results - Comprehensive Evaluation on Authentic Learner Mistakes. This benchmark builds upon the original qdat dataset \cite{osman2021qdat} through extensive expert reannotation that systematically labeled each audio segment across multiple dimensions: complete phoneme-level transcription, 10 sifat characteristics, and comprehensive Tajweed rule classifications. The enhanced dataset contains 159 samples (120 female, 39 male reciters) focusing on Quranic verse from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key pronunciation challenges. This comprehensive annotation framework enables researchers to compare different representation approaches for automated Tajweed rule detection, from fine-grained phonetic analysis to high-level rule compliance assessment, establishing qdat\_bench as a standardized benchmark for advancing Quranic pronunciation education research.}
 	\vspace{3pt}
 	\label{tab:qdat_bench}
 	\begin{tabular}{lc}
 		\hline
-		\textbf{Metric}   & \textbf{Value} \\
+		\textbf{Aggregate Metrics} & \textbf{Value} \\
 		\hline
-		avg\_per          & 0.019          \\
-		avg\_tajweed\_f1  & 0.758          \\
-		avg\_tajweed\_acc & 0.847          \\
-		avg\_madd\_rmse   & 0.596          \\
+		per\_phonemes              & 0.058          \\
+		avg\_per                   & 0.019          \\
+		avg\_tajweed\_f1           & 0.758          \\
+		avg\_tajweed\_acc          & 0.847          \\
+		avg\_madd\_rmse            & 0.596          \\
+		\hline
+		\textbf{Tajweed Rules F1}  & \textbf{Value} \\
+		\hline
+		Noon Moshaddadah           & 0.869          \\
+		Ikhfaa (Noon Mokhfah)      & 0.453          \\
+		Qalqalah                   & 0.953          \\
+		\hline
+		\textbf{Madd Rules RMSE}   & \textbf{Value} \\
+		\hline
+		Normal Madd (5 rules)      & 0.464          \\
+		Separate Madd              & 0.687          \\
+		Aared Madd                 & 1.034          \\
 		\hline
 	\end{tabular}
 \end{table}
 
-Notably, despite being trained exclusively on male expert reciters, our model demonstrates strong generalization capability by achieving 75.8\% Tajweed F1 score and 84.7\% accuracy on female recitations in qdat\_bench, highlighting the robustness of our approach for real-world deployment where diverse learner populations are expected. This performance on authentic learner mistakes validates the practical applicability of our Quranic phonetic script and multi-level CTC architecture.
+When comparing performance across evaluation contexts, we observe significant differences that reflect distinct challenges presented by expert versus learner recordings. The expert test datasets achieve a phoneme-level PER of 0.00543 (0.543\%), despite using the largest vocabulary of 44 characters including padding. In contrast, qdat\_bench shows a higher PER of 0.058 (5.8\%) on authentic learner recordings, which is expected given the increased complexity of detecting real pronunciation errors and handling variability in learner execution of Tajweed rules. But (5.5\%) remains very acceptable despite traind on expert rectiations.
 
-We note that the PER across nearly all levels is balanced, except for the phoneme level, as it has a much larger vocabulary of 44 (with padding).
+Despite this performance gap, the model maintains excellent Tajweed F1 scores (75.8\% average) on learner data, demonstrating robust generalization capabilities for practical educational applications. The aggregate Tajweed F1 score of 0.758 represents the mean performance across three key rules: Noon Moshaddadah (0.869), Ikhfaa (0.453), and Qalqalah (0.953). Similarly, the average Madd RMSE of 0.596 encompasses performance across normal madd rules (0.464), separate madd (0.687), and aared madd (1.034).
 
+Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation. This challenge affects both human perception and automated detection, as few reciters can reliably distinguish Ikhfaa when it is recited with characteristics similar to noon moshaddah. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis of these patterns and methodology considerations are provided in the appendix.
+
+Notably, despite being trained exclusively on male expert reciters, our model demonstrates strong generalization capability by achieving 75.8\% Tajweed F1 score and 84.7\% accuracy on female recitations in qdat\_bench, highlighting the robustness of our approach for real-world deployment where diverse learner populations are expected. This performance on authentic learner mistakes validates the practical applicability of our Quranic phonetic script and multi-level CTC architecture. The comprehensive nature of qdat\_bench, with its detailed phoneme-level annotations and 10 sifat characteristics, provides a standardized platform for comparing different representations of Tajweed rules in future research.
+
+For comprehensive methodological explanations, detailed statistical breakdowns of individual rule performance patterns, and in-depth analysis of challenging aspects such as the notably low Ikhfaa F1 score (0.453) due to acoustic similarity challenges, as well as Madd rule complexity analysis across different prolongation types, readers are referred to the qdat\_bench appendix section. The appendix contains complete evaluation tables covering all sifat characteristics, error pattern analysis across different reciter demographics, and detailed discussions of research utility that complement the high-level performance results presented here.

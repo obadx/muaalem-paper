@@ -1,13 +1,16 @@
 \subsection{QDat Bench Dataset}
 
 \subsubsection{Dataset Description}
-QDat Bench is a benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset contains Quranic audio recordings with detailed annotations for Tajweed characteristics, designed to serve as a benchmark for evaluating audio processing models in recognizing Tajweed rules.
+QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules, complete phoneme-level annotations, and 10 sifat (characteristic) levels.
 
-The dataset is built upon the original qdat dataset \cite{khan2021tarteel} but addresses several limitations:
+The enhanced dataset provides F1 and MSE metrics for Tajweed rules, enabling researchers to compare different representations and approaches to Tajweed rule detection. This comprehensive annotation framework makes qdat\_bench particularly valuable for advancing research in automated Quranic pronunciation assessment and error detection.
+
+The dataset addresses several limitations of the original qdat collection:
 \begin{itemize}
-	\item Incomplete coverage of all Tajweed rules
-	\item Multiple reciters recording the same rules (161 reciters with 10 segments each)
-	\item Focus on a single representative recitation per rule
+	\item Incomplete coverage of all Tajweed rules in the original
+	\item Multiple reciters recording the same rules (161 reciters with 10 segments each) creating redundancy
+	\item Focus on a single representative recitation per rule for more targeted evaluation
+	\item Lack of comprehensive phoneme-level and sifat-level annotations
 \end{itemize}
 
 QDat Bench contains 159 samples focusing on the verse: \{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
@@ -188,6 +191,36 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 	\end{tabular}
 \end{table}
 
+\subsubsection{Performance Analysis and Discussion}
+
+\paragraph{Ikhfaa Detection Challenges:}
+The notably low F1 score for Ikhfaa (Noon Mokhfah) at 0.453 reflects several inherent challenges in Quranic pronunciation detection:
+\begin{itemize}
+	\item \textbf{Acoustic Similarity}: Ikhfaa involves nasalization that is acoustically similar to the clear noon pronunciation (noon moshaddadah), making discrimination challenging for both human listeners and automated systems
+	\item \textbf{Limited Ground Truth Reliability}: Few reciters can consistently detect and correctly implement Ikhfaa, leading to potential inconsistencies in the annotation quality even in expert-labeled datasets
+	\item \textbf{Context Dependency}: The correct implementation of Ikhfaa depends heavily on the following letter, adding complexity to the detection task
+	\item \textbf{Variability in Implementation}: Different reciters may implement Ikhfaa with varying degrees of nasalization, creating inconsistency in the training data
+\end{itemize}
+
+\paragraph{Madd Rule Complexity Analysis:}
+The Madd (prolongation) rules exhibit varying difficulty levels reflected in their RMSE values:
+\begin{itemize}
+	\item \textbf{Normal Madd Rules} (RMSE: 0.464): Include basic prolongation rules for alif, waw, and ya with consistent timing patterns, making them relatively easier to model
+	\item \textbf{Separate Madd} (RMSE: 0.687): Involves more complex timing requirements due to word boundaries and停顿 considerations
+	\item \textbf{Aared Madd} (RMSE: 1.034): The most challenging category, involving prolongation before sukoon with highly variable timing based on recitation style and context
+\end{itemize}
+
+\paragraph{Research Utility and Future Directions:}
+The comprehensive annotation framework of qdat\_bench, with its 10 sifat levels and complete phoneme coverage, provides multiple research opportunities:
+\begin{itemize}
+	\item \textbf{Representation Comparison}: Researchers can compare different approaches to representing Tajweed rules (phoneme-level vs. rule-level vs. sifat-level)
+	\item \textbf{Multi-level Learning}: The dataset enables evaluation of models that learn hierarchical representations from phonemes to complex Tajweed rules
+	\item \textbf{Error Analysis Framework}: Standardized metrics allow for systematic comparison of error patterns across different methodologies
+	\item \textbf{Cross-dataset Generalization}: The diverse reciter population supports evaluation of model generalization across different recitation styles
+\end{itemize}
+
+This analysis provides insights into the relative challenges of different Tajweed rules and establishes qdat\_bench as a comprehensive benchmark for advancing research in automated Quranic pronunciation assessment.
+
 \subsubsection{Usage}
 The dataset can be loaded using the Hugging Face datasets library:
 
@@ -197,4 +230,4 @@ ds = load_dataset('obadx/qdat_bench')
 print(ds['train'][0])  # Display first sample
 \end{verbatim}
 
-This benchmark provides a standardized evaluation platform for Quranic pronunciation error detection models, enabling fair comparison across different approaches and facilitating progress in the field of computational Quranic education.
+This benchmark provides a standardized evaluation platform for Quranic pronunciation error detection models, enabling fair comparison across different approaches and facilitating progress in the field of computational Quranic education. The comprehensive nature of the annotations, including all Tajweed rules, complete phoneme coverage, and 10 sifat characteristics, makes qdat\_bench an invaluable resource for researchers developing and comparing different representations of Quranic pronunciation rules.
