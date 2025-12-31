@@ -1,76 +1,30 @@
 \subsection{QDat Bench Dataset}
 \label{sec:qdat_bench}
 
-\subsubsection{Dataset Description}
-QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules, complete phoneme-level annotations, and 10 sifat (characteristic) levels.
+QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules and QPS~\ref{sec:qps} (complete phoneme-level annotations and 10 sifat (characteristic) levels).
 
 The enhanced dataset provides F1 and MSE metrics for Tajweed rules, enabling researchers to compare different representations and approaches to Tajweed rule detection. This comprehensive annotation framework makes qdat\_bench particularly valuable for advancing research in automated Quranic pronunciation assessment and error detection.
 
-The dataset addresses several limitations of the original qdat collection:
-\begin{itemize}
-	\item Incomplete coverage of all Tajweed rules in the original
-	\item Multiple reciters recording the same rules (161 reciters with 10 segments each) creating redundancy
-	\item Focus on a single representative recitation per rule for more targeted evaluation
-	\item Lack of comprehensive phoneme-level and sifat-level annotations
-\end{itemize}
+The dataset addresses several limitations of the original qdat collection. The original dataset suffered from incomplete coverage of all Tajweed rules, with only partial implementation of the comprehensive rule set required for thorough evaluation. Additionally, the original collection contained multiple reciters recording the same verse (each reciter records the the same verse 10 times), creating significant redundancy and potential bias in evaluation. In contrast, qdat\_bench selects a single recording randomly for every rectier. Finally, the original dataset lacked comprehensive phoneme-level and sifat-level annotations, limiting its utility for fine-grained analysis of pronunciation patterns and characteristics.
 
 QDat Bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
 
 \subsubsection{Data Structure}
-The dataset includes the following main features:
-\begin{itemize}
-	\item \textbf{audio}: Audio file (sampling rate: None, mono channel).
-	\item \textbf{id}: Unique identifier for each element.
-	\item \textbf{original\_id}: The item's ID in the original dataset.
-	\item \textbf{gender}: Reciter's gender (male/female).
-	\item \textbf{age}: Reciter's age.
-	\item \textbf{phonetic\_transcript}: Phonetic transcription Quran Phonetic Script~/ref{sec:qps}.
-\end{itemize}
+The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. Bello is description of Tajweed rules found on our benchamrk:
 
 \paragraph{Madd (Prolongation) Rules:}
-\begin{itemize}
-	\item \texttt{qalo\_alif\_len}: Length of normal madd alif in word "قالوا" (0-8)
-	\item \texttt{qalo\_waw\_len}: Length of normal madd waw in word "قالوا" (0-8)
-	\item \texttt{laa\_alif\_len}: Length of normal madd alif in word "لا" (0-8)
-	\item \texttt{separate\_madd}: Length of separate madd for "لنا إنك" (0-8)
-	\item \texttt{allam\_alif\_len}: Length of normal madd alif in word "علام" (0-8)
-	\item \texttt{madd\_aared\_len}: Length of madd aared for sukoon (0-8)
-\end{itemize}
+The dataset includes comprehensive annotations for various types of Madd rules, which are fundamental to proper Quranic recitation. The normal Madd rules are captured through several specific metrics: \texttt{qalo\_alif\_len} measures the length of normal Madd alif in the word "قالوا" on a scale of 0-8, while \texttt{qalo\_waw\_len} similarly measures the normal Madd waw in the same word. Additional normal Madd measurements include \texttt{laa\_alif\_len} for the normal Madd alif in "لا" and \texttt{allam\_alif\_len} for the normal Madd alif in "علام". The Separate Madd is measured through \texttt{separate\_madd}, which captures the length for the phrase "لنا إنك" (0-8). Finally, Madd Aared, is evaluated using \texttt{madd\_aared\_len}, measuring prolongation before sukoon (0-8), which typically exhibits the highest variability in implementation.
 
 \paragraph{Ghunnah (Nasalization) Rules:}
-\begin{itemize}
-	\item \texttt{noon\_moshaddadah\_len}: Length of noon moshaddadah in "إنَّك" (0=partial, 1=complete)
-	\item \texttt{noon\_mokhfah\_len}: Length of noon mokhfah in "أنت" (0=noon, 1=partial, 2=complete)
-\end{itemize}
+Ghunnah rules are systematically annotated to capture the nasalization characteristics essential for proper Quranic pronunciation. The \texttt{noon\_moshaddadah\_len} metric evaluates the length of noon moshaddadah in the word "إنَّك" using a binary classification system where 0 indicates partial nasalization and 1 represents complete implementation. Similarly, the \texttt{noon\_mokhfah\_len} measures the Ikhfaa pronunciation in "أنت" through a three-tiered system: 0 represents a clear noon pronunciation, 1 indicates partial Ikhfaa implementation, and 2 denotes complete Ikhfaa execution.
 
 \paragraph{Qalqalah (Echo) Rules:}
-\begin{itemize}
-	\item \texttt{qalqalah}: Existence of qalqalah for "الغيوب" (0=no qalqalah, 1=has qalqalah)
-\end{itemize}
+The Qalqalah rule is captured through the \texttt{qalqalah} metric, which identifies the presence or absence of the echo characteristic in the word "الغيوب". This binary classification system uses 0 to indicate no Qalqalah implementation and 1 to denote proper Qalqalah execution.
 
-\paragraph{Letter Characteristics:}
-Contains a list of characteristics for each letter in the \texttt{sifat} field:
-\begin{itemize}
-	\item \texttt{ghonna}: Ghunnah (nasalization)
-	\item \texttt{hams\_or\_jahr}: Hams (whisper) or Jahr (clarity)
-	\item \texttt{istitala}: Istitala (elongation)
-	\item \texttt{itbaq}: Itbaq (adhesion)
-	\item \texttt{phonemes}: Phonemes
-	\item \texttt{qalqla}: Qalqalah (echo)
-	\item \texttt{safeer}: Safeer (whistling)
-	\item \texttt{shidda\_or\_rakhawa}: Shidda (strength) or Rakhawa (softness)
-	\item \texttt{tafashie}: Tafashie (diffusion)
-	\item \texttt{tafkheem\_or\_taqeeq}: Tafkheem (emphasis) or Taqeeq (thinning)
-	\item \texttt{tikraar}: Tikraar (repetition)
-\end{itemize}
 
 \subsubsection{Dataset Statistics}
-\begin{itemize}
-	\item Number of samples: 159
-	\item Split: train only
-	\item Gender distribution: 120 female (75.5\%), 39 male (24.5\%)
-	\item Age range: Various age groups represented
-\end{itemize}
+
+The qdat\_bench dataset comprises 159 carefully selected samples. The demographic distribution reflects a diverse participant pool, with 120 female reciters representing 75.5\% of the dataset and 39 male reciters accounting for 24.5\%. The age diversity across various age groups provides comprehensive coverage of different learning stages and pronunciation patterns as showin in Figure~\ref{fig:qdat_age_gender}. The benchmarks has various types of error: 106 reciters has an error or more while 53 has complete correct recitations as shown in Figure~\ref{fig:qdat_correctness}. Finally figure~\ref{fig:qdat_tajweed_coverage} showes the errors per every Tajweed rule as red represents erros and green with correct recitaion.
 
 \begin{figure}[htbp]
 	\centering
@@ -82,14 +36,14 @@ Contains a list of characteristics for each letter in the \texttt{sifat} field:
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/correctness_histogram.png}
-	\caption{Distribution of recitation correctness across different Tajweed rules in the benchmark, indicating varying difficulty levels among rule categories and providing insight into common error patterns.}
+	\caption{Distribution of recitation correctness across different Tajweed rules in the benchmark: red represents a reciter has a one or more errors and green with correct recitatoin.}
 	\label{fig:qdat_correctness}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/tajweed_columns_histograms.png}
-	\caption{Tajweed rules coverage histogram showing the frequency and diversity of rules evaluated in the benchmark dataset, demonstrating comprehensive coverage of key pronunciation aspects.}
+	\caption{Tajweed rules coverage histogram showing the frequency and diversity of rules evaluated in the benchmark dataset, red bars represents erros and green with correct recitaion.}
 	\label{fig:qdat_tajweed_coverage}
 \end{figure}
 
@@ -128,12 +82,12 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		\hline
 		\textbf{Madd Rule}         & \textbf{RMSE} \\
 		\hline
-		qalo\_alif\_len (normal)            & 0.449         \\
-		qalo\_waw\_len (normal)             & 0.456         \\
-		laa\_alif\_len (normal)             & 0.404         \\
-		separate\_madd (sperate)            & 0.687         \\
-		allam\_alif\_len (normal)           & 0.549         \\
-		madd\_aared\_len                    & 1.034         \\
+		qalo\_alif\_len (normal)   & 0.449         \\
+		qalo\_waw\_len (normal)    & 0.456         \\
+		laa\_alif\_len (normal)    & 0.404         \\
+		separate\_madd (sperate)   & 0.687         \\
+		allam\_alif\_len (normal)  & 0.549         \\
+		madd\_aared\_len           & 1.034         \\
 		\hline
 		\textbf{Average Madd RMSE} & 0.596         \\
 		\hline
@@ -194,22 +148,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \subsubsection{Performance Analysis and Discussion}
 
-\paragraph{Ikhfaa Detection Challenges:}
-The notably low F1 score for Ikhfaa (Noon Mokhfah) at 0.453 reflects several inherent challenges in Quranic pronunciation detection:
-\begin{itemize}
-	\item \textbf{Acoustic Similarity}: Ikhfaa involves nasalization that is acoustically similar to the clear noon pronunciation (noon moshaddadah), making discrimination challenging for both human listeners and automated systems
-	\item \textbf{Limited Ground Truth Reliability}: Few reciters can consistently detect and correctly implement Ikhfaa, leading to potential inconsistencies in the annotation quality even in expert-labeled datasets
-	\item \textbf{Context Dependency}: The correct implementation of Ikhfaa depends heavily on the following letter, adding complexity to the detection task
-	\item \textbf{Variability in Implementation}: Different reciters may implement Ikhfaa with varying degrees of nasalization, creating inconsistency in the training data
-\end{itemize}
-
-\paragraph{Madd Rule Complexity Analysis:}
-The Madd (prolongation) rules exhibit varying difficulty levels reflected in their RMSE values:
-\begin{itemize}
-	\item \textbf{Normal Madd Rules} (RMSE: 0.464): Include basic prolongation rules for alif, waw, and ya with consistent timing patterns, making them relatively easier to model
-	\item \textbf{Separate Madd} (RMSE: 0.687): Involves more complex timing requirements due to word boundaries and停顿 considerations
-	\item \textbf{Aared Madd} (RMSE: 1.034): The most challenging category, involving prolongation before sukoon with highly variable timing based on recitation style and context
-\end{itemize}
+The benchmark has many limitations: the size is very limited with inblanced gender. Along with not all Tajweed rules covered like (Tasheel). neither all phoenemes like letter thaal: ذ. But is an move towards benchamrking tajweed rules.
 
 
 \subsubsection{Usage}
@@ -220,5 +159,3 @@ from datasets import load_dataset
 ds = load_dataset('obadx/qdat_bench')
 print(ds['train'][0])  # Display first sample
 \end{verbatim}
-
-This benchmark provides a standardized evaluation platform for Quranic pronunciation error detection models, enabling fair comparison across different approaches and facilitating progress in the field of computational Quranic education. The comprehensive nature of the annotations, including all Tajweed rules, complete phoneme coverage, and 10 sifat characteristics, makes qdat\_bench an invaluable resource for researchers developing and comparing different representations of Quranic pronunciation rules.
