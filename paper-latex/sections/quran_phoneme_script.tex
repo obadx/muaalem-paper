@@ -2,10 +2,8 @@
 \label{sec:qps}
 We consider the Quran Phonetic Script to be the most valuable and important contribution of our work. By formalizing the assessment of Holy Quran pronunciation as an ASR problem represented through this script, we provide a comprehensive solution to the task.
 
-\subsection{Motivation for Developing Quran Phonetic Script}
 Modern Standard Arabic (MSA) orthography cannot adequately represent Tajweed rules for error detection. For example, MSA cannot measure the precise length of Madd rules. Previous research (e.g., \cite{omran2023automatic}) focused on single rules like Qalqalah. Our phonetic script addresses this limitation by capturing all Tajweed pronunciation errors except Ishmam (\arb{إشمام}), which involves a visual mouth movement without audible output.
 
-\subsection{Background}
 We based our script on classical Muslim scholarship rather than the International Phonetic Alphabet (IPA) for these reasons:
 
 \begin{enumerate}
@@ -14,7 +12,6 @@ We based our script on classical Muslim scholarship rather than the Internationa
     \item \textbf{Pedagogical Relevance}: Learners' errors align with classical definitions according to expert Quran teachers.
 \end{enumerate}
 
-\subsection{Defining Mistakes in Quran Recitation}
 Following \cite{sweed2021}, Quran recitation errors fall into three categories:
 \begin{itemize}
     \item \textbf{Articulation Errors}: Incorrect pronunciation of phonemes
@@ -22,42 +19,31 @@ Following \cite{sweed2021}, Quran recitation errors fall into three categories:
     \item \textbf{Tajweed Rule Errors}: Incorrect application of rules like Ghunnah, Madd, etc.
 \end{itemize}
 
-Our script comprehensively addresses all three aspects through two output levels:
+Our script comprehensively addresses all three aspects through main two output levels:
 \begin{itemize}
     \item \textbf{Phonemes Level}: Represents letters, vowels, and Tajweed rules
-    \item \textbf{Sifat Level}: Represents articulation attributes for each phoneme
+    \item \textbf{Sifat Level}: Consists of 10 levels representing articulation attributes for each phoneme
 \end{itemize}
 
 Refer to tables: \ref{tab:phoneme_set} \ref{tab:sifat_set} for Phonemes and Sifat levels.
 
-\subsection*{Key Design Principles}
-\begin{enumerate}
-    \item \textbf{Madd Representation}:
-    \begin{itemize}
-        \item Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: \arb{اااا})
+Our script has some important charactirstics:
+
+\begin{itemize}
+	\item Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: \arb{اااا})
         \item Madd al-Leen represented with multiple waw/yaa symbols
-    \end{itemize}
     
-    \item \textbf{Emphatic Articulation}:
-    \begin{itemize}
         \item Stressed Ghunnah (e.g., \arb{النون المشددة}) as three consecutive noon symbols (\arb{ننن})
         \item Ikhfa represented as three consecutive noon\_mokhfah (\arb{ںںں}) or meem\_mokhfah (\arb{۾۾۾})
-    \end{itemize}
     
-    \item \textbf{Idgham Handling}:
-    \begin{itemize}
         \item Assimilation represented by doubling (e.g., \arb{مَن يَعْمَلْ} $\rightarrow$ \arb{مَيييَعمَل})
-    \end{itemize}
     
-    \item \textbf{Special Cases}:
-    \begin{itemize}
         \item Sakin: No following symbol
         \item Imala: fatha\_momala and alif\_momala
         \item Rawm: dama\_mokhtalasa marker
-    \end{itemize}
-\end{enumerate}
+\end{itemize}
 
-Example: In table~\ref{tab:examples_with_sifat} shows how our phonetizer works.
+Example: In table~\ref{tab:examples_with_sifat} shows how our phonetizer works. This example showes the phonetization of word (\arb{أَتُحَٰٓجُّوٓنِّى}) as a row by row: The firt row showes conversion of (أَ) to (ءَ) with its sifat in the row. following the second row. For the forth row showing the madd lazem rule with 6 beats phonetized as 6 alifs (اااااا) same as the sixth row but with damma represented as 6 waw\_madd (ۥۥۥۥۥۥ) And for the fifth row we notice that we converted (ًُجُّ) to (ججُ) as we dissmple shadda. The last row showes the normal madd of yaa with two beats represented as two yadd\_madd (ۦۦ).
 
 
 
@@ -65,7 +51,7 @@ Example: In table~\ref{tab:examples_with_sifat} shows how our phonetizer works.
 
 \begin{table*}[h]
 \centering
-\caption{Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes}
+\caption{Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes. This example showes the phonetization of word (\arb{أَتُحَٰٓجُّوٓنِّى}) as a row by row: The firt row showes conversion of (أَ) to (ءَ) with its sifat in the row. following the second row. For the forth row showing the madd lazem rule with 6 beats phonetized as 6 alifs (اااااا) same as the sixth row but with damma represented as 6 waw\_madd (ۥۥۥۥۥۥ) And for the fifth row we notice that we converted (ًُجُّ) to (ججُ) as we dissmple shadda. The last row showes the normal madd of yaa with two beats represented as two yadd\_madd (ۦۦ)}
 \label{tab:examples_with_sifat}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -97,7 +83,6 @@ Example: In table~\ref{tab:examples_with_sifat} shows how our phonetizer works.
 \vspace{2mm}
 \begin{center}  % Centering wrapper added here
 \scriptsize
-Phonetization of word (\hafs{أَتُحَٰٓجُّوٓنِّى}) \\
 \textbf{Attribute Abbreviations:} \\
 H/J: Hams/Jahr \quad S/R: Shidda/Rakhawa \quad T/T: Tafkheem/Taqeeq \quad Itb: Itbaq \\
 Saf: Safeer \quad Qal: Qalqla \quad Tik: Tikraar \quad Taf: Tafashie \quad Ist: Istitala \quad Gho: Ghonna \\

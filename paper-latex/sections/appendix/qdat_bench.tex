@@ -1,16 +1,16 @@
 \subsection{QDat Bench Dataset}
 \label{sec:qdat_bench}
 
-QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules and QPS~\ref{sec:qps} (complete phoneme-level annotations and 10 sifat (characteristic) levels).
+QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon the original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules and QPS~\ref{sec:qps} (complete phoneme-level annotations and 10 sifat (characteristic) levels).
 
 The enhanced dataset provides F1 and MSE metrics for Tajweed rules, enabling researchers to compare different representations and approaches to Tajweed rule detection. This comprehensive annotation framework makes qdat\_bench particularly valuable for advancing research in automated Quranic pronunciation assessment and error detection.
 
-The dataset addresses several limitations of the original qdat collection. The original dataset suffered from incomplete coverage of all Tajweed rules, with only partial implementation of the comprehensive rule set required for thorough evaluation. Additionally, the original collection contained multiple reciters recording the same verse (each reciter records the the same verse 10 times), creating significant redundancy and potential bias in evaluation. In contrast, qdat\_bench selects a single recording randomly for every rectier. Finally, the original dataset lacked comprehensive phoneme-level and sifat-level annotations, limiting its utility for fine-grained analysis of pronunciation patterns and characteristics.
+The dataset addresses several limitations of the original qdat collection. The original dataset suffered from incomplete coverage of all Tajweed rules, with only partial implementation of the comprehensive rule set required for thorough evaluation. Additionally, the original collection contained multiple reciters recording the same verse (each reciter records the same verse 10 times), creating significant redundancy and potential bias in evaluation. In contrast, qdat\_bench selects a single recording randomly for every reciter. Finally, the original dataset lacked comprehensive phoneme-level and sifat-level annotations, limiting its utility for fine-grained analysis of pronunciation patterns and characteristics.
 
 QDat Bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
 
 \subsubsection{Data Structure}
-The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. Bello is description of Tajweed rules found on our benchamrk:
+The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. Below is description of Tajweed rules found on our benchmark:
 
 \paragraph{Madd (Prolongation) Rules:}
 The dataset includes comprehensive annotations for various types of Madd rules, which are fundamental to proper Quranic recitation. The normal Madd rules are captured through several specific metrics: \texttt{qalo\_alif\_len} measures the length of normal Madd alif in the word "قالوا" on a scale of 0-8, while \texttt{qalo\_waw\_len} similarly measures the normal Madd waw in the same word. Additional normal Madd measurements include \texttt{laa\_alif\_len} for the normal Madd alif in "لا" and \texttt{allam\_alif\_len} for the normal Madd alif in "علام". The Separate Madd is measured through \texttt{separate\_madd}, which captures the length for the phrase "لنا إنك" (0-8). Finally, Madd Aared, is evaluated using \texttt{madd\_aared\_len}, measuring prolongation before sukoon (0-8), which typically exhibits the highest variability in implementation.
@@ -24,7 +24,7 @@ The Qalqalah rule is captured through the \texttt{qalqalah} metric, which identi
 
 \subsubsection{Dataset Statistics}
 
-The qdat\_bench dataset comprises 159 carefully selected samples. The demographic distribution reflects a diverse participant pool, with 120 female reciters representing 75.5\% of the dataset and 39 male reciters accounting for 24.5\%. The age diversity across various age groups provides comprehensive coverage of different learning stages and pronunciation patterns as showin in Figure~\ref{fig:qdat_age_gender}. The benchmarks has various types of error: 106 reciters has an error or more while 53 has complete correct recitations as shown in Figure~\ref{fig:qdat_correctness}. Finally figure~\ref{fig:qdat_tajweed_coverage} showes the errors per every Tajweed rule as red represents erros and green with correct recitaion.
+The qdat\_bench dataset comprises 159 carefully selected samples. The demographic distribution reflects a diverse participant pool, with 120 female reciters representing 75.5\% of the dataset and 39 male reciters accounting for 24.5\%. The age diversity across various age groups provides comprehensive coverage of different learning stages and pronunciation patterns as shown in Figure~\ref{fig:qdat_age_gender}. The benchmark has various types of error: 106 reciters have one or more errors while 53 have complete correct recitations as shown in Figure~\ref{fig:qdat_correctness}. Finally Figure~\ref{fig:qdat_tajweed_coverage} shows the errors per every Tajweed rule as red represents errors and green with correct recitation.
 
 \begin{figure}[htbp]
 	\centering
@@ -36,14 +36,14 @@ The qdat\_bench dataset comprises 159 carefully selected samples. The demographi
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/correctness_histogram.png}
-	\caption{Distribution of recitation correctness across different Tajweed rules in the benchmark: red represents a reciter has a one or more errors and green with correct recitatoin.}
+	\caption{Distribution of recitation correctness across different Tajweed rules in the benchmark: red represents a reciter has one or more errors and green with correct recitation.}
 	\label{fig:qdat_correctness}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/tajweed_columns_histograms.png}
-	\caption{Tajweed rules coverage histogram showing the frequency and diversity of rules evaluated in the benchmark dataset, red bars represents erros and green with correct recitaion.}
+	\caption{Tajweed rules coverage histogram showing the frequency and diversity of rules evaluated in the benchmark dataset, red bars represents errors and green with correct recitation.}
 	\label{fig:qdat_tajweed_coverage}
 \end{figure}
 
@@ -76,7 +76,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Madd Rules Performance (RMSE).Golden valuese for madd are: (2 for normal madd, 2 or 4 for spearate madd, and 2, 4, or 6 for aared madd.}
+	\caption{QDat Bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd.}
 	\label{tab:qdat_madd_metrics}
 	\begin{tabular}{lc}
 		\hline
@@ -85,7 +85,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		qalo\_alif\_len (normal)   & 0.449         \\
 		qalo\_waw\_len (normal)    & 0.456         \\
 		laa\_alif\_len (normal)    & 0.404         \\
-		separate\_madd (sperate)   & 0.687         \\
+		separate\_madd (separate)  & 0.687         \\
 		allam\_alif\_len (normal)  & 0.549         \\
 		madd\_aared\_len           & 1.034         \\
 		\hline
@@ -148,7 +148,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \subsubsection{Performance Analysis and Discussion}
 
-The benchmark has many limitations: the size is very limited with inblanced gender. Along with not all Tajweed rules covered like (Tasheel). neither all phoenemes like letter thaal: ذ. But is an move towards benchamrking tajweed rules.
+The benchmark has many limitations: the size is very limited with imbalanced gender. Along with not all Tajweed rules covered like (Tasheel). Neither all phonemes like letter thaal: ذ. But it is a move towards benchmarking Tajweed rules.
 
 
 \subsubsection{Usage}
