@@ -1,10 +1,8 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
-
 % 1. Load essential math packages FIRST
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
-
 % 2. Load other English-support packages
 \usepackage{cite}
 \usepackage{graphicx}
@@ -20,17 +18,24 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{tikz}
-
-% 3. Configure fonts BEFORE polyglossia
+% 3. Configure fonts with proper Arabic features
 \usepackage{fontspec}
-\setmainfont{Times New Roman} % Force English font first
-\newfontfamily\arabicfont[Script=Arabic]{Amiri} % Arabic font
+\setmainfont{Times New Roman}
+\newfontfamily\arabicfont[
+  Script=Arabic,
+  Scale=1.0,
+  Renderer=HarfBuzz,
+  RawFeature={+ss05,+ss06,+ss07}
+]{Amiri}
 
-% Simple Arabic RTL support without complex packages
-
-% 5. Define \arb command - bidi package approach for RTL support
+% 4. Define \arb command with proper RTL directionality
 \newcommand{\arb}[1]{%
-  {\arabicfont #1}%
+  \bgroup
+  \arabicfont
+  \textdir TRT
+  \pardir TRT
+  #1%
+  \egroup
 }
 
 % \newfontfamily\hafsFont{UthmanicHafs}[
@@ -45,9 +50,7 @@
 % ]
 %
 % \newcommand{\hafs}[1]{{\hafsFont\arb{#1}}}
-
-
-% 6. Load hyperref LAST
+% 5. Load hyperref LAST
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -55,34 +58,22 @@
     filecolor=magenta,      
     urlcolor=cyan,
     pdfencoding=unicode,
-    % pdffont={Times New Roman} % Ensure PDF font matches
 }
-
 % Fix section numbering
 \makeatletter
 \def\@seccntformat#1{\csname the#1\endcsname\quad}
 \makeatother
-
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-
-
 % Footer configuration
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
-
     
 \begin{document}
-
-\title{Automatic Pronunciation Error Detection and Correction of the Holy Quran’s Learners Using Deep Learning\\
-	% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-	% should not be used}
-	% \thanks{Identify applicable funding agency here. If none, delete this.}
+\title{Automatic Pronunciation Error Detection and Correction of the Holy Quran's Learners Using Deep Learning\\
 }
-
 \author{\IEEEauthorblockN{Abdullah Abdelfttah}
 \IEEEauthorblockA{\textit{{\footnotesize Computer and Systems Engineering }} \\
 \textit{{\footnotesize Faculty of Engineering Ain Shams University}}\\
@@ -101,17 +92,13 @@ mahmoud.khalil@eng.asu.edu.eg}
 {\footnotesize Cairo, Egypt} \\
 hazem.abbas@eng.asu.edu.eg}
 }
-
 \maketitle
-
 \begin{abstract}
 	\input{abstract}
 \end{abstract}
-
 \begin{IEEEkeywords}
 	Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end Models
 \end{IEEEkeywords}
-
 \input{sections/introduction}
 \input{sections/related_work}
 \input{sections/quran_phoneme_script}
@@ -121,28 +108,13 @@ hazem.abbas@eng.asu.edu.eg}
 \input{sections/limitations_and_future_work}
 \input{sections/conclusion}
 \input{sections/acknowledgment}
-
-
-
-% \begin{thebibliography}{00}
-
-% \bibliography{references} % Your .bib file
-
-% \end{thebibliography}
-
-% REPLACE WITH THIS:
 \bibliographystyle{IEEEtran}
 \bibliography{references}
-
-
 \section*{Appendix}
 \addcontentsline{toc}{section}{Appendix}
-
 \input{sections/appendix/phonemes_vocabulary}
 \input{sections/appendix/uthmani_to_qps}
 \input{sections/appendix/tasmeea_algorithm}
 \input{sections/appendix/moshaf_attributes}
 \input{sections/appendix/qdat_bench}
-
-
 \end{document}

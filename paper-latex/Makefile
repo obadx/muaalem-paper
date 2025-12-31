@@ -1,7 +1,7 @@
 # Makefile for LaTeX project
 
 MAIN = main
-LATEX = xelatex -shell-escape -interaction=nonstopmode
+LATEX = lualatex -shell-escape -interaction=nonstopmode
 BIBTEX = bibtex
 
 .PHONY: all bib build clean cleanall

@@ -13,13 +13,13 @@ QDat Bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ ل�
 The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. Below is description of Tajweed rules found on our benchmark:
 
 \paragraph{Madd (Prolongation) Rules:}
-The dataset includes comprehensive annotations for various types of Madd rules, which are fundamental to proper Quranic recitation. The normal Madd rules are captured through several specific metrics: \texttt{qalo\_alif\_len} measures the length of normal Madd alif in the word "قالوا" on a scale of 0-8, while \texttt{qalo\_waw\_len} similarly measures the normal Madd waw in the same word. Additional normal Madd measurements include \texttt{laa\_alif\_len} for the normal Madd alif in "لا" and \texttt{allam\_alif\_len} for the normal Madd alif in "علام". The Separate Madd is measured through \texttt{separate\_madd}, which captures the length for the phrase "لنا إنك" (0-8). Finally, Madd Aared, is evaluated using \texttt{madd\_aared\_len}, measuring prolongation before sukoon (0-8), which typically exhibits the highest variability in implementation.
+The dataset includes comprehensive annotations for various types of Madd rules, which are fundamental to proper Quranic recitation. The normal Madd rules are captured through several specific metrics: \texttt{qalo\_alif\_len} measures the length of normal Madd alif in the word \arb{قالوا} on a scale of 0-8, while \texttt{qalo\_waw\_len} similarly measures the normal Madd waw in the same word. Additional normal Madd measurements include \texttt{laa\_alif\_len} for the normal Madd alif in \arb{لا} and \texttt{allam\_alif\_len} for the normal Madd alif in \arb{علام}. The Separate Madd is measured through \texttt{separate\_madd}, which captures the length for the phrase \arb{لنا إنك} (0-8). Finally, Madd Aared, is evaluated using \texttt{madd\_aared\_len}, measuring prolongation before sukoon (0-8), which typically exhibits the highest variability in implementation.
 
 \paragraph{Ghunnah (Nasalization) Rules:}
-Ghunnah rules are systematically annotated to capture the nasalization characteristics essential for proper Quranic pronunciation. The \texttt{noon\_moshaddadah\_len} metric evaluates the length of noon moshaddadah in the word "إنَّك" using a binary classification system where 0 indicates partial nasalization and 1 represents complete implementation. Similarly, the \texttt{noon\_mokhfah\_len} measures the Ikhfaa pronunciation in "أنت" through a three-tiered system: 0 represents a clear noon pronunciation, 1 indicates partial Ikhfaa implementation, and 2 denotes complete Ikhfaa execution.
+Ghunnah rules are systematically annotated to capture the nasalization characteristics essential for proper Quranic pronunciation. The \texttt{noon\_moshaddadah\_len} metric evaluates the length of noon moshaddadah in the word \arb{إنَّك} using a binary classification system where 0 indicates partial nasalization and 1 represents complete implementation. Similarly, the \texttt{noon\_mokhfah\_len} measures the Ikhfaa pronunciation in \arb{أنت} through a three-tiered system: 0 represents a clear noon pronunciation, 1 indicates partial Ikhfaa implementation, and 2 denotes complete Ikhfaa execution.
 
 \paragraph{Qalqalah (Echo) Rules:}
-The Qalqalah rule is captured through the \texttt{qalqalah} metric, which identifies the presence or absence of the echo characteristic in the word "الغيوب". This binary classification system uses 0 to indicate no Qalqalah implementation and 1 to denote proper Qalqalah execution.
+The Qalqalah rule is captured through the \texttt{qalqalah} metric, which identifies the presence or absence of the echo characteristic in the word \arb{الغيوب}. This binary classification system uses 0 to indicate no Qalqalah implementation and 1 to denote proper Qalqalah execution.
 
 
 \subsubsection{Dataset Statistics}
@@ -148,7 +148,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \subsubsection{Performance Analysis and Discussion}
 
-The benchmark has many limitations: the size is very limited with imbalanced gender. Along with not all Tajweed rules covered like (Tasheel). Neither all phonemes like letter thaal: ذ. But it is a move towards benchmarking Tajweed rules.
+The benchmark has many limitations: the size is very limited with imbalanced gender. Along with not all Tajweed rules covered like (Tasheel). Neither all phonemes like letter thaal: \arb{ذ}. But it is a move towards benchmarking Tajweed rules.
 
 
 \subsubsection{Usage}
