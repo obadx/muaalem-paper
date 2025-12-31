@@ -26,16 +26,12 @@
 \setmainfont{Times New Roman} % Force English font first
 \newfontfamily\arabicfont[Script=Arabic]{Amiri} % Arabic font
 
-% 4. Load polyglossia with explicit font preservation
-% \usepackage{polyglossia}
-% \setdefaultlanguage{english}
-% \setotherlanguage{arabic}
-% Reaffirm font assignments after polyglossia
-% \babelfont{english}{Times New Roman}
-% \babelfont{arabic}{Amiri}
+% Simple Arabic RTL support without complex packages
 
-% 5. Define \arb command
-\newcommand{\arb}[1]{\textarabic{#1}}
+% 5. Define \arb command - bidi package approach for RTL support
+\newcommand{\arb}[1]{%
+  {\arabicfont #1}%
+}
 
 % \newfontfamily\hafsFont{UthmanicHafs}[
 %     Script=Arabic,
