@@ -1,4 +1,5 @@
 \subsection{QDat Bench Dataset}
+\label{sec:qdat_bench}
 
 \subsubsection{Dataset Description}
 QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules, complete phoneme-level annotations, and 10 sifat (characteristic) levels.
@@ -13,17 +14,17 @@ The dataset addresses several limitations of the original qdat collection:
 	\item Lack of comprehensive phoneme-level and sifat-level annotations
 \end{itemize}
 
-QDat Bench contains 159 samples focusing on the verse: \{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
+QDat Bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
 
 \subsubsection{Data Structure}
 The dataset includes the following main features:
 \begin{itemize}
-	\item \textbf{audio}: Audio file (sampling rate: None, mono channel)
-	\item \textbf{id}: Unique identifier for each element
-	\item \textbf{original\_id}: The item's ID in the original dataset
-	\item \textbf{gender}: Reciter's gender (male/female)
-	\item \textbf{age}: Reciter's age
-	\item \textbf{phonetic\_transcript}: Phonetic transcription using quran-transcript package
+	\item \textbf{audio}: Audio file (sampling rate: None, mono channel).
+	\item \textbf{id}: Unique identifier for each element.
+	\item \textbf{original\_id}: The item's ID in the original dataset.
+	\item \textbf{gender}: Reciter's gender (male/female).
+	\item \textbf{age}: Reciter's age.
+	\item \textbf{phonetic\_transcript}: Phonetic transcription Quran Phonetic Script~/ref{sec:qps}.
 \end{itemize}
 
 \paragraph{Madd (Prolongation) Rules:}
@@ -121,18 +122,18 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Madd Rules Performance (RMSE)}
+	\caption{QDat Bench Madd Rules Performance (RMSE).Golden valuese for madd are: (2 for normal madd, 2 or 4 for spearate madd, and 2, 4, or 6 for aared madd.}
 	\label{tab:qdat_madd_metrics}
 	\begin{tabular}{lc}
 		\hline
 		\textbf{Madd Rule}         & \textbf{RMSE} \\
 		\hline
-		qalo\_alif\_len            & 0.449         \\
-		qalo\_waw\_len             & 0.456         \\
-		laa\_alif\_len             & 0.404         \\
-		separate\_madd             & 0.687         \\
-		allam\_alif\_len           & 0.549         \\
-		madd\_aared\_len           & 1.034         \\
+		qalo\_alif\_len (normal)            & 0.449         \\
+		qalo\_waw\_len (normal)             & 0.456         \\
+		laa\_alif\_len (normal)             & 0.404         \\
+		separate\_madd (sperate)            & 0.687         \\
+		allam\_alif\_len (normal)           & 0.549         \\
+		madd\_aared\_len                    & 1.034         \\
 		\hline
 		\textbf{Average Madd RMSE} & 0.596         \\
 		\hline
@@ -210,16 +211,6 @@ The Madd (prolongation) rules exhibit varying difficulty levels reflected in the
 	\item \textbf{Aared Madd} (RMSE: 1.034): The most challenging category, involving prolongation before sukoon with highly variable timing based on recitation style and context
 \end{itemize}
 
-\paragraph{Research Utility and Future Directions:}
-The comprehensive annotation framework of qdat\_bench, with its 10 sifat levels and complete phoneme coverage, provides multiple research opportunities:
-\begin{itemize}
-	\item \textbf{Representation Comparison}: Researchers can compare different approaches to representing Tajweed rules (phoneme-level vs. rule-level vs. sifat-level)
-	\item \textbf{Multi-level Learning}: The dataset enables evaluation of models that learn hierarchical representations from phonemes to complex Tajweed rules
-	\item \textbf{Error Analysis Framework}: Standardized metrics allow for systematic comparison of error patterns across different methodologies
-	\item \textbf{Cross-dataset Generalization}: The diverse reciter population supports evaluation of model generalization across different recitation styles
-\end{itemize}
-
-This analysis provides insights into the relative challenges of different Tajweed rules and establishes qdat\_bench as a comprehensive benchmark for advancing research in automated Quranic pronunciation assessment.
 
 \subsubsection{Usage}
 The dataset can be loaded using the Hugging Face datasets library:
