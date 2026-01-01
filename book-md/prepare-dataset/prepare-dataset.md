@@ -6,7 +6,7 @@ To prepare the data, we first defined selection criteria. We aimed to collect re
 (3) Collect expert recitations  
 (4) Segment recitations at pause points (وقف)  
 (5) Transcribe segments  
-(6) Validate data through *Tasmee* (تسميع) Algrithm
+(6) Validate data through *Tasmee* (تسميع) Algorithm
 
 We define a *Moshaf* as a complete Quran recitation (chapters 1-114) by a specific reciter. Statistics are summarized below:  
 
@@ -205,4 +205,3 @@ After matching, we catalogued missing Quranic portions per surah.
 
 #### Manual Correction  
 We corrected transcription errors identified through the above process.  
-

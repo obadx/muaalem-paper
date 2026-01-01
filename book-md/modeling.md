@@ -16,3 +16,7 @@ We fine-tuned Facebook's Wav2Vec2-Bert model [barrault2023seamless] for a single
 ![Distribution of recitation lengths (in seconds) across the dataset](./figures/audio-lens.png)  
 
 Training was conducted on a single H200 GPU with 141 GB of memory and completed in approximately 7 hours.
+
+## Resources and Reproducibility  
+
+We release inference code, trained checkpoints, and configuration at https://obadx.github.io/quran-muaalem/en/. The Quran Phonetic Script implementation and phoneticization tools are available at https://github.com/obadx/quran-transcript. Dataset preparation and segmentation tools are released at https://github.com/obadx/prepare-quran-dataset and https://github.com/obadx/recitations-segmenter, while the final datasets are hosted on Hugging Face (https://huggingface.co/datasets/obadx/quran-muaalem and https://huggingface.co/datasets/obadx/qdat_bench).  
