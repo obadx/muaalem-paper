@@ -22,8 +22,8 @@ Although the RDI company pioneered computer-aided Quranic instruction [sherif200
 
 - **A Phonetizer**: Encodes *all* Tajweed rules and articulation attributes (*Sifat*) defined by classical scholars, except *Ishmam* (إشمام).
 - **A 98% Automated Pipeline**: Generates highly accurate datasets from expert recitations.
-- **A Dataset**: ~300K annotated utterances (890 hours).
-- **Integration**: Our multi-level CTC model demonstrates the learnability of the Quranic phonetic script (achieving a 0.16% average phoneme error rate).
+- **A Dataset**: 286K annotated utterances (848 hours).
+- **Integration**: Our multi-level CTC model demonstrates the learnability of the Quranic phonetic script (achieving a 0.21% average phoneme error rate).
 
 The Thesis is organized as follows:
 

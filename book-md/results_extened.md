@@ -62,22 +62,22 @@ After completing our initial training and publishing the model, we identified a 
 
 We trained this Version 3 model using the following loss weights: 0.4 for the `phonemes` level, 0.0605 for both `tafkheem_or_tarqeeq` and `shidda_or_rakhawa`, and 0.05987 for the remaining levels.
 
-For testing, we removed mosahaf `29.0` and `30.0` from the training and validation sets and combined them with the existing test set. This resulted in a final test set containing mosahaf `19.0`, `26.1`, `29.0`, and `30.0`. The results are shown in Table [table_results_v3].
+For testing, we reserved mosahaf `19.0`, `29.0`, and `30.0` as a held-out test set. The results are shown in Table [table_results_v3].
 
 | Metric                   | Value     |
 |--------------------------|-----------|
-| per_phonemes             | 0.00449   |
-| per_hams_or_jahr         | 0.00177   |
-| per_shidda_or_rakhawa    | 0.00315   |
-| per_tafkheem_or_taqeeq   | 0.00299   |
-| per_itbaq                | 0.00130   |
-| per_safeer               | 0.00152   |
-| per_qalqla               | 0.00123   |
-| per_tikraar              | 0.00436   |
-| per_tafashie             | 0.00181   |
-| per_istitala             | 0.00122   |
-| per_ghonna               | 0.00185   |
-| average_per              | 0.00234   |
+| per_phonemes             | 0.00538   |
+| per_hams_or_jahr         | 0.00144   |
+| per_shidda_or_rakhawa    | 0.00267   |
+| per_tafkheem_or_taqeeq   | 0.00219   |
+| per_itbaq                | 0.00100   |
+| per_safeer               | 0.00146   |
+| per_qalqla               | 0.00094   |
+| per_tikraar              | 0.00427   |
+| per_tafashie             | 0.00146   |
+| per_istitala             | 0.00087   |
+| per_ghonna               | 0.00128   |
+| average_per              | 0.00209   |
 
 [table_results_v3]
-Testing results on mosahaf `19.0`, `26.1`, `29.0`, and `30.0` showing a balanced Phoneme Error Rate (PER) across all levels. The `phonemes` level has a naturally higher PER as it is the largest vocabulary (44 tokens: 43 phonemes + 1 padding token).
+Testing results on mosahaf `19.0`, `29.0`, and `30.0` showing a balanced Phoneme Error Rate (PER) across all levels. The `phonemes` level has a naturally higher PER (0.538\%) as it is the largest vocabulary (44 tokens: 43 phonemes + 1 padding token).
