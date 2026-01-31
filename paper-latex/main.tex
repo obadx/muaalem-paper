@@ -1,10 +1,8 @@
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+\documentclass[a4paper,11pt]{article}
 % 1. Load essential math packages FIRST
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 % 2. Load other English-support packages
-\usepackage{cite}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -19,15 +17,28 @@
 \usepackage{longtable}  % For long tables that span multiple pages
 \usepackage{lastpage}
 \usepackage{tikz}
-% 3. Configure fonts with proper Arabic features
+
+% 3. Configure page layout (ILS requirements)
+\usepackage[margin=1.5in,a4paper]{geometry}
+
+% 4. Configure spacing (single spacing)
+\usepackage{setspace}
+\singlespacing
+
+% 5. Configure fonts with proper Arabic features (ILS requirements)
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
+% Fallback to Times New Roman if Calibri not available (similar serif font)
+\setmainfont{Times New Roman}[Scale=1.0]
 \newfontfamily\arabicfont[
   Script=Arabic,
   Scale=1.0,
   Renderer=HarfBuzz,
   RawFeature={+ss05,+ss06,+ss07}
 ]{Amiri}
+
+% 6. Configure citation system (APA 7th edition)
+\usepackage[style=apa,backend=biber]{biblatex}
+\addbibresource{references.bib}
 
 % 4. Define \arb command with proper RTL directionality
 \newcommand{\arb}[1]{%
@@ -51,7 +62,8 @@
 % ]
 %
 % \newcommand{\hafs}[1]{{\hafsFont\arb{#1}}}
-% 5. Load hyperref LAST
+
+% 7. Load hyperref LAST
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -60,6 +72,26 @@
     urlcolor=cyan,
     pdfencoding=unicode,
 }
+
+% 8. Configure section formatting for APA style
+\usepackage{sectsty}
+
+% Level 1: Centered, Bold, Upper and Lowercase Letters
+\sectionfont{\centering\bfseries}
+\subsectionfont{\raggedright\bfseries}
+\subsubsectionfont{\raggedright\bfseries\itshape}
+
+% 9. Configure paragraph formatting (ILS requirements)
+% No indentation for first paragraph of each section, 0.5 inch for subsequent paragraphs
+\usepackage{indentfirst}
+\setlength{\parindent}{0in}
+% Use noindent for first paragraphs of sections
+
+% 9. Configure paragraph formatting (ILS requirements)
+% No indentation for first paragraph of each section, 0.5 inch for subsequent paragraphs
+\usepackage{indentfirst}
+\setlength{\parindent}{0in}
+\newenvironment{firstpar}{\setlength{\parindent}{0in}}{\setlength{\parindent}{0.5in}}
 % Fix section numbering
 \makeatletter
 \def\@seccntformat#1{\csname the#1\endcsname\quad}
@@ -71,35 +103,27 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+% Configure section numbering for APA style
+\setcounter{secnumdepth}{5}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
     
 \begin{document}
-\title{Automatic Pronunciation Error Detection and Correction of the Holy Quran's Learners Using Deep Learning\\
-}
-\author{\IEEEauthorblockN{Abdullah Abdelfttah}
-\IEEEauthorblockA{\textit{{\footnotesize Computer and Systems Engineering }} \\
-\textit{{\footnotesize Faculty of Engineering Ain Shams University}}\\
-{\footnotesize Cairo, Egypt} \\
-2101398@eng.asu.edu.eg}
-\and
-\IEEEauthorblockN{Mahmoud I. Khalil}
-\IEEEauthorblockA{\textit{{\footnotesize Computer and Systems Engineering }} \\
-\textit{{\footnotesize Faculty of Engineering Ain Shams University}}\\
-{\footnotesize Cairo, Egypt} \\
-mahmoud.khalil@eng.asu.edu.eg}
-\and
-\IEEEauthorblockN{Hazem Abbas}
-\IEEEauthorblockA{\textit{{\footnotesize Computer and Systems Engineering }} \\
-\textit{{\footnotesize Faculty of Engineering Ain Shams University}}\\
-{\footnotesize Cairo, Egypt} \\
-hazem.abbas@eng.asu.edu.eg}
-}
+\title{Automatic Pronunciation Error Detection and Correction of the Holy Quran's Learners Using Deep Learning}
+
+\author{Abdullah Abdelfttah$^{1}$, Mahmoud I. Khalil$^{1}$, Hazem Abbas$^{1}$\\
+	$^{1}$Computer and Systems Engineering, Faculty of Engineering, Ain Shams University, Cairo, Egypt\\
+	\{2101398@eng.asu.edu.eg, mahmoud.khalil@eng.asu.edu.eg, hazem.abbas@eng.asu.edu.eg\}\\
+	\textbf{Corresponding Author}: Abdullah Abdelfttah$^*$}
+
 \maketitle
 \begin{abstract}
 	\input{abstract}
 \end{abstract}
-\begin{IEEEkeywords}
-	Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end Models
-\end{IEEEkeywords}
+
+\textbf{Keywords}: Mispronunciation Detection Model, Arabic Natural Language Processing, End-to-end Models
 \input{sections/introduction}
 \input{sections/related_work}
 \input{sections/quran_phoneme_script}
@@ -109,8 +133,7 @@ hazem.abbas@eng.asu.edu.eg}
 \input{sections/limitations_and_future_work}
 \input{sections/conclusion}
 \input{sections/acknowledgment}
-\bibliographystyle{IEEEtran}
-\bibliography{references}
+\printbibliography
 \section*{Appendix}
 \addcontentsline{toc}{section}{Appendix}
 \input{sections/appendix/phonemes_vocabulary}
@@ -118,5 +141,5 @@ hazem.abbas@eng.asu.edu.eg}
 \input{sections/appendix/tasmeea_algorithm}
 \input{sections/appendix/moshaf_attributes}
 \input{sections/appendix/qdat_bench}
-\input{sections/appendix/detailed_qps_construction}
+% \input{sections/appendix/detailed_qps_construction}
 \end{document}

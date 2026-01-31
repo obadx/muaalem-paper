@@ -2,7 +2,7 @@
 
 MAIN = main
 LATEX = lualatex -shell-escape -interaction=nonstopmode
-BIBTEX = bibtex
+BIBTEX = biber
 
 .PHONY: all bib build clean cleanall
 
