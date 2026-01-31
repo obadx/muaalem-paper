@@ -1,7 +1,9 @@
 \section{Modeling The Quran Phonetic Script}
 Our Quran Phonetic script has two outputs: \texttt{phonemes} and \texttt{sifat} (which has 10 attributes). We modeled this as follows: Imagine you are given an input speech utterance and want to output transcripts in Arabic, English, French, and German simultaneously. We implemented this as a speech encoder with a linear layer for each language. Replacing languages with our 11 levels (\texttt{phonemes} and the 10 sifat), we obtain 11 parallel transcription levels. We chose CTC loss \cite{graves2006ctc} without language model integration because we aim to capture what the user actually said, not what they intended to say. We name our architecture \textbf{Multi-level CTC}.  
 
-We compute the loss by averaging all CTC losses for the 11 levels, assigning a weight of 0.4 to the \texttt{phonemes} level as it has the largest vocabulary size (43) compared to other levels.  
+The final loss is a weighted average of the CTC losses from all 11 hierarchical levels. The weights are assigned based on the vocabulary size of each level to balance their contribution. Specifically, the \texttt{phonemes} level (vocabulary size 44, including blank token) receives a weight of 0.4; the \texttt{shidda\_or\_rakhawa} and \texttt{tafkheem\_or\_taqeeq} levels (each with a vocabulary size of 4 including blank token) receive a weight of 0.0605 each. The remaining eight levels (each with a vocabulary size of 3 including blank token) receive a weight of 0.069875 each.
+
+\texttt{phonemes} level as it has the largest vocabulary size (43) compared to other levels.  
 
 \begin{figure}[htbp]
 \centering
