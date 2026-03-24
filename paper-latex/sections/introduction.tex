@@ -1,10 +1,12 @@
 \section{Introduction}
 \noindent
-Assessing pronunciation is not a simple task \cite{kheir2023automatic}, as it does not only rely on pronouncing phonemes correctly but also involves other factors like intonation, prosody, and stress. Does learning these mean one is done? No---other factors include fluency and completeness \cite{kheir2023automatic}. However, the Holy Quran presents unique characteristics: it is among the easiest spoken texts to learn despite containing special phonemes absent in other languages.
+Assessing pronunciation is not a simple task \cite{kheir2023automatic}, as it does not only rely on pronouncing phonemes correctly but also involves other factors like intonation, prosody, and stress. Additionally, fluency and completeness are essential components of proper pronunciation assessment. The Holy Quran presents unique characteristics: it is among the easiest spoken texts to learn despite containing special phonemes absent in other languages.
 
 The pronunciation of the Holy Quran is governed by rigorously strict rules formally defined by ancient Muslim scholars since the 6th century. Despite their beauty and precision, these rules have not been comprehensively digitized (to our knowledge) for Quranic pronunciation assessment.
 
-Although RDI pioneered computer-aided Quranic instruction \cite{sherif2007enhancing}, they neither disclosed their phoneticization process nor released data/models. Consequently, new research must start from basics: defining phoneticization, data, and models. To bridge this gap, we introduce:
+This paper focuses on automatic detection and localization of Tajweed Rules and Sifat-related pronunciation errors from audio, enabling formative feedback, automated tutoring, and standardized assessment.
+
+To the best of our knowledge, RDI \cite{sherif2007enhancing} was the first entity to apply AI for detecting pronunciation errors alongside Tajweed rules in Holy Quran recitation. However, they neither disclosed their phoneticization process nor released their data or models publicly. Consequently, subsequent research has remained largely incomplete—often focusing on only a subset of Tajweed rules without comprehensive open-source code or datasets. This has necessitated that new work, including ours, begin from foundational elements: defining phoneticization schemes, curating datasets, and developing models. To address these gaps, we introduce:
 
 \begin{itemize}
 	\item \textbf{A Phonetizer}: Encodes \emph{all} Tajweed rules and articulation attributes (\emph{Sifat}) defined by classical scholars, except \emph{Ishmam} (\arb{إشمام})
@@ -13,6 +15,12 @@ Although RDI pioneered computer-aided Quranic instruction \cite{sherif2007enhanc
 	\item \textbf{qdat\_bench}: Benchmarks phonemes, diacritization, and Tajweed rules (Ghunnah, Qalqalah, Madd) on real recitation errors containing 159 samples
 	\item \textbf{Integration}: Our multi-level CTC model proves the Quranic phonetic script is learnable (0.21\% average phoneme error rate)
 \end{itemize}
+
+We evaluate our approach along three dimensions: (a) \textbf{ASR accuracy in QPS space}, measured by Phoneme Error Rate (PER), assessing the model's ability to transcribe phonemes correctly; (b) \textbf{Tajweed rule classification}, measured by F1 scores for rules like Ghunnah, Qalqalah, and Madd, evaluating error detection performance; and (c) \textbf{Educational usefulness}, demonstrated through real-world learner error detection on qdat\_bench, showing practical applicability for automated tutoring systems.
+
+Unlike previous approaches that use IPA-based phoneme sets for Modern Standard Arabic \cite{omran2023automatic}, diacritized Uthmani text without Tajweed rules \cite{khan2021tarteel}, or focus on single rules like Qalqalah only \cite{10092350}, our Quran Phonetic Script (QPS) comprehensively encodes all Tajweed rules and Sifat attributes in a unified representation.
+
+Our multi-level CTC architecture offers significant token reduction compared to flat representations. A single-level approach encoding all Tajweed rules would require 99,072 tokens (cross-product of 43 phonemes × 10 Sifat × variations), whereas our hierarchical approach with 43 phoneme tokens, 6 Shidda/Rakhawa tokens, and 8 Madd tokens per beat achieves the same representational capacity with dramatically fewer output units, enabling more efficient training and better generalization.
 
 The paper is organized as follows:
 \begin{itemize}
@@ -31,6 +39,5 @@ The paper is organized as follows:
 	\item \textbf{Results}: Analysis of outcomes
 	\item \textbf{Limitations \& Future Work}: Next research directions
 	\item \textbf{Conclusion}: Summary of contributions
-	\item \textbf{Appendix}: Details on \emph{Mushaf} attributes and algorithms
+	\item \textbf{Appendix}: Details on \emph{Moshaf} attributes and algorithms
 \end{itemize}
-
