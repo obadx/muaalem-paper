@@ -1,16 +1,16 @@
-\subsection{QDat Bench Dataset}
+\subsection{qdat\_bench Dataset}
 \label{sec:qdat_bench}
 
-QDat Bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon the original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules and QPS~\ref{sec:qps} (complete phoneme-level annotations and 10 sifat (characteristic) levels).
+qdat\_bench is a comprehensive benchmark dataset for evaluating model performance in processing Quranic audio recordings with focus on Tajweed rules. This dataset builds upon the original qdat dataset \cite{osman2021qdat} after extensive reannotation and enhancement to include all Tajweed rules and QPS~\ref{sec:qps} (complete phoneme-level annotations and 10 sifat (characteristic) levels).
 
 The enhanced dataset provides F1 and MSE metrics for Tajweed rules, enabling researchers to compare different representations and approaches to Tajweed rule detection. This comprehensive annotation framework makes qdat\_bench particularly valuable for advancing research in automated Quranic pronunciation assessment and error detection.
 
 The dataset addresses several limitations of the original qdat collection. The original dataset suffered from incomplete coverage of all Tajweed rules, with only partial implementation of the comprehensive rule set required for thorough evaluation. Additionally, the original collection contained multiple reciters recording the same verse (each reciter records the same verse 10 times), creating significant redundancy and potential bias in evaluation. In contrast, qdat\_bench selects a single recording randomly for every reciter. Finally, the original dataset lacked comprehensive phoneme-level and sifat-level annotations, limiting its utility for fine-grained analysis of pronunciation patterns and characteristics.
 
-QDat Bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
+qdat\_bench contains 159 samples focusing on the verse: \arb{قَالُوا۟ لَا عِلْمَ لَنَآ إِنَّكَ أَنتَ عَلَّٰمُ ٱلْغُيُوبِ} from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key Tajweed rules.
 
 \subsubsection{Data Structure}
-The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. Below is description of Tajweed rules found on our benchmark:
+The dataset encompasses several key components designed for comprehensive analysis of Quranic recitation patterns. Each entry contains an audio file recorded in mono channel format, a unique identifiers for each element, reciter gender (male or female) and age, enabling analysis of pronunciation patterns across different population segments. The phonetic\_transcript and sifat fields contain the complete transcription in Quran Phonetic Script (QPS) as described in Section~\ref{sec:qps}, Along with Tajweed rules columns to enable different Tajweed representations benchmark on qdat\_bench. The dataset was annotated by a single hafiz of the Moshaf with Tajweed knowledge. Below is description of Tajweed rules found on our benchmark:
 
 \paragraph{Madd (Prolongation) Rules:}
 The dataset includes comprehensive annotations for various types of Madd rules, which are fundamental to proper Quranic recitation. The normal Madd rules are captured through several specific metrics: \texttt{qalo\_alif\_len} measures the length of normal Madd alif in the word \arb{قالوا} on a scale of 0-8, while \texttt{qalo\_waw\_len} similarly measures the normal Madd waw in the same word. Additional normal Madd measurements include \texttt{laa\_alif\_len} for the normal Madd alif in \arb{لا} and \texttt{allam\_alif\_len} for the normal Madd alif in \arb{علام}. The Separate Madd is measured through \texttt{separate\_madd}, which captures the length for the phrase \arb{لنا إنك} (0-8). Finally, Madd Aared, is evaluated using \texttt{madd\_aared\_len}, measuring prolongation before sukoon (0-8), which typically exhibits the highest variability in implementation.
@@ -52,103 +52,128 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \begin{table}[htbp]
 	\centering
-	\caption{Detailed QDat Bench Speech Metrics}
+	\caption{Detailed qdat\_bench Speech Metrics. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_speech_metrics}
-	\begin{tabular}{lc}
+	\begin{tabular}{lcc}
 		\hline
-		\textbf{Metric}           & \textbf{Value} \\
+		\textbf{Metric}           & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
 		\hline
-		per\_phonemes             & 0.058          \\
-		per\_hams\_or\_jahr       & 0.017          \\
-		per\_shidda\_or\_rakhawa  & 0.031          \\
-		per\_tafkheem\_or\_taqeeq & 0.022          \\
-		per\_itbaq                & 0.012          \\
-		per\_safeer               & 0.010          \\
-		per\_qalqla               & 0.011          \\
-		per\_tikraar              & 0.013          \\
-		per\_tafashie             & 0.016          \\
-		per\_istitala             & 0.009          \\
-		per\_ghonna               & 0.014          \\
-		average\_per              & 0.019          \\
+		per\_phonemes             & 0.0578            & 0.0603 $\pm$ 0.0053           \\
+		per\_hams\_or\_jahr       & 0.0170            & 0.0172 $\pm$ 0.0033           \\
+		per\_shidda\_or\_rakhawa  & 0.0310            & 0.0315 $\pm$ 0.0050           \\
+		per\_tafkheem\_or\_taqeeq & 0.0224            & 0.0227 $\pm$ 0.0044           \\
+		per\_itbaq                & 0.0117            & 0.0119 $\pm$ 0.0032           \\
+		per\_safeer               & 0.0103            & 0.0103 $\pm$ 0.0028           \\
+		per\_qalqla               & 0.0112            & 0.0112 $\pm$ 0.0026           \\
+		per\_tikraar              & 0.0126            & 0.0128 $\pm$ 0.0027           \\
+		per\_tafashie             & 0.0156            & 0.0159 $\pm$ 0.0035           \\
+		per\_istitala             & 0.0093            & 0.0094 $\pm$ 0.0026           \\
+		per\_ghonna               & 0.0140            & 0.0139 $\pm$ 0.0036           \\
+		average\_per              & 0.0194            & 0.0197 $\pm$ 0.0032           \\
 		\hline
 	\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd.}
+	\caption{qdat\_bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_madd_metrics}
-	\begin{tabular}{lc}
+	\begin{tabular}{lcc}
 		\hline
-		\textbf{Madd Rule}         & \textbf{RMSE} \\
+		\textbf{Madd Rule}         & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
 		\hline
-		qalo\_alif\_len (normal)   & 0.449         \\
-		qalo\_waw\_len (normal)    & 0.456         \\
-		laa\_alif\_len (normal)    & 0.404         \\
-		separate\_madd (separate)  & 0.687         \\
-		allam\_alif\_len (normal)  & 0.549         \\
-		madd\_aared\_len           & 1.034         \\
+		qalo\_alif\_len (normal)   & 0.4486            & 0.4504 $\pm$ 0.0676           \\
+		qalo\_waw\_len (normal)    & 0.4556            & 0.4609 $\pm$ 0.0561           \\
+		laa\_alif\_len (normal)    & 0.4044            & 0.4065 $\pm$ 0.0713           \\
+		separate\_madd             & 0.6868            & 0.6758 $\pm$ 0.0582           \\
+		allam\_alif\_len (normal)  & 0.5494            & 0.5575 $\pm$ 0.0749           \\
+		madd\_aared\_len           & 1.0340            & 1.0251 $\pm$ 0.0724           \\
 		\hline
-		\textbf{Average Madd RMSE} & 0.596         \\
+		\textbf{Average Madd RMSE} & 0.5965            & 0.5960 $\pm$ 0.0374           \\
 		\hline
 	\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Noon Moshaddadah Performance}
+	\caption{qdat\_bench Noon Moshaddadah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_noon_moshaddadah}
 	\begin{tabular}{lccc}
 		\hline
-		\textbf{Metric} & \textbf{Partial}          & \textbf{Complete} & \textbf{Average} \\
+		\textbf{Metric}               & \textbf{Partial}                        & \textbf{Complete}   & \textbf{Average}    \\
 		\hline
-		Recall          & 0.659                     & 1.000             & 0.829            \\
-		Precision       & 1.000                     & 0.894             & 0.947            \\
-		F1 Score        & 0.794                     & 0.944             & 0.869            \\
-		Accuracy        & \multicolumn{3}{c}{0.912}                                        \\
+		Recall                        & 0.6585                                  & 1.0000              & 0.8293              \\
+		Precision                     & 1.0000                                  & 0.8939              & 0.9470              \\
+		F1 Score                      & 0.7941                                  & 0.9440              & 0.8691              \\
+		Accuracy                      & \multicolumn{3}{c}{0.9119}                                                          \\
+		\hline
+		\textbf{Bootstrap (n=10,000)} & \textbf{}                               & \textbf{}           & \textbf{}           \\
+		Recall                        & 0.6604 $\pm$ 0.0721                     & 1.0000 $\pm$ 0.0000 & 0.8302 $\pm$ 0.0361 \\
+		Precision                     & 1.0000 $\pm$ 0.0000                     & 0.8928 $\pm$ 0.0268 & 0.9464 $\pm$ 0.0134 \\
+		F1 Score                      & 0.7932 $\pm$ 0.0531                     & 0.9431 $\pm$ 0.0150 & 0.8682 $\pm$ 0.0324 \\
+		Accuracy                      & \multicolumn{3}{c}{0.9113 $\pm$ 0.0222}                                             \\
 		\hline
 	\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Noon Mokhfah Performance}
+	\caption{qdat\_bench Noon Mokhfah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_noon_mokhfah}
 	\begin{tabular}{lccc}
 		\hline
-		\textbf{Metric}     & \textbf{Noon}             & \textbf{Partial} & \textbf{Complete} \\
+		\textbf{Metric}               & \textbf{Noon}                           & \textbf{Partial}    & \textbf{Complete}   \\
 		\hline
-		Recall              & 0.468                     & 0.000            & 0.984             \\
-		Precision           & 1.000                     & 0.000            & 0.568             \\
-		F1 Score            & 0.638                     & 0.000            & 0.720             \\
+		Recall                        & 0.4681                                  & 0.0000              & 0.9844              \\
+		Precision                     & 1.0000                                  & 0.0000              & 0.5676              \\
+		F1 Score                      & 0.6377                                  & 0.0000              & 0.7200              \\
+		Average F1                    & \multicolumn{3}{c}{0.4526}                                                          \\
+		Accuracy                      & \multicolumn{3}{c}{0.6730}                                                          \\
 		\hline
-		\textbf{Average F1} & \multicolumn{3}{c}{0.453}                                        \\
-		\textbf{Accuracy}   & \multicolumn{3}{c}{0.673}                                        \\
+		\textbf{Bootstrap (n=10,000)} & \textbf{}                               & \textbf{}           & \textbf{}           \\
+		Recall                        & 0.4721 $\pm$ 0.0539                     & 0.0000 $\pm$ 0.0000 & 0.9820 $\pm$ 0.0165 \\
+		Precision                     & 1.0000 $\pm$ 0.0000                     & 0.0000 $\pm$ 0.0000 & 0.5617 $\pm$ 0.0458 \\
+		F1 Score                      & 0.6395 $\pm$ 0.0504                     & 0.0000 $\pm$ 0.0000 & 0.7134 $\pm$ 0.0371 \\
+		Average F1                    & \multicolumn{3}{c}{0.4510 $\pm$ 0.0259}                                             \\
+		Accuracy                      & \multicolumn{3}{c}{0.6716 $\pm$ 0.0376}                                             \\
 		\hline
 	\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 	\centering
-	\caption{QDat Bench Qalqalah Performance}
+	\caption{qdat\_bench Qalqalah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_qalqalah}
 	\begin{tabular}{lcc}
 		\hline
-		\textbf{Metric}   & \textbf{No Qalqalah}      & \textbf{Has Qalqalah} \\
+		\textbf{Metric}               & \textbf{No Qalqalah}                    & \textbf{Has Qalqalah} \\
 		\hline
-		Recall            & 0.966                     & 0.950                 \\
-		Precision         & 0.918                     & 0.980                 \\
-		F1 Score          & 0.941                     & 0.965                 \\
+		Recall                        & 0.9655                                  & 0.9505                \\
+		Precision                     & 0.9180                                  & 0.9796                \\
+		F1 Score                      & 0.9412                                  & 0.9648                \\
+		Macro F1                      & \multicolumn{2}{c}{0.9530}                                      \\
+		Accuracy                      & \multicolumn{2}{c}{0.9560}                                      \\
 		\hline
-		\textbf{Macro F1} & \multicolumn{2}{c}{0.953}                         \\
-		\textbf{Accuracy} & \multicolumn{2}{c}{0.956}                         \\
+		\textbf{Bootstrap (n=10,000)} & \textbf{}                               & \textbf{}             \\
+		Recall                        & 0.9611 $\pm$ 0.0260                     & 0.9532 $\pm$ 0.0217   \\
+		Precision                     & 0.9244 $\pm$ 0.0339                     & 0.9765 $\pm$ 0.0156   \\
+		F1 Score                      & 0.9419 $\pm$ 0.0219                     & 0.9645 $\pm$ 0.0136   \\
+		Macro F1                      & \multicolumn{2}{c}{0.9532 $\pm$ 0.0174}                         \\
+		Accuracy                      & \multicolumn{2}{c}{0.9562 $\pm$ 0.0164}                         \\
 		\hline
 	\end{tabular}
 \end{table}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\linewidth]{figures/qdat_bench/qdat_bootstrap_violin_avg_metrics.png}
+	\caption{Violin plot for bootsraping analysis (n=10,000) of qdat\_bench aggregate metrics. (a) Phoneme Error Rate (PER) metrics (lower is better), (b) RMSE metrics for Madd rules (lower is better), and (c) Tajweed performance metrics (higher is better). Dashed lines indicate original metric values before bootstrapping.}
+	\label{fig:qdat_bootstrap_violin}
+\end{figure}
+
 \subsubsection{Performance Analysis and Discussion}
 
-The benchmark has many limitations: the size is very limited with imbalanced gender. Along with not all Tajweed rules covered like (Tasheel). Neither all phonemes like letter thaal: \arb{ذ}. But it is a move towards benchmarking Tajweed rules.
+The benchmark has several limitations that should be considered when interpreting results. First, the dataset size is very limited (159 samples) with imbalanced gender distribution (75.5\% female, 24.5\% male). Second, not all Tajweed rules are covered (e.g., Tasheel) and not all phonemes are represented (e.g., letter thaal: \arb{ذ}). Third, the benchmark focuses on a single verse from Surah Al-Ma'idah (5:109), limiting generalizability to other Quranic passages. Fourth, only one annotator with Tajweed expertise performed the reannotation, which may introduce subjective bias. These limitations highlight that this benchmark represents Version 1 towards systematic benchmarking of Tajweed rules, and future versions should aim to address these gaps through expanded data collection, multiple expert annotators, and broader coverage of Tajweed rules and Quranic verses.
 
 
 \subsubsection{Usage}

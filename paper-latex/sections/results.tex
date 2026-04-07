@@ -27,34 +27,37 @@ We trained on all available Moshaf datasets, reserving three Moshaf (19.0, 29.0,
 	\end{tabular}
 \end{table}
 
-To evaluate our model's performance on real recitation errors, we tested on our developed qdat\_bench\footnote{Available at: \url{https://huggingface.co/datasets/obadx/qdat_bench}} benchmark, which builds upon \cite{osman2021qdat} after comprehensive reannotation and addition of all Tajweed rules including phonemes and 10 sifat levels. This enhanced benchmark provides F1 and MSE metrics for (F1 for: Noon Moshaddadah, Ikhfaa and Qalqlah. MSE for Madd lengths including: normal madd, separated madd and aared madd), enabling researchers to compare different representations of Tajweed rules. The results, shown in Table~\ref{tab:qdat_bench}, demonstrate that despite being trained exclusively on expert male reciters, our model achieves remarkable performance on female recitations (120 samples) and overall error detection.
+To evaluate our model's performance on real recitation errors, we tested on our developed qdat\_bench\footnote{Available at: \url{https://huggingface.co/datasets/obadx/qdat_bench}} benchmark, which builds upon \cite{osman2021qdat} after comprehensive reannotation by a single hafiz of the Moshaf with Tajweed knowledge and addition of all Tajweed rules including phonemes and 10 sifat levels. This enhanced benchmark provides F1 and MSE metrics for (F1 for: Noon Moshaddadah, Ikhfaa and Qalqlah. MSE for Madd lengths including: normal madd, separated madd and aared madd), enabling researchers to compare different representations of Tajweed rules. The results, shown in Table~\ref{tab:qdat_bench}, demonstrate that despite being trained exclusively on expert male reciters, our model achieves remarkable performance on female recitations (120 samples) and overall error detection.
 
 \begin{table}[htbp]
 	\centering
-	\caption{qdat\_bench Results - Comprehensive Evaluation on Authentic Learner Mistakes. This benchmark builds upon the original qdat dataset \cite{osman2021qdat} through extensive expert reannotation that systematically labeled each audio segment across multiple dimensions: complete phoneme-level transcription, 10 sifat characteristics, and comprehensive Tajweed rule classifications. The enhanced dataset contains 159 samples (120 female, 39 male reciters) focusing on Quranic verse from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key pronunciation challenges.}
+	\caption{qdat\_bench Results - Comprehensive Evaluation on Authentic Learner Mistakes. This benchmark builds upon the original qdat dataset \cite{osman2021qdat} through extensive expert reannotation that systematically labeled each audio segment across multiple dimensions: complete phoneme-level transcription, 10 sifat characteristics, and comprehensive Tajweed rule classifications. The enhanced dataset contains 159 samples (120 female, 39 male reciters) focusing on Quranic verse from Surah Al-Ma'idah (5:109), providing a concentrated evaluation of key pronunciation challenges. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\vspace{3pt}
 	\label{tab:qdat_bench}
-	\begin{tabular}{lc}
+	\begin{tabular}{lcc}
 		\hline
-		\textbf{Aggregate Metrics} & \textbf{Value} \\
+		\textbf{Aggregate Metrics} & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
 		\hline
-		per\_phonemes              & 0.058          \\
-		avg\_per                   & 0.019          \\
-		avg\_tajweed\_f1           & 0.758          \\
-		avg\_tajweed\_acc          & 0.847          \\
-		avg\_madd\_rmse            & 0.596          \\
+		per\_phonemes              & 0.0578            & 0.0603 $\pm$ 0.0053           \\
+		avg\_per                   & 0.0194            & 0.0197 $\pm$ 0.0032           \\
+		avg\_tajweed\_f1           & 0.7582            & 0.7575 $\pm$ 0.0177           \\
+		avg\_tajweed\_acc          & 0.8470            & 0.8464 $\pm$ 0.0174           \\
+		avg\_madd\_rmse            & 0.5965            & 0.5960 $\pm$ 0.0374           \\
+		avg\_normal\_madd\_rmse    & 0.4645            & 0.4688 $\pm$ 0.0501           \\
+		rmse\_madd\_aared          & 1.0340            & 1.0251 $\pm$ 0.0724           \\
+		rmse\_separate\_madd       & 0.6868            & 0.6758 $\pm$ 0.0582           \\
 		\hline
-		\textbf{Tajweed Rules F1}  & \textbf{Value} \\
+		\textbf{Tajweed Rules F1}  & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
 		\hline
-		Noon Moshaddadah           & 0.869          \\
-		Ikhfaa (Noon Mokhfah)      & 0.453          \\
-		Qalqalah                   & 0.953          \\
+		Noon Moshaddadah           & 0.8691            & 0.8682 $\pm$ 0.0324           \\
+		Ikhfaa (Noon Mokhfah)      & 0.4526            & 0.4510 $\pm$ 0.0259           \\
+		Qalqalah                   & 0.9530            & 0.9532 $\pm$ 0.0174           \\
 		\hline
-		\textbf{Madd Rules RMSE}   & \textbf{Value} \\
+		\textbf{Madd Rules RMSE}   & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
 		\hline
-		Normal Madd (5 rules)      & 0.464          \\
-		Separate Madd              & 0.687          \\
-		Aared Madd                 & 1.034          \\
+		Normal Madd (5 rules)      & 0.4645            & 0.4688 $\pm$ 0.0501           \\
+		Separate Madd              & 0.6868            & 0.6758 $\pm$ 0.0582           \\
+		Aared Madd                 & 1.0340            & 1.0251 $\pm$ 0.0724           \\
 		\hline
 	\end{tabular}
 \end{table}
