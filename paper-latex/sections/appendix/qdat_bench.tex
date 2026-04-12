@@ -175,6 +175,15 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 The benchmark has several limitations that should be considered when interpreting results. First, the dataset size is very limited (159 samples) with imbalanced gender distribution (75.5\% female, 24.5\% male). Second, not all Tajweed rules are covered (e.g., Tasheel) and not all phonemes are represented (e.g., letter thaal: \arb{ذ}). Third, the benchmark focuses on a single verse from Surah Al-Ma'idah (5:109), limiting generalizability to other Quranic passages. Fourth, only one annotator with Tajweed expertise performed the reannotation, which may introduce subjective bias. These limitations highlight that this benchmark represents Version 1 towards systematic benchmarking of Tajweed rules, and future versions should aim to address these gaps through expanded data collection, multiple expert annotators, and broader coverage of Tajweed rules and Quranic verses.
 
+Figure~\ref{fig:noon_mokhfah_spectrogram} demonstrates the inherent difficulty in detecting Ikhfaa pronunciation errors. A spectrogram comparison reveals minimal acoustic differences between correct Ikhfaa pronunciation of \arb{أنت} (left, original\_id=s0\_1) and an incorrect elongated noon pronunciation (right, original\_id=s9\_0). This case exemplifies why the Ikhfaa F1 score is substantially lower than other Tajweed rules.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/qdat_bench/spectrogram_noon_mokhfah.png}
+	\caption{The figure illustrates the challenge of distinguishing Ikhfaa pronunciation from clear noon pronunciation for both humans and AI models. Spectrogram comparison of Noon Mokhfah (Ikhfaa) pronunciation from qdat\_bench: (left) correct Ikhfaa pronunciation of \arb{أنت} by a male reciter (original\_id=s0\_1), and (right) incorrect elongated noon pronunciation by a male reciter (original\_id=s9\_0) that the model failed to detect as a pronunciation error.}
+	\label{fig:noon_mokhfah_spectrogram_appendix}
+\end{figure}
+
 
 \subsubsection{Usage}
 The dataset can be loaded using the Hugging Face datasets library:
