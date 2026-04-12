@@ -18,33 +18,33 @@ We define a \textit{Moshaf} as a complete Quran recitation (chapters 1-114) by a
 		\hline
 		\textbf{Moshaf ID} & \textbf{Hours}       & \textbf{Length} \\
 		\hline
-		0.0                & 28.48          & 9133            \\
-		0.1                & 40.31          & 10764           \\
-		0.2                & 49.47          & 9971            \\
-		0.3                & 37.19          & 12604           \\
-		1.0                & 28.41          & 10939           \\
-		2.0                & 51.05          & 9942            \\
-		2.1                & 30.03          & 10394           \\
-		3.0                & 25.19          & 10444           \\
-		4.0                & 29.12          & 10994           \\
-		5.0                & 28.02          & 11482           \\
-		6.0                & 39.39          & 12435           \\
-		7.0                & 28.26          & 9907            \\
-		8.0                & 30.86          & 10330           \\
-		9.0                & 27.95          & 10642           \\
-		11.0               & 24.01          & 10363           \\
-		12.0               & 33.42          & 9880            \\
-		13.0               & 33.99          & 9377            \\
-		19.0               & 30.11          & 11278           \\
-		22.0               & 28.11          & 10332           \\
-		24.0               & 28.51          & 9868            \\
-		25.0               & 16.93          & 7922            \\
-		26.0               & 30.44          & 11565           \\
-		26.1               & 32.71          & 11850           \\
-		27.0               & 28.05          & 11213           \\
-		28.0               & 31.05          & 10535           \\
-		29.0               & 27.79          & 11061           \\
-		30.0               & 29.14          & 11312           \\
+		0.0                & 28.48                & 9133            \\
+		0.1                & 40.31                & 10764           \\
+		0.2                & 49.47                & 9971            \\
+		0.3                & 37.19                & 12604           \\
+		1.0                & 28.41                & 10939           \\
+		2.0                & 51.05                & 9942            \\
+		2.1                & 30.03                & 10394           \\
+		3.0                & 25.19                & 10444           \\
+		4.0                & 29.12                & 10994           \\
+		5.0                & 28.02                & 11482           \\
+		6.0                & 39.39                & 12435           \\
+		7.0                & 28.26                & 9907            \\
+		8.0                & 30.86                & 10330           \\
+		9.0                & 27.95                & 10642           \\
+		11.0               & 24.01                & 10363           \\
+		12.0               & 33.42                & 9880            \\
+		13.0               & 33.99                & 9377            \\
+		19.0               & 30.11                & 11278           \\
+		22.0               & 28.11                & 10332           \\
+		24.0               & 28.51                & 9868            \\
+		25.0               & 16.93                & 7922            \\
+		26.0               & 30.44                & 11565           \\
+		26.1               & 32.71                & 11850           \\
+		27.0               & 28.05                & 11213           \\
+		28.0               & 31.05                & 10535           \\
+		29.0               & 27.79                & 11061           \\
+		30.0               & 29.14                & 11312           \\
 		\hline
 		\textbf{Total}     & \textbf{847.9944402} & \textbf{286537} \\
 		\hline
@@ -67,6 +67,28 @@ We excluded KFGQPC due to its evolving/unstable nature compared to Tanzil.
 \subsection{Collect Expert Recitations}
 We collected recitations from 22 world-class reciters with premium audio quality, totaling \textbf{893 hours} pre-filtering.
 
+To ensure high-quality reference data for judging Quran learners, reciters were selected based on the following criteria: perfect recitation with no mistakes, non-prayer (studio) recording not during prayer, complete Moshaf (full Quran, chapters 1-114), and high audio quality. All recitations were recorded in high-quality studio conditions with thorough review to ensure high quality.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Distribution of Reciters by Country}
+	\label{tab:reciters_country}
+	\begin{tabular}{lc}
+		\hline
+		\textbf{Country Name}     & \textbf{Number of Reciters} \\
+		\hline
+		Egypt (EG)                & 15                          \\
+		Saudi Arabia (SA)         & 3                           \\
+		Syria (SY)                & 1                           \\
+		Somalia (SO)              & 1                           \\
+		Kuwait (KW)               & 1                           \\
+		United Arab Emirates (AE) & 1                           \\
+		\hline
+		\textbf{Total}            & \textbf{22}                 \\
+		\hline
+	\end{tabular}
+\end{table}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/stats.png}
@@ -81,12 +103,7 @@ We collected recitations from 22 world-class reciters with premium audio quality
 	\label{fig:reciters}
 \end{figure}
 
-We developed a web GUI using Streamlit\footnote{\url{https://streamlit.io/}} that:
-\begin{itemize}
-	\item Downloads and extracts metadata for each track
-	\item Organizes data by Moshaf (each chapter as "001.mp3")
-	\item Annotates Moshaf attributes
-\end{itemize}
+We developed a web GUI using Streamlit that downloads and extracts metadata for each track, organizes data by Moshaf (each chapter as "001.mp3"), and annotates Moshaf attributes.
 
 \subsection{Segment Recitations}
 Since Tajweed rules are affected by pauses (\arb{وقف}), accurate segmentation is crucial. We initially tested open-source Voice Activity Detection (VAD) models including SileroVAD \cite{SileroVAD} and PyAnnotate \cite{Plaquet23}. Poor Quran-specific performance led us to develop a custom segmenter by fine-tuning Wav2Vec2-BERT \cite{barrault2023seamless} for frame-level classification.
