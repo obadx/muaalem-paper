@@ -85,3 +85,10 @@ To provide a comprehensive view of the metric distributions and confidence inter
 \end{figure}
 
 Despite these promising results, certain model limitations should be acknowledged. Attribute-specific articulation patterns present inherent challenges: certain phonetic attributes apply exclusively to individual letters, such as \texttt{Istitala} for (ض) and \texttt{Tikrar} for (ر). Future work should focus on annotating real data with these specific errors to improve model understanding (see Section~\ref{sec:limitations} for detailed discussion).
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/006080_tohajoni_model_spectrogram.png}
+	\caption{Spectrogram analysis of the aligned model output for the word \arb{أَتُحَٰٓجُّوٓنِّى} (refer to Table~\ref{tab:examples_with_sifat} for the complete reference phonetization). Reference: \arb{ءَتُحَااااااججُۥۥۥۥۥۥننننِۦۦ}, Predicted: \arb{ءتُحَاااااججُۥۥۥۥۥۥننننِۦۦ}. The phoneme boundaries remain near perfect; however, one error is observed: the fatha on the initial hamza (\arb{ءَ} → \arb{ء}) was missed. Additionally, the Madd alif (\arb{اااااا}) and Madd waw (\arb{ۥۥۥۥۥۥ}) durations are not balanced, with the final beat of the Madd sequence being notably larger.}
+	\label{fig:tohajoni_aligned_output}
+\end{figure}
