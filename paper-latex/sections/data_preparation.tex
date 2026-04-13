@@ -148,7 +148,7 @@ Results of our segmenter on unseen mosahf in table~\ref{tab:seg_results}:
 \end{table}
 
 \subsection{Transcribe Segmented Parts}
-We employed Tarteel ASR \cite{tarteel_whisper_ar_quran} (Whisper fine-tuned on Quranic recitations \cite{radford2023robust}). To handle its 30-second limit, we used sliding window truncation (10-second windows), with verification in the next step.
+We employed Tarteel ASR \cite{tarteel_whisper_ar_quran} (Whisper fine-tuned on Quranic recitations \cite{radford2023robust}) with a WER of 5.7544%. To handle its 30-second limit, we used sliding window truncation (10-second windows), with verification in the next step.
 
 \subsection{Automated Data Pipeline Assessment}
 In this section, we discuss how we assessed the pipeline performance phase by phase:
