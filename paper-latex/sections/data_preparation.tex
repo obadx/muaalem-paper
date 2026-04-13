@@ -150,17 +150,14 @@ Results of our segmenter on unseen mosahf in table~\ref{tab:seg_results}:
 \subsection{Transcribe Segmented Parts}
 We employed Tarteel ASR \cite{tarteel_whisper_ar_quran} (Whisper fine-tuned on Quranic recitations \cite{radford2023robust}). To handle its 30-second limit, we used sliding window truncation (10-second windows), with verification in the next step.
 
-\subsection{Verification of Segmentation and Transcription}
-\textbf{Segmentation Verification}: Manual inspection of 50-75 random samples per Moshaf. Moshaf 25.0 was excluded due to poor segmentation.
+\subsection{Automated Data Pipeline Assessment}
+In this section, we discuss how we assessed the pipeline performance phase by phase:
 
-\textbf{Transcription Verification}: \textit{Tasmeea}-inspired algorithm:
-(1) Match segments to Quranic text.
-(2) Identify missing surah parts.
-(3) Manual correction.
+\textbf{Segmentation Verification}: For the segmentation phase, we performed manual inspection of 50--75 random samples per Moshaf, in addition to short ($< 3$ seconds) and long ($> 35$ seconds) tracks. Any Moshaf with accuracy $< 99\%$ was excluded; specifically, Moshaf 25.0 was excluded due to poor segmentation ($90\%$).
 
-Refer to the Tasmeea Algorithm in the Appendix \ref{alg:tasmeea}
+\textbf{Transcription Verification}: We utilized the Tarteel model, which has a 5.7544\% Word Error Rate (WER). To correct potential transcription errors, we leveraged the fact that our input consists of 100\% correct expert recitations to design the \textit{Tasmeea}-inspired algorithm. This algorithm matches the Tarteel transcription to the Quranic text—analogous to a student reciting to a teacher—using fuzzy matching with a moving pointer. If the text matching threshold falls below $85\%$, the samples are referred to human annotators for correction.
 
-After matching, we catalogued missing Quranic portions per surah. Then correct transcription errors identified through the above process.
+The result is a high-quality dataset with no missing verses across 27 full Quran recitations. Refer to the Tasmeea Algorithm in the Appendix \ref{alg:tasmeea}
 
 \begin{figure}[htbp]
 	\centering
