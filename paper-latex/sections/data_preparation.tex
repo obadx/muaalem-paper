@@ -155,7 +155,7 @@ In this section, we discuss how we assessed the pipeline performance phase by ph
 
 \textbf{Segmentation Verification}: For the segmentation phase, we performed manual inspection of 50--75 random samples per Moshaf, in addition to short ($< 3$ seconds) and long ($> 35$ seconds) tracks. Any Moshaf with accuracy $< 99\%$ was excluded; specifically, Moshaf 25.0 was excluded due to poor segmentation ($90\%$).
 
-\textbf{Transcription Verification}: We utilized the Tarteel model, which has a 5.7544\% Word Error Rate (WER). To correct potential transcription errors, we leveraged the fact that our input consists of 100\% correct expert recitations to design the \textit{Tasmeea}-inspired algorithm. This algorithm matches the Tarteel transcription to the Quranic text—analogous to a student reciting to a teacher—using fuzzy matching with a moving pointer. If the text matching threshold falls below $85\%$, the samples are referred to human annotators for correction.
+\textbf{Transcription Verification}: We utilized the Tarteel model, which has a 5.7544\% Word Error Rate (WER). To correct potential transcription errors, we leveraged the fact that our input consists of 100\% correct expert recitations to design the \textit{Tasmeea}-inspired algorithm. This algorithm matches the Tarteel transcription to the Quranic text—analogous to a student reciting to a teacher—using fuzzy matching based on Levenshtein distance \cite{levenshtein1966binary} with a moving pointer. If the text matching threshold falls below $85\%$, the samples are referred to human annotators for correction.
 
 The result is a high-quality dataset with no missing verses across 27 full Quran recitations. Refer to the Tasmeea Algorithm in the Appendix \ref{alg:tasmeea}
 
