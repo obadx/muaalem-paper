@@ -106,7 +106,7 @@ To ensure high-quality reference data for judging Quran learners, reciters were 
 We developed a web GUI using Streamlit that downloads and extracts metadata for each track, organizes data by Moshaf (each chapter as "001.mp3"), and annotates Moshaf attributes.
 
 \subsection{Segment Recitations}
-Since Tajweed rules are affected by pauses (\arb{وقف}), accurate segmentation is crucial. We initially tested open-source Voice Activity Detection (VAD) models including SileroVAD \cite{SileroVAD} and PyAnnotate \cite{Plaquet23}. Poor Quran-specific performance led us to develop a custom segmenter by fine-tuning Wav2Vec2-BERT \cite{barrault2023seamless} for frame-level classification.
+Since Tajweed rules are affected by pauses (\arb{وقف}), accurate segmentation is crucial. We initially tested open-source Voice Activity Detection (VAD) models including SileroVAD \cite{SileroVAD} and PyAnnotate \cite{Plaquet23}. Poor Quran-specific performance led us to develop a custom segmenter by fine-tuning Wav2Vec2-BERT\footnote{\url{https://github.com/obadx/recitations-segmenter}} \cite{barrault2023seamless} for frame-level classification.
 
 \subsubsection{Preparing Segmenter Data}
 We selected mosahf compatible with SileroVAD v4, using EveryAyah\footnote{\url{https://everyayah.com/}} (pre-segmented by ayah) as ground truth. After tuning parameters per Moshaf:
@@ -125,7 +125,7 @@ Using the Audiomentations \cite{Audiomentations} library, we replicated SileroVA
 \end{itemize}
 
 \subsubsection{Training Segmenter}
-We fine-tuned Wav2Vec2-BERT for frame classification (1 epoch):
+We fine-tuned Wav2Vec2-BERT for frame classification for 1 epoch using the AdamW optimizer with default betas and bfloat16 precision on an Nvidia L40 GPU, with a batch size of 50 and a maximum speech sample length of 20 seconds.
 
 % \begin{figure}[htbp]
 % \centering
