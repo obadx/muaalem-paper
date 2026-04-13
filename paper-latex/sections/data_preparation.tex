@@ -108,24 +108,12 @@ We developed a web GUI using Streamlit that downloads and extracts metadata for 
 \subsection{Segment Recitations}
 Since Tajweed rules are affected by pauses (\arb{وقف}), accurate segmentation is crucial. We initially tested open-source Voice Activity Detection (VAD) models including SileroVAD \cite{SileroVAD} and PyAnnotate \cite{Plaquet23}. Poor Quran-specific performance led us to develop a custom segmenter by fine-tuning Wav2Vec2-BERT\footnote{\url{https://github.com/obadx/recitations-segmenter}} \cite{barrault2023seamless} for frame-level classification.
 
-\subsubsection{Preparing Segmenter Data}
-We selected mosahf compatible with SileroVAD v4, using EveryAyah\footnote{\url{https://everyayah.com/}} (pre-segmented by ayah) as ground truth. After tuning parameters per Moshaf:
-\begin{itemize}
-	\item Threshold
-	\item Minimum silence duration (merges segments)
-	\item Minimum speech duration (discards short segments)
-	\item Padding (added at segment boundaries)
-\end{itemize}
+\paragraph{Preparing Segmenter Data} We selected mosahf compatible with SileroVAD v4, using EveryAyah\footnote{\url{https://everyayah.com/}} (pre-segmented by ayah) as ground truth. After tuning parameters per Moshaf, we included: threshold, minimum silence duration (to merge segments), minimum speech duration (to discard short segments), and padding (added at segment boundaries).
 
-\paragraph{Data Augmentation}
-Using the Audiomentations \cite{Audiomentations} library, we replicated SileroVAD's noise setup on 40\% of samples, adding:
-\begin{itemize}
-	\item \texttt{TimeStretch} (0.8x-1.5x) to simulate recitation speeds
-	\item Sliding window truncation (1-second windows) for long samples instead of exclusion
-\end{itemize}
+\paragraph{Data Augmentation} Using the Audiomentations \cite{Audiomentations} library, we replicated SileroVAD's noise setup on 40\% of samples, adding \texttt{TimeStretch} (0.8x-1.5x) to simulate recitation speeds and sliding window truncation (1-second windows) for long samples instead of exclusion.
 
-\subsubsection{Training Segmenter}
-We fine-tuned Wav2Vec2-BERT for frame classification for 1 epoch using the AdamW optimizer with default betas and bfloat16 precision on an Nvidia L40 GPU, with a batch size of 50 and a maximum speech sample length of 20 seconds.
+\paragraph{Training Segmenter}
+We fine-tuned Wav2Vec2-BERT for frame classification for 1 epoch using the AdamW optimizer with a constant learning rate of 5e-5, default betas and bfloat16 precision on an Nvidia L40 GPU, with a batch size of 50 and a maximum speech sample length of 20 seconds.
 
 % \begin{figure}[htbp]
 % \centering
