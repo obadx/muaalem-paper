@@ -13,7 +13,18 @@ The weights are assigned based on the vocabulary size of each level to balance t
 	\label{fig:multilevel-ctc}
 \end{figure}
 
-We fine-tuned Facebook's Wav2Vec2-Bert \cite{barrault2023seamless} for a single epoch with a constant learning rate of \texttt{5e-5} with 64 batch size. We applied augmentations identical to Silero VAD \cite{SileroVAD} using the \texttt{audiomentations} library \cite{Audiomentations}, with additional augmentations: \texttt{TimeStretch} and \texttt{GainTransition}. We filtered out samples longer than \texttt{30 seconds} not due to model limitations, but for efficient GPU utilization - sacrificing only 3k samples out of 250k training samples.
+We fine-tuned Facebook's Wav2Vec2-Bert \cite{barrault2023seamless} for a single epoch using an adapter layer and the AdamW optimizer with its default $\beta$ values. We employed a constant learning rate of \texttt{5e-5}, a batch size of 64, and a maximum sample length of 30 seconds, with training performed in \texttt{bfloat16} precision. We applied augmentations identical to Silero VAD \cite{SileroVAD} using the \texttt{audiomentations} library \cite{Audiomentations}, with additional augmentations: \texttt{TimeStretch} and \texttt{GainTransition}. We filtered out samples longer than \texttt{30 seconds} for efficient GPU utilization, sacrificing only 3k samples out of 250k training samples. The training was conducted on an H200 GPU with 141 GB of GPU memory for 7 hours.
+
+Due to our limited budget, we conducted preliminary experiments to determine the optimal hyperparameters by training on a subset of the training data (4 Mushafs) on Google Colab. We evaluated different training setups, including linear and cosine schedulers, and the impact of SpecAugment \cite{park2019specaugment}. The best results were achieved with a constant learning rate and without SpecAugment, as the latter significantly degraded performance. Based on these findings, we proceeded with the full training on a high-performance GPU.
+
+The convergence behavior of the model is shown in Figure \ref{fig:eval_loss}, where the evaluation loss decreases consistently throughout the training process, confirming the stability of the multi-level CTC objective.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\linewidth]{figures/eval_loss.png}
+	\caption{Evolution of the evaluation loss during training.}
+	\label{fig:eval_loss}
+\end{figure}
 
 \begin{figure}[htbp]
 	\centering
@@ -21,6 +32,3 @@ We fine-tuned Facebook's Wav2Vec2-Bert \cite{barrault2023seamless} for a single 
 	\caption{Recitations lengths in seconds for the whole dataset}
 	\label{fig:audio-lengths}
 \end{figure}
-
-The training was done using an H200 GPU with 141 GB of GPU memory for 7 hours.
-
