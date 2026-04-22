@@ -39,3 +39,13 @@
 *.vrb
 *.synctex.gz
 
+# Springer template files
+sn-*.bst
+sn-jnl.cls
+# sprigner-template.zip
+# springer-template/
+
+# Build outputs
+*.bcf
+*.run.xml
+
