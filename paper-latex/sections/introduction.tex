@@ -1,45 +1,51 @@
 \section{Introduction}
 \noindent
-Assessing pronunciation is not a simple task \cite{kheir2023automatic}, as it relies not only on pronouncing phonemes correctly but also involves other factors like intonation, prosody, and stress. Additionally, fluency and completeness are essential components of proper pronunciation assessment. The Holy Quran presents unique characteristics: it is among the easiest spoken texts to learn despite containing special phonemes absent in other languages.
+Assessing pronunciation is not a simple task \cite{kheir2023automatic}, as it relies not only on correct phoneme pronunciation but also on intonation, prosody, and stress. The Holy Quran presents unique characteristics: it is among the easiest spoken texts to learn despite containing special phonemes absent in other languages.
 
-The Holy Quran is considered the word of Allah by Muslims. It is believed to have been revealed to Prophet Muhammad (peace be upon him) and holds immense significance for the Muslim community, who seek to memorize it. The Quran possesses unique linguistic characteristics; it is neither poetry nor prose in the traditional sense of Arabic literature of its time, but rather introduces a new form of art that takes on a lyrical quality through recitation (known as \textit{tajweed}). Consequently, Quranic recitation involves unique pronunciation characteristics. For instance, certain parts are recited with elongation, known as \textit{madd} (\arb{مد}), such as in \arb{السماء}. Other instances involve emphasis on letters like \textit{noon} (\arb{ن}), referred to as \textit{ghunnah} (\arb{غنة}), as seen in patterns like \arb{إنَّ}. According to Ibn al-Jazari, such repeated patterns should be pronounced in a consistent manner: \arb{واللفظ في نظيره كمثله}~\cite{AlJazariyyahSwaid}. As non-Arabic speakers convert to Islam, pronunciation errors in recitation can occur. To preserve the exact pronunciation and meaning of the Quran, ancient Muslim scholars established recitation rules by deriving them from the recitation of the Holy Quran itself. These rules encompass articulation, its attributes, and Tajweed, all aimed at preserving the precise manner of recitation as practiced by Prophet Muhammad (peace be upon him).
+
+
+The Holy Quran is considered the word of Allah by Muslims. It was revealed to Prophet Muhammad (peace be upon him) and holds immense significance for the Muslim community. The Quran possesses unique linguistic characteristics; it is neither poetry nor prose in the traditional sense of Arabic literature but introduces a new art form that takes on a lyrical quality through recitation (Tajweed). Consequently, Quranic recitation involves unique pronunciation characteristics, such as elongation (Madd), nasalization (Ghunnah), and echo (Qalqalah). According to Ibn al-Jazari, these patterns must be pronounced consistently~\cite{AlJazariyyahSwaid}. As non-Arabic speakers convert to Islam, pronunciation errors can occur. To preserve the exact pronunciation and meaning, ancient Muslim scholars established recitation rules derived from the Quran recitation itself.
 
 The pronunciation of the Holy Quran is governed by rigorously strict rules formally defined by ancient Muslim scholars since the 6th century. Despite being precise and accurate, these rules have not been comprehensively digitized (to our knowledge) for Quranic pronunciation assessment.
 
 This paper focuses on automatic detection and localization of Tajweed Rules and Sifat-related pronunciation errors from audio, enabling formative feedback, automated tutoring, and standardized assessment.
 
-To the best of our knowledge, RDI \cite{sherif2007enhancing} was the first entity to apply AI for detecting pronunciation errors alongside Tajweed rules in Holy Quran recitation. However, they neither disclosed their phoneticization process nor released their data or models publicly. Consequently, subsequent research has remained largely incomplete—often focusing on only a subset of Tajweed rules without comprehensive open-source code or datasets. This has necessitated that new work, including ours, begin from foundational elements: defining phoneticization schemes, curating datasets, and developing models. To address these gaps, we introduce:
-
+To the best of our knowledge, RDI \cite{sherif2007enhancing} was the first to apply AI for detecting pronunciation errors alongside Tajweed rules. However, they did not disclose their phoneticization process nor release their data or models publicly. Subsequent research has remained largely incomplete -- often focusing on a subset of rules without open-source code or datasets. To address these gaps, we introduce:
 \begin{itemize}
-	\item \textbf{A Phonetizer}: Encodes \emph{all} Tajweed rules and articulation attributes (\emph{Sifat}) defined by classical scholars, except \emph{Ishmam} (\arb{إشمام})
-	\item \textbf{A 98\% automated pipeline}: Generates highly accurate datasets from expert recitations
-	\item \textbf{A dataset}: $\sim$286K annotated utterances (848 hours)
-	\item \textbf{qdat\_bench}: Benchmarks phonemes, diacritization, and Tajweed rules (Ghunnah, Qalqalah, Madd) on real recitation errors containing 159 samples
-	\item \textbf{Integration}: Our multi-level CTC model proves the Quranic phonetic script is learnable (0.21\% average phoneme error rate)
+    \item A phonetizer that encodes all Tajweed rules and articulation attributes (Sifat) defined by classical scholars (except Ishmam).
+    \item A 98\% automated pipeline for generating highly accurate datasets from expert recitations.
+    \item A dataset of ~286K annotated utterances (848 hours).
+    \item qdat\_bench, a benchmark for phonemes, diacritization, and Tajweed rules (Ghunnah, Qalqalah, Madd) on real recitation errors (159 samples).
+    \item A multi-level CTC model that demonstrates the learnability of QPS (0.21\% average PER).
 \end{itemize}
 
-We evaluate our approach along three dimensions: (a) \textbf{ASR accuracy in QPS space}, measured by Phoneme Error Rate (PER), assessing the model's ability to transcribe phonemes correctly; (b) \textbf{Tajweed rule classification}, measured by F1 scores for rules like Ghunnah, Qalqalah, and Madd, evaluating error detection performance; and (c) \textbf{Educational usefulness}, demonstrated through real-world learner error detection on qdat\_bench, showing practical applicability for automated tutoring systems.
 
-Unlike previous approaches that use IPA-based phoneme sets for Modern Standard Arabic \cite{omran2023automatic}, diacritized Uthmani text without Tajweed rules \cite{khan2021tarteel}, or focus on single rules like Qalqalah only \cite{10092350}, our Quran Phonetic Script (QPS) comprehensively encodes all Tajweed rules and Sifat attributes in a unified representation.
+Unlike previous approaches that use IPA-based phoneme sets for Modern Standard Arabic \cite{omran2023automatic}, diacritized Uthmani text without Tajweed rules \cite{khan2021tarteel}, or focus on single rules like Qalqalah only \cite{10092350}, our QPS comprehensively encodes all Tajweed rules and Sifat attributes in a unified representation.
 
-Our multi-level CTC architecture offers significant token reduction compared to flat representations. A single-level approach encoding all Tajweed rules would require 99,072 tokens (cross-product of 43 phonemes × 10 Sifat × variations), whereas our hierarchical approach with 43 phoneme tokens, 6 Shidda/Rakhawa tokens, and 8 Madd tokens per beat achieves the same representational capacity with dramatically fewer output units, enabling more efficient training and better generalization.
 
-The paper is organized as follows:
-\begin{itemize}
-	\item \textbf{Related Work}: Expands on strengths/weaknesses of prior research
-	\item \textbf{Quran Phonetic Script}: Introduces our two-level script: \textbf{phonemes} and \textbf{Sifat} (10 attributes $\to$ 11 total levels)
-	\item \textbf{Data Pipeline}: Stages include:
-	      \begin{enumerate}
-		      \item Digitized Quran script as foundation
-		      \item \emph{Hafs} methodology criteria
-		      \item Expert recitation collection
-		      \item Segmentation at pause points (\arb{وقف})
-		      \item Segment transcription
-		      \item Validation via \emph{Tasmee} (\arb{تسميع}) algorithm
-	      \end{enumerate}
-	\item \textbf{Modeling}: Demonstrates learnability of the phonetic script
-	\item \textbf{Results}: Analysis of outcomes
-	\item \textbf{Limitations \& Future Work}: Next research directions
-	\item \textbf{Conclusion}: Summary of contributions
-	\item \textbf{Appendix}: Details on \emph{Moshaf} attributes and algorithms
-\end{itemize}
+Our multi-level CTC architecture offers significant token reduction compared to flat representations. A single-level approach encoding all Tajweed rules would require 99,072 tokens (cross-product of 43 phonemes × 10 Sifat × variations), whereas our hierarchical approach with 11 levels as shown in table~\ref{tab:vocabulary_size} achieves the same representational capacity with dramatically fewer output units, enabling more efficient training and better generalization.
+
+\begin{table}[h]
+	\centering
+	\caption{Vocabulary size per level in the Quran Phonetic Script.}
+	\label{tab:vocabulary_size}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Level} & \textbf{Vocabulary Size} \\
+		\hline
+		Phonemes & 43 \\
+		Tafkheem / Tarqeeq & 3 \\
+		Shidda / Rakhawa & 3 \\
+		Moraqaq / Muftah & 2 \\
+		Itbaq & 2 \\
+		Safeer & 2 \\
+		Qalqala & 2 \\
+		Tikraar & 2 \\
+		Tafashie & 2 \\
+		Istitala & 2 \\
+		Ghunnah & 2 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+The paper is organized as follows: Related Work, Quran Phonetic Script, Data Pipeline, Modeling, Results, Limitations and Future Work, Conclusion, and Appendix.
