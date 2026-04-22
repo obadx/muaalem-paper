@@ -64,14 +64,7 @@ Table~\ref{tab:examples_with_sifat} illustrates the phonetization process for th
 \subsection{Development Methodology}
 Our phonetization has two steps:
 \begin{enumerate}
-	\item \textbf{Imlaey to Uthmani Conversion} \\
-	      We selected Uthmani script as our foundation because:
-	      \begin{itemize}
-		      \item Contains specialized Tajweed diacritics (Madd, Tasheel, etc.)
-		      \item Preserves pause rules critical for recitation (e.g., stopping on \arb{رحمت})
-	      \end{itemize}
-
-	      In order to do that, we created an annotation UI to manually annotate misaligned words in both scripts. For example \ref{tab:imlaey_to_uthmani_ex}, after that, we developed an algorithm that relies on the annotations to convert Imlaey to Uthmani.
+	\item \textbf{Imlaey to Uthmani Conversion}: We selected Uthmani script as our foundation because it contains specialized Tajweed diacritics (Madd, Tasheel, etc.) and preserves pause rules critical for recitation (e.g., stopping on \arb{رحمت}). To do so, we created an annotation UI to manually annotate misaligned words in both scripts (e.g., \ref{tab:imlaey_to_uthmani_ex}), and then developed an algorithm that relies on these annotations to convert Imlaey to Uthmani.
 	\item \textbf{Uthmani to Phonetic Script Conversion} \\
 	      We implemented the process through 26 sequential operations. Each operation contains one or more regular expressions, as shown in the Appendix~\ref{subsec:conversion_ops}.
 
