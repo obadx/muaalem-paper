@@ -1,20 +1,10 @@
 \section{Quran Phonetic Script}
 \label{sec:qps}
-We consider the Quran Phonetic Script to be the most valuable and important contribution of our work. By formalizing the assessment of Holy Quran pronunciation as an ASR problem represented through this script, we provide a comprehensive solution to the task.
+We consider QPS to be the most valuable contribution of our work. By formalizing Holy Quran pronunciation assessment as an ASR problem represented through this script, we provide a comprehensive solution.
 
-Modern Standard Arabic (MSA) orthography cannot adequately represent Tajweed rules for error detection. For example, MSA cannot measure the precise length of Madd rules. Previous research (e.g., \cite{omran2023automatic}) focused on single rules like Qalqalah. Our phonetic script addresses this limitation by capturing all Tajweed pronunciation errors except Ishmam (\arb{إشمام}), which involves a visual mouth movement without audible output.
+Modern Standard Arabic orthography cannot adequately represent Tajweed rules for error detection. Our phonetic script addresses this by capturing all Tajweed pronunciation errors except Ishmam (visual mouth movement without audible output). We based our script on classical Muslim scholarship rather than IPA for three reasons: (1) historical precedence (Muslim scholars from the 6th to 14th centuries defined Quranic errors centuries before modern phonetics), (2) scientific foundation (e.g., Al-Khalil ibn Ahmad systematically described articulations with remarkable accuracy \cite{article-khalil}), and (3) pedagogical relevance (learners' errors align with classical definitions).
 
-We based our script on classical Muslim scholarship rather than the International Phonetic Alphabet (IPA) for these reasons:
-
-\begin{enumerate}
-	\item \textbf{Historical Precedence}: Muslim scholars from the 6th to 14th centuries rigorously defined Quranic errors centuries before modern phonetics emerged in the West.
-	\item \textbf{Scientific Foundation}: Scholars like Al-Khalil ibn Ahmad (6th century AH) systematically described articulations and attributes with remarkable accuracy comparable to modern phonetics \cite{article-khalil}.
-	\item \textbf{Pedagogical Relevance}: Learners' errors align with classical definitions according to expert Quran teachers.
-\end{enumerate}
-
-Following \cite{sweed2021}, Quran recitation errors fall into three categories: \textbf{Articulation Errors} (incorrect pronunciation of phonemes by making the phoneme exits not from its exact location), \textbf{Attribute Errors} (mistakes in letter characteristics (Sifat al-Huruf)), and \textbf{Tajweed Rule Errors} (incorrect application of rules like Ghunnah, Madd, etc.).
-
-Our script comprehensively addresses all three aspects through two main output levels: \textbf{Phonemes Level}, representing letters, vowels, and Tajweed rules, and \textbf{Sifat Level}, consisting of 10 levels representing articulation attributes for each phoneme. Refer to Tables~\ref{tab:phoneme_set} and \ref{tab:sifat_set} for Phonemes and Sifat levels.
+Following \cite{sweed2021}, Quran recitation errors fall into three categories: Articulation Errors (incorrect phoneme exits), Attribute Errors (mistakes in Sifat al-Huruf), and Tajweed Rule Errors (incorrect application of rules). Our script addresses all three through two main output levels: Phonemes Level (letters, vowels, and Tajweed rules) and Sifat Level (10 articulation attributes). Refer to Tables~\ref{tab:phoneme_set} and \ref{tab:sifat_set} for the complete vocabularies.
 
 Our script has some important characteristics: Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: \arb{اااا}); Madd al-Leen is represented with multiple waw/yaa symbols; Stressed Ghunnah (e.g., \arb{النون المشددة}) is shown as three consecutive noon symbols (\arb{ننن}); Ikhfa is represented as three consecutive noon\_mokhfah (\arb{ںںں}) or meem\_mokhfah (\arb{۾۾۾}); \arb{إدغام بغنة} (Ghunnah assimilation) for the letters yaa and waw is represented by doubling (e.g., \arb{مَن يَعْمَلْ} $\rightarrow$ \arb{مَيييَعمَل}); Sakin is indicated by the absence of a following symbol; Imala is represented using fatha\_momala and alif\_momala; and Rawm is marked by a dama\_mokhtalasa marker.
 
