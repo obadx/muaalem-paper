@@ -6,7 +6,7 @@ Our Quran Phonetic script has two outputs: \texttt{phonemes} and \texttt{sifat} 
 
 The weights are assigned based on the vocabulary size of each level to balance their contribution. Specifically, the \texttt{phonemes} level (vocabulary size 44, including blank token) receives a weight of 0.4; the \texttt{shidda\_or\_rakhawa} and \texttt{tafkheem\_or\_taqeeq} levels (each with a vocabulary size of 4 including blank token) receive a weight of 0.0605 each. The remaining eight levels (each with a vocabulary size of 3 including blank token) receive a weight of 0.069875 each.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 	\centering
 	\includegraphics[width=\linewidth]{figures/multi-level-ctc.png}
 	\caption{Multi-level CTC loss Architecture composed of 11 Heads for every level and CTC loss for every level with weighted average loss}

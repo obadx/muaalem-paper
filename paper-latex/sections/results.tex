@@ -68,7 +68,7 @@ qdat\_bench shows a higher PER of 0.058 on authentic learner recordings, which i
 
 Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation (see Figure~\ref{fig:noon_mokhfah_spectrogram}). This challenge affects both human perception and automated detection. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis is provided in the appendix~\ref{sec:qdat_bench}.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figures/qdat_bench/spectrogram_noon_mokhfah.png}
 	\caption{The figure illustrates the challenge of distinguishing Ikhfaa pronunciation from clear noon pronunciation for both humans and AI models. Spectrogram comparison of Noon Mokhfah (Ikhfaa) pronunciation from qdat\_bench: (left) correct Ikhfaa pronunciation of \arb{أنت} by a male reciter (original\_id=s0\_1), and (right) incorrect elongated noon pronunciation by a male reciter (original\_id=s9\_0) that the model failed to detect as a pronunciation error.}
@@ -79,7 +79,7 @@ Notably, despite being trained exclusively on male expert reciters, our model de
 
 Figure~\ref{fig:qdat_bootstrap_violin_results} visualizes the bootstrap distributions for aggregate metrics, showing stable estimates with narrow confidence intervals.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 	\centering
 	\includegraphics[width=1\linewidth]{figures/qdat_bench/qdat_bootstrap_violin_avg_metrics.png}
 	\caption{Violin plot for bootstrap analysis (n=10,000) of qdat\_bench aggregate metrics. (a) Phoneme Error Rate (PER) metrics (lower is better), (b) RMSE metrics for Madd rules (lower is better), and (c) Tajweed performance metrics (higher is better). Dashed lines indicate original metric values before bootstrapping.}
@@ -88,7 +88,7 @@ Figure~\ref{fig:qdat_bootstrap_violin_results} visualizes the bootstrap distribu
 
 Despite these promising results, certain model limitations should be acknowledged. Attribute-specific articulation patterns present inherent challenges: certain phonetic attributes apply exclusively to individual letters, such as \texttt{Istitala} for (ض) and \texttt{Tikrar} for (ر). Future work should focus on annotating real data with these specific errors to improve model understanding (see Section~\ref{sec:limitations} for detailed discussion).
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figures/006080_tohajoni_model_spectrogram.png}
 	\caption{Spectrogram analysis of the aligned model output for the word \arb{أَتُحَٰٓجُّوٓنِّى} (refer to Table~\ref{tab:examples_with_sifat} for the complete reference phonetization). Reference: \arb{ءَتُحَاااااااججُۥۥۥۥۥۥننننِۦۦ}, Predicted: \arb{ءتُحَاااااججُۥۥۥۥۥۥننننِۦۦ}. The phoneme boundaries remain near perfect; however, one error is observed: the fatha on the initial hamza (\arb{ءَ} → \arb{ء}) was missed. Additionally, the Madd alif (\arb{اااااا}) and Madd waw (\arb{ۥۥۥۥۥۥ}) durations are not balanced, with the final beat of the Madd sequence being notably larger.}
