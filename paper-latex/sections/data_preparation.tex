@@ -11,7 +11,7 @@ To prepare the data, we first defined selection criteria. We aimed to collect re
 
 We define a \textit{Moshaf} as a complete Quran recitation (chapters 1-114) by a specific reciter. Statistics are summarized in table~\ref{tab:moshaf}. We manually annotated 5400 samples out of 286,537 utterances, resulting for the automation ratio of 98\%.
 
-\begin{table}[htbp]
+\begin{table}[t]
 	\centering
 	\caption{Dataset Statistics per Moshaf}
 	\label{tab:moshaf}
@@ -70,7 +70,7 @@ We collected recitations from 22 world-class reciters with premium audio quality
 
 To ensure high-quality reference data for judging Quran learners, reciters were selected based on the following criteria: perfect recitation with no mistakes, non-prayer (studio) recording not during prayer, complete Moshaf (full Quran, chapters 1-114), and high audio quality. All recitations were recorded in high-quality studio conditions with thorough review to ensure high quality.
 
-\begin{table}[htbp]
+\begin{table}[t]
 	\centering
 	\caption{Distribution of Reciters by Country}
 	\label{tab:reciters_country}
@@ -90,19 +90,19 @@ To ensure high-quality reference data for judging Quran learners, reciters were 
 	\end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/stats_white.png}
 	\caption{Database Collection Statistics}
 	\label{fig:stats}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/reciter_white.png}
 	\caption{Reciters Statistics}
 	\label{fig:reciters}
-\end{figure}
+\end{figure*}
 
 We developed a web GUI using Streamlit that downloads and extracts metadata for each track, organizes data by Moshaf (each chapter as "001.mp3"), and annotates Moshaf attributes.
 
@@ -132,7 +132,7 @@ We fine-tuned Wav2Vec2-BERT for frame classification for 1 epoch using the AdamW
 
 Results of our segmenter on unseen mosahf in table~\ref{tab:seg_results}:
 
-\begin{table}[htbp]
+\begin{table}[t]
 	\label{tab:seg_results}
 	\centering
 	\caption{Test results of the segmenter on unseen full moshaf. The result is validated by actual usage of the segmenter}
@@ -160,7 +160,7 @@ In this section, we discuss how we assessed the pipeline performance phase by ph
 
 The result is a high-quality dataset with no missing verses across 27 full Quran recitations. Refer to the Tasmeea Algorithm in the Appendix \ref{alg:tasmeea}
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 	\centering
 	\begin{tikzpicture}[node distance=2cm, auto]
 		% Define styles with simple colors
@@ -193,6 +193,6 @@ The result is a high-quality dataset with no missing verses across 27 full Quran
 	\end{tikzpicture}
 	\caption{The complete data preparation pipeline showing the six main stages from expert recitation collection to the final dataset generation. Each stage utilizes specialized models and algorithms to ensure high-quality annotations.}
 	\label{fig:data_pipeline}
-\end{figure}
+\end{figure*}
 
 

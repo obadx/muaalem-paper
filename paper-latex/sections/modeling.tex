@@ -6,12 +6,12 @@ Our Quran Phonetic script has two outputs: \texttt{phonemes} and \texttt{sifat} 
 
 The weights are assigned based on the vocabulary size of each level to balance their contribution. Specifically, the \texttt{phonemes} level (vocabulary size 44, including blank token) receives a weight of 0.4; the \texttt{shidda\_or\_rakhawa} and \texttt{tafkheem\_or\_taqeeq} levels (each with a vocabulary size of 4 including blank token) receive a weight of 0.0605 each. The remaining eight levels (each with a vocabulary size of 3 including blank token) receive a weight of 0.069875 each.
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 	\centering
 	\includegraphics[width=\linewidth]{figures/multi-level-ctc.png}
 	\caption{Multi-level CTC loss Architecture composed of 11 Heads for every level and CTC loss for every level with weighted average loss}
 	\label{fig:multilevel-ctc}
-\end{figure}
+\end{figure*}
 
 We fine-tuned Facebook's Wav2Vec2-Bert \cite{barrault2023seamless} for a single epoch using an adapter layer and the AdamW optimizer with its default $\beta$ values. We employed a constant learning rate of \texttt{5e-5}, a batch size of 64, and a maximum sample length of 30 seconds, with training performed in \texttt{bfloat16} precision. We applied augmentations identical to Silero VAD \cite{SileroVAD} using the \texttt{audiomentations} library \cite{Audiomentations}, with additional augmentations: \texttt{TimeStretch} and \texttt{GainTransition}. We filtered out samples longer than \texttt{30 seconds} for efficient GPU utilization, sacrificing only 3k samples out of 250k training samples. The training was conducted on an H200 GPU with 141 GB of GPU memory for 7 hours.
 
@@ -19,14 +19,14 @@ Due to our limited budget, we conducted preliminary experiments to determine the
 
 The convergence behavior of the model is shown in Figure \ref{fig:eval_loss}, where the evaluation loss decreases consistently throughout the training process, confirming the stability of the multi-level CTC objective.
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{figures/eval_loss.png}
 	\caption{Evolution of the evaluation loss during training.}
 	\label{fig:eval_loss}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{./figures/audio-lens.png}
 	\caption{Recitations lengths in seconds for the whole dataset}

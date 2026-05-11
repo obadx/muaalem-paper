@@ -26,31 +26,31 @@ The Qalqalah rule is captured through the \texttt{qalqalah} metric, which identi
 
 The qdat\_bench dataset comprises 159 carefully selected samples. The demographic distribution reflects a diverse participant pool, with 120 female reciters representing 75.5\% of the dataset and 39 male reciters accounting for 24.5\%. The age diversity across various age groups provides comprehensive coverage of different learning stages and pronunciation patterns as shown in Figure~\ref{fig:qdat_age_gender}. The benchmark has various types of error: 106 reciters have one or more errors while 53 have complete correct recitations as shown in Figure~\ref{fig:qdat_correctness}. Finally Figure~\ref{fig:qdat_tajweed_coverage} shows the errors per every Tajweed rule as red represents errors and green with correct recitation.
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/age_gender_histograms.png}
 	\caption{Age and gender distribution of qdat\_bench reciters, showing diverse demographic coverage with 75.5\% female and 24.5\% male participants across different age groups.}
 	\label{fig:qdat_age_gender}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/correctness_histogram.png}
 	\caption{Distribution of recitation correctness across different Tajweed rules in the benchmark: red represents a reciter has one or more errors and green with correct recitation.}
 	\label{fig:qdat_correctness}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/qdat_bench/tajweed_columns_histograms.png}
 	\caption{Tajweed rules coverage histogram showing the frequency and diversity of rules evaluated in the benchmark dataset, red bars represents errors and green with correct recitation.}
 	\label{fig:qdat_tajweed_coverage}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Evaluation Results}
 The detailed evaluation results on qdat\_bench are presented in the following tables, showing performance across different Tajweed rule categories and metrics.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 	\centering
 	\caption{Detailed qdat\_bench Speech Metrics. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_speech_metrics}
@@ -72,9 +72,9 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		average\_per              & 0.0194            & 0.0197 $\pm$ 0.0032           \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[htbp]
+\begin{table*}[t]
 	\centering
 	\caption{qdat\_bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_madd_metrics}
@@ -92,9 +92,9 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		\textbf{Average Madd RMSE} & 0.5965            & 0.5960 $\pm$ 0.0374           \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[htbp]
+\begin{table*}[t]
 	\centering
 	\caption{qdat\_bench Noon Moshaddadah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_noon_moshaddadah}
@@ -114,9 +114,9 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Accuracy                      & \multicolumn{3}{c}{0.9113 $\pm$ 0.0222}                                             \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[htbp]
+\begin{table*}[t]
 	\centering
 	\caption{qdat\_bench Noon Mokhfah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_noon_mokhfah}
@@ -134,13 +134,13 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Recall                        & 0.4721 $\pm$ 0.0539                     & 0.0000 $\pm$ 0.0000 & 0.9820 $\pm$ 0.0165 \\
 		Precision                     & 1.0000 $\pm$ 0.0000                     & 0.0000 $\pm$ 0.0000 & 0.5617 $\pm$ 0.0458 \\
 		F1 Score                      & 0.6395 $\pm$ 0.0504                     & 0.0000 $\pm$ 0.0000 & 0.7134 $\pm$ 0.0371 \\
-		Average F1                    & \multicolumn{3}{c}{0.4510 $\pm$ 0.0259}                                             \\
-		Accuracy                      & \multicolumn{3}{c}{0.6716 $\pm$ 0.0376}                                             \\
+		Average F1                    & \multicolumn{3}{c}{0.4510 $\pm$ 0.0259}                                           \\
+		Accuracy                      & \multicolumn{3}{c}{0.6716 $\pm$ 0.0376}                                           \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
-\begin{table}[htbp]
+\begin{table*}[t]
 	\centering
 	\caption{qdat\_bench Qalqalah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
 	\label{tab:qdat_qalqalah}
@@ -162,28 +162,7 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Accuracy                      & \multicolumn{2}{c}{0.9562 $\pm$ 0.0164}                         \\
 		\hline
 	\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\linewidth]{figures/qdat_bench/qdat_bootstrap_violin_avg_metrics.png}
-	\caption{Violin plot for bootsraping analysis (n=10,000) of qdat\_bench aggregate metrics. (a) Phoneme Error Rate (PER) metrics (lower is better), (b) RMSE metrics for Madd rules (lower is better), and (c) Tajweed performance metrics (higher is better). Dashed lines indicate original metric values before bootstrapping.}
-	\label{fig:qdat_bootstrap_violin}
-\end{figure}
-
-\subsubsection{Performance Analysis and Discussion}
-
-The benchmark has several limitations that should be considered when interpreting results. First, the dataset size is very limited (159 samples) with imbalanced gender distribution (75.5\% female, 24.5\% male). Second, not all Tajweed rules are covered (e.g., Tasheel) and not all phonemes are represented (e.g., letter thaal: \arb{ذ}). Third, the benchmark focuses on a single verse from Surah Al-Ma'idah (5:109), limiting generalizability to other Quranic passages. Fourth, only one annotator with Tajweed expertise performed the reannotation, which may introduce subjective bias. These limitations highlight that this benchmark represents Version 1 towards systematic benchmarking of Tajweed rules, and future versions should aim to address these gaps through expanded data collection, multiple expert annotators, and broader coverage of Tajweed rules and Quranic verses.
-
-Figure~\ref{fig:noon_mokhfah_spectrogram} demonstrates the inherent difficulty in detecting Ikhfaa pronunciation errors. A spectrogram comparison reveals minimal acoustic differences between correct Ikhfaa pronunciation of \arb{أنت} (left, original\_id=s0\_1) and an incorrect elongated noon pronunciation (right, original\_id=s9\_0). This case exemplifies why the Ikhfaa F1 score is substantially lower than other Tajweed rules.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.9\textwidth]{figures/qdat_bench/spectrogram_noon_mokhfah.png}
-	\caption{The figure illustrates the challenge of distinguishing Ikhfaa pronunciation from clear noon pronunciation for both humans and AI models. Spectrogram comparison of Noon Mokhfah (Ikhfaa) pronunciation from qdat\_bench: (left) correct Ikhfaa pronunciation of \arb{أنت} by a male reciter (original\_id=s0\_1), and (right) incorrect elongated noon pronunciation by a male reciter (original\_id=s9\_0) that the model failed to detect as a pronunciation error.}
-	\label{fig:noon_mokhfah_spectrogram_appendix}
-\end{figure}
-
+\end{table*}
 
 \subsubsection{Usage}
 The dataset can be loaded using the Hugging Face datasets library:

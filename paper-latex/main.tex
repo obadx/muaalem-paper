@@ -1,4 +1,20 @@
-\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}%
+\documentclass[11pt,a4paper]{article}
+\usepackage{times,latexsym}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+
+\usepackage{fontspec}%
+\setmainfont{Times New Roman}[Scale=1.0]
+\newfontfamily\arabicfont[
+  Script=Arabic,
+  Scale=1.0,
+  Renderer=HarfBuzz,
+  RawFeature={+ss05,+ss06,+ss07}
+]{Amiri}
+
+\providecommand{\arb}[1]{{\arabicfont\textdir TRT\pardir TRT #1}}
+
+\usepackage{tacl2021v1}
 
 \usepackage{amsmath,amssymb,amsfonts}%
 \usepackage{algorithmic}%
@@ -11,56 +27,49 @@
 \usepackage{algorithm}%
 \usepackage{pdflscape}%
 \usepackage{multirow}%
-\usepackage{stfloats}%
 \usepackage{longtable}%
 \usepackage{tikz}%
 
-\usepackage{fontspec}%
-\setmainfont{Times New Roman}[Scale=1.0]
-\newfontfamily\arabicfont[
-  Script=Arabic,
-  Scale=1.0,
-  Renderer=HarfBuzz,
-  RawFeature={+ss05,+ss06,+ss07}
-]{Amiri}
-
-\newcommand{\arb}[1]{%
-  \bgroup
-  \arabicfont
-  \textdir TRT
-  \pardir TRT
-  #1%
-  \egroup
-}
-
-\usepackage{hyperref}%
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdfencoding=unicode,
-}%
-
-\pagestyle{headings}%
-\pagenumbering{arabic}%
+\pagestyle{empty}%
 
 \begin{document}
 
 \title{Automatic Pronunciation Error Detection and Correction of the Holy Quran's Learners Using Deep Learning}
 
-\author*[1]{\fnm{Abdullah} \sur{Abdelfttah}}\email{2101398@eng.asu.edu.eg}
-\author[1]{\fnm{Mahmoud I.} \sur{Khalil}}\email{mahmoud.khalil@eng.asu.edu.eg}
-\author[1]{\fnm{Hazem} \sur{Abbas}}\email{hazem.abbas@eng.asu.edu.eg}
+\author{
+  Abdullah Abdelfttah%
+  \\
+  Faculty of Engineering, Ain Shams University%
+  \\
+  Cairo, Egypt%
+  \\
+  2101398@eng.asu.edu.eg%
+  \And
+  Mahmoud I. Khalil%
+  \\
+  Faculty of Engineering, Ain Shams University%
+  \\
+  Cairo, Egypt%
+  \\
+  mahmoud.khalil@eng.asu.edu.eg%
+  \And
+  Hazem Abbas%
+  \\
+  Faculty of Engineering, Ain Shams University%
+  \\
+  Cairo, Egypt%
+  \\
+  hazem.abbas@eng.asu.edu.eg%
+}
 
-\affil[1]{\orgdiv{Computer and Systems Engineering}, \orgname{Faculty of Engineering, Ain Shams University}, \orgaddress{\city{Cairo}, \country{Egypt}}}
-
-
-\keywords{Mispronunciation Detection, Arabic NLP, End-to-end Models, Tajweed, Quran Recitation}
+\date{}
 
 \maketitle
 
-\input{abstract}
+\begin{abstract}
+Assessing spoken language is challenging, and quantifying pronunciation metrics for machine learning models is even harder. However, for the Holy Quran, this task is enabled by the rigorous recitation rules (Tajweed) established through the efforts of Muslim scholars, making highly effective assessment possible. Despite this advantage, the scarcity of high-quality annotated data remains a significant barrier. In this work, we bridge these gaps by introducing: (1) A 98\% automated pipeline to produce high-quality Quranic datasets -- encompassing collection of recitations from expert reciters, segmentation at pause points (waqf) using our fine-tuned wav2vec2-BERT model, transcription of segments, and transcript verification via our novel Tasmeea algorithm; (2) 848 hours of audio (286K annotated utterances); (3) qdat\_bench, a benchmark covering phonemes, diacritization, and Tajweed rules (Ghunnah, Qalqalah, Madd) on real recitation errors containing 159 samples; (4) A novel ASR-based approach for pronunciation error detection utilizing our custom Quran Phonetic Script (QPS) to encode Tajweed rules (unlike the IPA standard for Modern Standard Arabic). QPS uses an 11-level script: phoneme level (encoding Arabic letters with short/long vowels) and sifat level (encoding articulation characteristics of every phoneme). We further present comprehensive modeling with our novel multi-level CTC model, which achieved 0.21\% and 1.94\% average Phoneme Error Rate (PER) on the test set and qdat\_bench respectively, with a 75.8\% Tajweed F1 score. We release our work as open-source: \url{https://obadx.github.io/quran-muaalem/en/}
+\end{abstract}
+
 \input{sections/introduction}
 \input{sections/related_work}
 \input{sections/quran_phoneme_script}
@@ -72,17 +81,14 @@
 \input{sections/acknowledgment}
 
 \bibliography{references}
+\bibliographystyle{acl_natbib}
 
-
-\backmatter
-
-\begin{appendices}
-	\section{Appendix}\label{Appendix}
-	\input{sections/appendix/phonemes_vocabulary}
-	\input{sections/appendix/uthmani_to_qps}
-	\input{sections/appendix/tasmeea_algorithm}
-	\input{sections/appendix/moshaf_attributes}
-	\input{sections/appendix/qdat_bench}
-\end{appendices}
+\appendix
+\section{Appendix}\label{Appendix}
+\input{sections/appendix/phonemes_vocabulary}
+\input{sections/appendix/uthmani_to_qps}
+\input{sections/appendix/tasmeea_algorithm}
+\input{sections/appendix/moshaf_attributes}
+\input{sections/appendix/qdat_bench}
 
 \end{document}

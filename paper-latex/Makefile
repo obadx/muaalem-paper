@@ -29,12 +29,13 @@ cleanall: clean
 zip:
 	zip -r paper.zip main.tex references.bib abstract.tex Makefile \
 		sections/ figures/ fonts/ assets/ \
-		sn-jnl.cls sn-*.bst -x "*.bak*" -x "*.log"
+		tacl2021v1.sty acl_natbib.bst tacl2021.bib \
+		-x "*.bak*" -x "*.log"
 
 zip-blind:
 	zip -r paper-blind.zip main.tex references.bib abstract.tex Makefile \
 		sections/ figures/ fonts/ assets/ \
-		sn-jnl.cls sn-*.bst \
+		tacl2021v1.sty acl_natbib.bst tacl2021.bib \
 		-x "sections/acknowledgment.tex" -x "*.bak*" -x "*.log"
 
 watch:

@@ -25,7 +25,7 @@ Unlike previous approaches that use IPA-based phoneme sets for Modern Standard A
 
 Our multi-level CTC architecture offers significant token reduction compared to flat representations. A single-level approach encoding all Tajweed rules would require 99,072 tokens (cross-product of 43 phonemes × 10 Sifat × variations), whereas our hierarchical approach with 11 levels as shown in table~\ref{tab:vocabulary_size} achieves the same representational capacity with dramatically fewer output units, enabling more efficient training and better generalization.
 
-\begin{table}[h]
+\begin{table}[t]
 	\centering
 	\caption{Vocabulary size per level in the Quran Phonetic Script.}
 	\label{tab:vocabulary_size}
