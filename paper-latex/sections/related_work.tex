@@ -17,8 +17,8 @@ None of the above provides explicit, rule-level Tajweed annotations across the f
 		Tarteel v1 \cite{khan2021tarteel}                                                                                                      & Diacritization           & 25K utterances (68 h)                   & None                                   & No             \\
 		Tarteel (private)                                                                                                                      & Diacritization           & 9K hours                                & None                                   & No             \\
 		IqraaEval \cite{kheir2025towards}                                                                                                      & Pronunciation Assessment & 2.2 hours                               & None                                   & No             \\
-		\textbf{muaalem-annotated-v3 (ours)}\footnote{\href{https://huggingface.co/datasets/obadx/muaalem-annotated-v3}{muaalem-annotated-v3}} & ASR + Tajweed Detection  & 848 h, 286K utterances, 22 reciters     & All Hafs Tajweed rules (except Ishmam) & Yes            \\
-		\textbf{qdat\_bench (ours)}\footnote{\url{https://huggingface.co/datasets/obadx/qdat_bench}}                                                  & ASR + Tajweed Detection        & 159 samples (1 verse, Al-Ma'idah 5:109) & Madd, Ghunna, Ikhfaa, Qalqalah         & Yes            \\
+		\textbf{muaalem-annotated-v3 (ours)} & ASR + Tajweed Detection  & 848 h, 286K utterances, 22 reciters     & All Hafs Tajweed rules (except Ishmam) & Yes            \\  % removed \footnote{...obadx...}
+		\textbf{qdat\_bench (ours)}                                                  & ASR + Tajweed Detection        & 159 samples (1 verse, Al-Ma'idah 5:109) & Madd, Ghunna, Ikhfaa, Qalqalah         & Yes            \\  % removed \footnote{\url{...obadx...}}
 		\bottomrule
 	\end{tabular}
 	\caption{Comparison of Quran pronunciation datasets. The Sifat column indicates whether the dataset explicitly encodes \emph{Sifat} (attributes of articulation of Holy Quran phonemes) at the phoneme level.}

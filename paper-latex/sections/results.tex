@@ -68,7 +68,8 @@ To evaluate our model's performance on real recitation errors, we tested on our 
 qdat\_bench shows a higher PER of 0.058 on authentic learner recordings, which is expected given the complexity of detecting real pronunciation errors and handling variability in learner execution. However, 5.8\% remains very acceptable despite being trained on expert recitations only. The aggregate Tajweed F1 score of 0.758 represents the mean across three key rules: Noon Moshaddadah (0.869), Ikhfaa (0.453), and Qalqalah (0.953). Similarly, the average Madd RMSE of 0.596 encompasses normal madd (0.464), separate madd (0.687), and aared madd (1.034).
 
 % Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation (see Figure~\ref{fig:noon_mokhfah_spectrogram}). This challenge affects both human perception and automated detection. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis is provided in the appendix~\ref{sec:qdat_bench}.
-Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation (see Figure~\ref{fig:noon_mokhfah_spectrogram}). This challenge affects both human perception and automated detection. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis is provided in dataset page on huggingface\footnote{\url{https://huggingface.co/datasets/obadx/qdat_bench}}.
+% Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation (see Figure~\ref{fig:noon_mokhfah_spectrogram}). This challenge affects both human perception and automated detection. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis is provided in dataset page on huggingface\footnote{\url{https://huggingface.co/datasets/obadx/qdat_bench}}.
+Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, which is expected given the acoustic similarity between Ikhfaa and clear noon pronunciation (see Figure~\ref{fig:noon_mokhfah_spectrogram}). This challenge affects both human perception and automated detection. The model's performance on this rule reflects the inherent difficulty in detecting subtle nasalization differences. Detailed analysis is provided in dataset page.
 
 \begin{figure}[htbp]
 	\centering
@@ -77,7 +78,7 @@ Notably, the Ikhfaa F1 score of 0.453 is considerably lower than other rules, wh
 	\label{fig:noon_mokhfah_spectrogram}
 \end{figure}
 
-Notably, despite being trained exclusively on male expert reciters, our model demonstrates promising generalization by achieving 84.7\% accuracy on female recitations in qdat\_bench, highlighting robustness for real-world deployment. This performance validates the practical applicability of our Quranic phonetic script and multi-level CTC architecture.
+Remarkably, despite being trained exclusively on male expert reciters, our model demonstrates promising generalization by achieving 84.7\% accuracy on female recitations in qdat\_bench, highlighting robustness for real-world deployment. This performance validates the practical applicability of our Quranic phonetic script and multi-level CTC architecture.
 
 % Figure~\ref{fig:qdat_bootstrap_violin_results} visualizes the bootstrap distributions for aggregate metrics, showing stable estimates with narrow confidence intervals.
 
