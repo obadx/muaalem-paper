@@ -8,16 +8,13 @@ Following \cite{sweed2021}, Quran recitation errors fall into three categories: 
 
 Our script has some important characteristics: Normal Madd appears as consecutive madd symbols (e.g., 4-beat Madd: \arb{اااا}); Madd al-Leen is represented with multiple waw/yaa symbols; Stressed Ghunnah (e.g., \arb{النون المشددة}) is shown as three consecutive noon symbols (\arb{ننن}); Ikhfa is represented as three consecutive noon\_mokhfah (\arb{ںںں}) or meem\_mokhfah (\arb{۾۾۾}); \arb{إدغام بغنة} (Ghunnah assimilation) for the letters yaa and waw is represented by doubling (e.g., \arb{مَن يَعْمَلْ} $\rightarrow$ \arb{مَيييَعمَل}); Sakin is indicated by the absence of a following symbol; Imala is represented using fatha\_momala and alif\_momala; and Rawm is marked by a dama\_mokhtalasa marker.
 
-Table~\ref{tab:examples_with_sifat} illustrates the phonetization process for the word (\arb{أَتُحَٰٓجُّوٓنِّى}), showing its conversion into phonetic components and Sifat attributes; refer to the table caption for a detailed row-by-row breakdown.
-
+Table~\ref{tab:examples_with_sifat} illustrates the phonetization process for the word (\arb{أَتُحَٰٓجُّوٓنِّى}), showing its conversion into phonetic components and Sifat attributes; refer to the table caption for a detailed row-by-row breakdown.
 
 
 
 
 \begin{table*}[h]
 	\centering
-	\caption{Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes. This example shows the phonetization of word (\arb{أَتُحَٰٓجُّوٓنِّى}) row by row: The first row shows conversion of (\arb{أَ}) to (\arb{ءَ}) with its sifat in the row, following the second row. For the fourth row, showing the madd Lazim rule with 6 beats phoneticized as 6 alifs (\arb{اااااا}), same as the sixth row but with damma represented as 6 waw\_madd (\arb{ۥۥۥۥۥۥ}). And for the fifth row we notice that we converted (\arb{جُّ}) to (\arb{ججُ}) disassembling shadda. The last row shows the normal madd of yaa with two beats represented as two yadd\_madd (\arb{ۦۦ})}
-	\label{tab:examples_with_sifat}
 	\scriptsize
 	\setlength{\tabcolsep}{3pt}
 	\begin{tabular}{@{}>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{1.5cm} *{10}{>{\centering\arraybackslash}m{0.7cm}@{}}}
@@ -38,15 +35,15 @@ Table~\ref{tab:examples_with_sifat} illustrates the phonetization process for th
 		\arb{تُ}          & \arb{تُ}           & hams & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
 		\arb{حَـ}         & \arb{حَ}           & hams & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
 		\arb{ـٰٓ}          & \arb{اااااا}      & hams & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
-		\arb{جُّ}          & \arb{ججُ}          & jahr & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
+		\arb{جُّ}          & \arb{ججُ}          & jahr & shd & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
 		\arb{وٓ}          & \arb{ۥۥۥۥۥۥ}      & jahr & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
-		\arb{نِّ}          & \arb{ننننِ}        & jahr & btw & mrq & mnf & no & nql & nkr & ntf & nst & mg  \\
+		\arb{نِّ}          & \arb{ننننِ}        & jahr & btw & mrq & mnf & no & nql & nkr & ntf & nst & mg  \\
 		\arb{ى}          & \arb{ۦۦ}          & jahr & rkh & mrq & mnf & no & nql & nkr & ntf & nst & nmg \\
 		\bottomrule
 	\end{tabular}
 
 	\vspace{2mm}
-	\begin{center}  % Centering wrapper added here
+	\begin{center}
 		\scriptsize
 		\textbf{Attribute Abbreviations:} \\
 		H/J: Hams/Jahr \quad S/R: Shidda/Rakhawa \quad T/T: Tafkheem/Taqeeq \quad Itb: Itbaq \\
@@ -57,23 +54,22 @@ Table~\ref{tab:examples_with_sifat} illustrates the phonetization process for th
 		mof: mofakham \quad mnf: monfateh \quad mtb: motbaq \quad no: no\_safeer \\
 		nql: not\_moqalqal \quad nkr: not\_mokarar \quad ntf: not\_motafashie \\
 		nst: not\_mostateel \quad nmg: not\_maghnoon \quad mg: maghnoon
-	\end{center}  % End of centering wrapper
+	\end{center}
+	\caption{Examples of Uthmani to Phonetic Script Conversion with Sifat Attributes. This example shows the phonetization of word (\arb{أَتُحَٰٓجُّوٓنِّى}) row by row: The first row shows conversion of (\arb{أَ}) to (\arb{ءَ}) with its sifat in the row, following the second row. For the fourth row, showing the madd Lazim rule with 6 beats phoneticized as 6 alifs (\arb{اااااا}), same as the sixth row but with damma represented as 6 waw\_madd (\arb{ۥۥۥۥۥۥ}). And for the fifth row we notice that we converted (\arb{جُّ}) to (\arb{ججُ}) disassembling shadda. The last row shows the normal madd of yaa with two beats represented as two yadd\_madd (\arb{ۦۦ})}
+	\label{tab:examples_with_sifat}
 \end{table*}
-
 
 \subsection{Development Methodology}
 Our phonetization has two steps:
 \begin{enumerate}
 	\item \textbf{Imlaey to Uthmani Conversion}: We selected Uthmani script as our foundation because it contains specialized Tajweed diacritics (Madd, Tasheel, etc.) and preserves pause rules critical for recitation (e.g., stopping on \arb{رحمت}). To do so, we created an annotation UI to manually annotate misaligned words in both scripts (e.g., \ref{tab:imlaey_to_uthmani_ex}), and then developed an algorithm that relies on these annotations to convert Imlaey to Uthmani.
 	\item \textbf{Uthmani to Phonetic Script Conversion} \\
-	      We implemented the process through 26 sequential operations. Each operation contains one or more regular expressions, as shown in the Appendix~\ref{subsec:conversion_ops}.
+	      We implemented the process through 26 sequential operations. Each operation contains one or more regular expressions; the full inventory is detailed in the released dataset documentation.
 
 	\item \textbf{Extracting Sifat}: Next, we extract the 10 attributes (Sifat) defined in Table~\ref{tab:sifat_set}, excluding \textbf{Inhiraf} (\arb{إنحراف}), as it describes the shidda/rakhawa spectrum, and \textbf{Leen} (\arb{اللين}), as it was already handled through our Madd representation.
 \end{enumerate}
 
 \begin{table}[t]
-	\caption{Example of misalignment between Uthmani and Imlaey Scripts}
-	\label{tab:imlaey_to_uthmani_ex}
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
@@ -82,6 +78,6 @@ Our phonetization has two steps:
 		\arb{يَا ابْنَ أُمَّ}        & \arb{يَبْنَؤُمَّ}             \\
 		\hline
 	\end{tabular}
+	\caption{Example of misalignment between Uthmani and Imlaey Scripts}
+	\label{tab:imlaey_to_uthmani_ex}
 \end{table}
-
-

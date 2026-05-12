@@ -1,5 +1,6 @@
 \section{Data Preparation}
-To prepare the data, we first defined selection criteria. We aimed to collect recitations from the best reciters worldwide to serve as references for judging Quran learners. In our study, we considered only \textit{Hafs} riwayah (\arb{رواية حفص}) as it's the most popular recitation method globally. Recognizing that manual data annotation requires significant effort and time, we created a 98\% automated pipeline as for data collection shown in Figure~\ref{fig:data_pipeline}. The steps are:
+% To prepare the data, we first defined selection criteria. We aimed to collect recitations from the best reciters worldwide to serve as references for judging Quran learners. In our study, we considered only \textit{Hafs} riwayah (\arb{رواية حفص}) as it's the most popular recitation method globally. Recognizing that manual data annotation requires significant effort and time, we created a 98\% automated pipeline as for data collection shown in Figure~\ref{fig:data_pipeline}. The steps are:
+To prepare the data, we first defined selection criteria. We aimed to collect recitations from the best reciters worldwide to serve as references for judging Quran learners. In our study, we considered only \textit{Hafs} riwayah (\arb{رواية حفص}) as it's the most popular recitation method globally. Recognizing that manual data annotation requires significant effort and time, we created a 98\% automated pipeline as for data collection:
 \begin{enumerate}
     \item \textbf{Digitized Quran:} We chose Tanzil (standard Unicode, both Imlaei and Uthmani versions) over KFGQPC due to stability.
     \item \textbf{Variant Criteria for Hafs:} We defined variants (e.g., Madd al-Munfasil: 2,4,5, or 6 beats) through Qira'at literature \cite{al-dabbaa}.
@@ -62,7 +63,8 @@ The Quran has multiple digitized versions including Tanzil\footnote{\url{https:/
 We excluded KFGQPC due to its evolving/unstable nature compared to Tanzil.
 
 \subsection{Define Variant Criteria for Hafs}
-\textit{Hafs} riwayah contains variants, e.g., \textit{Madd Al-Munfasil} (\arb{مد المنفصل}) can extend 2, 4, 5, or 6 beats. We rigorously defined these variants through the Qira'at literature \cite{al-dabbaa}, summarized in the following attributes in the Appendix section \ref{sec:moshaf_attributes}.
+% \textit{Hafs} riwayah contains variants, e.g., \textit{Madd Al-Munfasil} (\arb{مد المنفصل}) can extend 2, 4, 5, or 6 beats. We rigorously defined these variants through the Qira'at literature \cite{al-dabbaa}, summarized in the following attributes in the Appendix section \ref{sec:moshaf_attributes}.
+\textit{Hafs} riwayah contains variants, e.g., \textit{Madd Al-Munfasil} (\arb{مد المنفصل}) can extend 2, 4, 5, or 6 beats. We rigorously defined these variants through the Qira'at literature \cite{al-dabbaa}, summarized in the following attributes in github repo.
 
 
 \subsection{Collect Expert Recitations}
@@ -70,39 +72,39 @@ We collected recitations from 22 world-class reciters with premium audio quality
 
 To ensure high-quality reference data for judging Quran learners, reciters were selected based on the following criteria: perfect recitation with no mistakes, non-prayer (studio) recording not during prayer, complete Moshaf (full Quran, chapters 1-114), and high audio quality. All recitations were recorded in high-quality studio conditions with thorough review to ensure high quality.
 
-\begin{table}[t]
-	\centering
-	\caption{Distribution of Reciters by Country}
-	\label{tab:reciters_country}
-	\begin{tabular}{lc}
-		\hline
-		\textbf{Country Name}     & \textbf{Number of Reciters} \\
-		\hline
-		Egypt (EG)                & 15                          \\
-		Saudi Arabia (SA)         & 3                           \\
-		Syria (SY)                & 1                           \\
-		Somalia (SO)              & 1                           \\
-		Kuwait (KW)               & 1                           \\
-		United Arab Emirates (AE) & 1                           \\
-		\hline
-		\textbf{Total}            & \textbf{22}                 \\
-		\hline
-	\end{tabular}
-\end{table}
+% \begin{table}[t]
+% 	\centering
+% 	\caption{Distribution of Reciters by Country}
+% 	\label{tab:reciters_country}
+% 	\begin{tabular}{lc}
+% 		\hline
+% 		\textbf{Country Name}     & \textbf{Number of Reciters} \\
+% 		\hline
+% 		Egypt (EG)                & 15                          \\
+% 		Saudi Arabia (SA)         & 3                           \\
+% 		Syria (SY)                & 1                           \\
+% 		Somalia (SO)              & 1                           \\
+% 		Kuwait (KW)               & 1                           \\
+% 		United Arab Emirates (AE) & 1                           \\
+% 		\hline
+% 		\textbf{Total}            & \textbf{22}                 \\
+% 		\hline
+% 	\end{tabular}
+% \end{table}
 
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.8\linewidth]{figures/stats_white.png}
-	\caption{Database Collection Statistics}
-	\label{fig:stats}
-\end{figure}
+% \begin{figure}[t]
+% 	\centering
+% 	\includegraphics[width=0.8\linewidth]{figures/stats_white.png}
+% 	\caption{Database Collection Statistics}
+% 	\label{fig:stats}
+% \end{figure}
 
-\begin{figure*}[!htbp]
-	\centering
-	includegraphics[width=0.8\linewidth]{figures/reciter_white.png}
-	\caption{Reciters Statistics}
-	\label{fig:reciters}
-\end{figure*}
+% \begin{figure*}[!htbp]
+% 	\centering
+% 	\includegraphics[width=0.8\linewidth]{figures/reciter_white.png}
+% 	\caption{Reciters Statistics}
+% 	\label{fig:reciters}
+% \end{figure*}
 
 We developed a web GUI using Streamlit that downloads and extracts metadata for each track, organizes data by Moshaf (each chapter as "001.mp3"), and annotates Moshaf attributes.
 
@@ -123,20 +125,17 @@ We fine-tuned Wav2Vec2-BERT for frame classification for 1 epoch using the AdamW
 % \label{fig:vad-arch}
 % \end{figure}
 
-\begin{figure*}[!htbp]
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figures/vad-arch.png}
+	\includegraphics[width=0.9\linewidth]{figures/vad-arch.png}
 	\caption{VAD architecture vs. standard streaming models}
 	\label{fig:vad-arch}
-\end{figure*}
+\end{figure}
 
 Results of our segmenter on unseen mosahf in table~\ref{tab:seg_results}:
 
 \begin{table}[t]
-	\label{tab:seg_results}
 	\centering
-	\caption{Test results of the segmenter on unseen full moshaf. The result is validated by actual usage of the segmenter}
-	\vspace{2pt}
 	\begin{tabular}{lc}
 		\hline
 		\textbf{Metric} & \textbf{Value} \\
@@ -146,6 +145,9 @@ Results of our segmenter on unseen mosahf in table~\ref{tab:seg_results}:
 		Test F1 Score   & 0.99476        \\
 		\hline
 	\end{tabular}
+	\caption{Test results of the segmenter on unseen full moshaf. The result is validated by actual usage of the segmenter}
+	\vspace{2pt}
+	\label{tab:seg_results}
 \end{table}
 
 \subsection{Transcribe Segmented Parts}
@@ -158,41 +160,40 @@ In this section, we discuss how we assessed the pipeline performance phase by ph
 
 \textbf{Transcription Verification}: We utilized the Tarteel model, which has a 5.7544\% Word Error Rate (WER). To correct potential transcription errors, we leveraged the fact that our input consists of 100\% correct expert recitations to design the \textit{Tasmeea}-inspired algorithm. This algorithm matches the Tarteel transcription to the Quranic text—analogous to a student reciting to a teacher—using fuzzy matching based on Levenshtein distance \cite{levenshtein1966binary} with a moving pointer. If the text matching threshold falls below $85\%$, the samples are referred to human annotators for correction.
 
-The result is a high-quality dataset with no missing verses across 27 full Quran recitations. Refer to the Tasmeea Algorithm in the Appendix \ref{alg:tasmeea}
+The result is a high-quality dataset with no missing verses across 27 full Quran recitations. The Tasmeea algorithm is available in the source code.
 
-\begin{figure*}[!htbp]
-	\centering
-	\begin{tikzpicture}[node distance=2cm, auto]
-		% Define styles with simple colors
-		\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=blue!60, fill=blue!10, rounded corners]
-		\tikzstyle{data} = [rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=green!60, fill=green!10, rounded corners]
-		\tikzstyle{arrow} = [thick,->,>=stealth,draw=gray!70]
-
-		% Nodes
-		\node[data] (collection) {Expert Recitation Collection};
-		\node[process, below of=collection] (segmentation) {Segmentation at Waqf Points};
-		\node[process, below of=segmentation] (transcription) {ASR Transcription};
-		\node[process, below of=transcription] (verification) {Tasmeea Verification};
-		\node[process, below of=verification] (encoding) {QPS Encoding};
-		\node[data, below of=encoding] (dataset) {Final Dataset};
-
-		% Arrows
-		\draw[arrow] (collection) -- (segmentation);
-		\draw[arrow] (segmentation) -- (transcription);
-		\draw[arrow] (transcription) -- (verification);
-		\draw[arrow] (verification) -- (encoding);
-		\draw[arrow] (encoding) -- (dataset);
-
-		% Side annotations
-		\node[right of=collection, xshift=3cm, text width=4cm, text=gray] {\small 22 world-class reciters};
-		\node[right of=segmentation, xshift=3cm, text width=4cm, text=gray] {\small wav2vec2-BERT model};
-		\node[right of=transcription, xshift=3cm, text width=4cm, text=gray] {\small Tarteel Whisper};
-		\node[right of=verification, xshift=3cm, text width=4cm, text=gray] {\small Validation algorithm};
-		\node[right of=encoding, xshift=3cm, text width=4cm, text=gray] {\small 11-level script};
-		\node[right of=dataset, xshift=3cm, text width=4cm, text=gray] {\small 848 hours, 286k utterances};
-	\end{tikzpicture}
-	\caption{The complete data preparation pipeline showing the six main stages from expert recitation collection to the final dataset generation. Each stage utilizes specialized models and algorithms to ensure high-quality annotations.}
-	\label{fig:data_pipeline}
-\end{figure*}
+% \begin{figure}[htbp]
+% 	\centering
+% 	\resizebox{0.9\linewidth}{!}{%
+% 	\begin{tikzpicture}[
+% 		node distance=0.5cm,
+% 		every node/.style={inner sep=2pt},
+% 		process/.style={rectangle, minimum width=2.8cm, text centered, draw=blue!60, fill=blue!10, rounded corners},
+% 		data/.style={rectangle, minimum width=2.3cm, text centered, draw=green!60, fill=green!10, rounded corners},
+% 		arrow/.style={thick,->,>=stealth}
+% 	]
+% 		\node[data] (collection) {Expert Recitation Collection};
+% 		\node[process, below=of collection] (segmentation) {Segmentation at Waqf Points};
+% 		\node[process, below=of segmentation] (transcription) {ASR Transcription};
+% 		\node[process, below=of transcription] (verification) {Tasmeea Verification};
+% 		\node[process, below=of verification] (encoding) {QPS Encoding};
+% 		\node[data, below=of encoding] (dataset) {Final Dataset};
+%
+% 		\node[right=0.1cm of collection, font=\tiny, text=gray] {22 reciters};
+% 		\node[right=0.1cm of segmentation, font=\tiny, text=gray] {wav2vec2-BERT};
+% 		\node[right=0.1cm of transcription, font=\tiny, text=gray] {Tarteel Whisper};
+% 		\node[right=0.1cm of verification, font=\tiny, text=gray] {Validation};
+% 		\node[right=0.1cm of encoding, font=\tiny, text=gray] {11-level script};
+% 		\node[right=0.1cm of dataset, font=\tiny, text=gray] {848h, 286k};
+%
+% 		\draw[arrow] (collection) -- (segmentation);
+% 		\draw[arrow] (segmentation) -- (transcription);
+% 		\draw[arrow] (transcription) -- (verification);
+% 		\draw[arrow] (verification) -- (encoding);
+% 		\draw[arrow] (encoding) -- (dataset);
+% 	\end{tikzpicture}}
+% 	\caption{The complete data preparation pipeline showing the six main stages from expert recitation collection to the final dataset generation. Each stage utilizes specialized models and algorithms to ensure high-quality annotations.}
+% 	\label{fig:data_pipeline}
+% \end{figure}
 
 

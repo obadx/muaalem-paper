@@ -52,8 +52,6 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 
 \begin{table*}[t]
 	\centering
-	\caption{Detailed qdat\_bench Speech Metrics. Note: Original refers to evaluation on the full test set without bootstrapping.}
-	\label{tab:qdat_speech_metrics}
 	\begin{tabular}{lcc}
 		\hline
 		\textbf{Metric}           & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
@@ -72,12 +70,12 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		average\_per              & 0.0194            & 0.0197 $\pm$ 0.0032           \\
 		\hline
 	\end{tabular}
+	\caption{Detailed qdat\_bench Speech Metrics. Note: Original refers to evaluation on the full test set without bootstrapping.}
+	\label{tab:qdat_speech_metrics}
 \end{table*}
 
 \begin{table*}[t]
 	\centering
-	\caption{qdat\_bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd. Note: Original refers to evaluation on the full test set without bootstrapping.}
-	\label{tab:qdat_madd_metrics}
 	\begin{tabular}{lcc}
 		\hline
 		\textbf{Madd Rule}         & \textbf{Original} & \textbf{Bootstrap (n=10,000)} \\
@@ -92,12 +90,12 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		\textbf{Average Madd RMSE} & 0.5965            & 0.5960 $\pm$ 0.0374           \\
 		\hline
 	\end{tabular}
+	\caption{qdat\_bench Madd Rules Performance (RMSE). Golden values are for madd are: (2 for normal madd, 2 or 4 for separate madd, and 2, 4, or 6 for aared madd. Note: Original refers to evaluation on the full test set without bootstrapping.}
+	\label{tab:qdat_madd_metrics}
 \end{table*}
 
 \begin{table*}[t]
 	\centering
-	\caption{qdat\_bench Noon Moshaddadah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
-	\label{tab:qdat_noon_moshaddadah}
 	\begin{tabular}{lccc}
 		\hline
 		\textbf{Metric}               & \textbf{Partial}                        & \textbf{Complete}   & \textbf{Average}    \\
@@ -114,12 +112,12 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Accuracy                      & \multicolumn{3}{c}{0.9113 $\pm$ 0.0222}                                             \\
 		\hline
 	\end{tabular}
+	\caption{qdat\_bench Noon Moshaddadah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
+	\label{tab:qdat_noon_moshaddadah}
 \end{table*}
 
 \begin{table*}[t]
 	\centering
-	\caption{qdat\_bench Noon Mokhfah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
-	\label{tab:qdat_noon_mokhfah}
 	\begin{tabular}{lccc}
 		\hline
 		\textbf{Metric}               & \textbf{Noon}                           & \textbf{Partial}    & \textbf{Complete}   \\
@@ -138,12 +136,12 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Accuracy                      & \multicolumn{3}{c}{0.6716 $\pm$ 0.0376}                                           \\
 		\hline
 	\end{tabular}
+	\caption{qdat\_bench Noon Mokhfah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
+	\label{tab:qdat_noon_mokhfah}
 \end{table*}
 
 \begin{table*}[t]
 	\centering
-	\caption{qdat\_bench Qalqalah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
-	\label{tab:qdat_qalqalah}
 	\begin{tabular}{lcc}
 		\hline
 		\textbf{Metric}               & \textbf{No Qalqalah}                    & \textbf{Has Qalqalah} \\
@@ -162,6 +160,8 @@ The detailed evaluation results on qdat\_bench are presented in the following ta
 		Accuracy                      & \multicolumn{2}{c}{0.9562 $\pm$ 0.0164}                         \\
 		\hline
 	\end{tabular}
+	\caption{qdat\_bench Qalqalah Performance. Note: Original refers to evaluation on the full test set without bootstrapping.}
+	\label{tab:qdat_qalqalah}
 \end{table*}
 
 \subsubsection{Usage}

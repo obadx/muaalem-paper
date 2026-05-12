@@ -1,33 +1,50 @@
 \subsection{Tasmeea Verfication Algorithm}
 
-\begin{figure*}[!htbp]
-\caption{Tasmeea Algorithm}
-\label{alg:tasmeea}
-\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \small
+  \begin{verbatim}
 Algorithm 1 Tasmeea Algorithm
-Input: text_segments, sura_idx, overlap_words=6,
-       window_words=30, acceptance_ratio=0.85
+Input:
+  text_segments, sura_idx
+  overlap_words=6
+  window_words=30
+  acceptance_ratio=0.85
 Output: List of (match, ratio)
-1: aya <- 1
-2: penalty <- 0
-3: for each segment s_i do
-4:     norm_text <- normalize(s_i)
-5:     best_ratio <- 0, best_match <- null
-6:     for each start p in start_range do
-7:         for each window w in [min_win, max_win] do
-8:             candidate <- extract(aya, p, w)
-9:             dist <- edit_distance(norm_text, candidate)
-10:            ratio <- 1 - min(dist, |norm_text|)/|norm_text|
-11:            if ratio > best_ratio then update best
-12:         end for
-13:     end for
-14:     if best_ratio <= acceptance_ratio then
-15:         output (null, best_ratio); penalty <- max_win; aya <- aya+1
-16:     else
-17:         output (best_match, best_ratio)
-18:         aya <- aya + best_start + best_window; penalty <- 0
-19:     end if
-20: end for
-\end{verbatim}
-\end{figure*}
+ 1: aya <- 1
+ 2: penalty <- 0
+ 3: for each segment s_i do
+ 4:     norm_text <- normalize(s_i)
+ 5:     best_ratio <- 0
+ 6:     best_match <- null
+ 7:     for each start p in start_range do
+ 8:         for each window w
+             in [min_win, max_win] do
+ 9:             candidate <- extract
+                 (aya, p, w)
+10:            dist <- edit_distance
+                 (norm_text, candidate)
+11:            ratio <- 1 - min(dist,
+                 |norm_text|)/|norm_text|
+12:            if ratio > best_ratio
+13:               then update best
+14:         end for
+15:     end for
+16:     if best_ratio <=
+        acceptance_ratio then
+17:         output (null, best_ratio)
+18:         penalty <- max_win
+19:         aya <- aya+1
+20:     else
+21:         output (best_match,
+                 best_ratio)
+22:         aya <- aya + best_start
+23:               + best_window
+24:         penalty <- 0
+25:     end if
+26: end for
+  \end{verbatim}
+  \caption{Tasmeea Algorithm}
+  \label{alg:tasmeea}
+\end{figure}
 
